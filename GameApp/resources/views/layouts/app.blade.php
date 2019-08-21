@@ -34,10 +34,21 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                          <!--ADDING and VIEWING GAMES-->
+                        <li class="nav-item">
+                        <a href="{{route('games.index')}}" class="nav-link">Games</a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="{{route('games.create')}}" class="nav-link">New Game</a>
+                        </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                  
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
