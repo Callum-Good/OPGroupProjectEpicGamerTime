@@ -16,7 +16,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title')->unique(); //unique varchar equivalent column
-            $table->text('Description'); //text equivalent column
+            $table->text('body'); //text equivalent column
             $table->timestamps();
         });
     }
