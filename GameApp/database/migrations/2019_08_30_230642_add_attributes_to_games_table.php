@@ -17,8 +17,8 @@ class AddAttributesToGamesTable extends Migration
             //
             $table->string('genre');
             $table->string('platform');
-            $table->string('playstyle');
-            $table->string('release');
+            $table->string('perspective');
+            $table->date('release');
         });
     }
 

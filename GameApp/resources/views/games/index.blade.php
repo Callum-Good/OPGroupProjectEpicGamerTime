@@ -9,7 +9,7 @@
                     <th>Temp(read more)</th>
                     <th>Release</th>
                     <th>Genre</th>
-                    <th>Play Style</th>
+                    <th>Perspective</th>
                     <th>Platform</th>
                 </tr>
         @forelse($games as $game)
@@ -22,7 +22,7 @@
                     <td><a href="{{route('games.show',$game->id)}}">Read More</a></td>
                     <td>{{$game->release}}</td>
                     <td>{{$game->genre}}</td>
-                    <td>{{$game->playstyle}}</td>
+                    <td>{{$game->perspective}}</td>
                     <td>{{$game->platform}}</td>
                 </tr>
                 </table>
