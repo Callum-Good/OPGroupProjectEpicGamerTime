@@ -20,7 +20,6 @@ class Games extends Model
      * @var boolean
      */
     public $timestamps = true;
-    //public $date  = 'dd-mm-YY';
 
     /**
      * Properties that are mass assignable.

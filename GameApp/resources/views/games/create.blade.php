@@ -26,7 +26,7 @@
 <!-- year of release -->
         <div class="form-group">
             <label for="release">Released</label>
-            <input type="date" name="release" id="release" class="form-control {{$errors->has('release') ? 'is-invalid' : '' }}" value="{{old('title')}}" placeholder="Enter Year of Release">
+            <input type="date" name="release" id="release" class="form-control {{$errors->has('release') ? 'is-invalid' : '' }}" value="{{old('release')}}" placeholder="Enter Year of Release">
             @if($errors->has('release')) {{-- <-check if we have a validation error --}}
                 <span class="invalid-feedback">
                     {{$errors->first('release')}} {{-- <- Display the First validation error --}}
@@ -45,7 +45,7 @@
                 </div>
 <!-- perspective -->
         <div class="form-group">
-                    <label for="playstyle">Perspective</label>
+                    <label for="perspective">Perspective</label>
                     <input type="text" name="perspective" id="perspective" class="form-control {{$errors->has('perspective') ? 'is-invalid' : '' }}" value="{{old('perspective')}}" placeholder="Enter Perspective e.g. FPS, Third Person..">
                     @if($errors->has('perspective')) {{-- <-check if we have a validation error --}}
                         <span class="invalid-feedback">

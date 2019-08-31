@@ -45,6 +45,10 @@ class GamesController extends Controller
         $rules = [
             'title' => 'required|string|unique:games,title|min:2|max:191',
             'body'  => 'required|string|min:5|max:1000',
+            'release' => 'required|date',
+            'genre' => 'required|string',
+            'perspective' => 'required|string',
+            'platform' => 'required|string',
         ];
 
         //custom validation error messages
@@ -59,6 +63,10 @@ class GamesController extends Controller
         $game        = new Games;
         $game->title = $request->title;
         $game->body  = $request->body;
+        $game->release = $request->release;
+        $game->genre = $request->genre;
+        $game->perspective = $request->perspective;
+        $game->platform = $request->platform;
         $game->save(); // save it to the database.
 
         //Redirect to a specified route with flash message.
@@ -112,6 +120,10 @@ class GamesController extends Controller
         $rules = [
             'title' => "required|string|unique:games,title,{$id}|min:2|max:191",
             'body'  => 'required|string|min:5|max:1000',
+            'release' => 'required|date',
+            'genre' => 'required|string',
+            'perspective' => 'required|string',
+            'platform' => 'required|string',
         ];
 
         //custom validation error messages
@@ -126,6 +138,10 @@ class GamesController extends Controller
         $game        = Games::findOrFail($id);
         $game->title = $request->title;
         $game->body  = $request->body;
+        $game->release = $request->release;
+        $game->genre = $request->genre;
+        $game->perspective = $request->perspective;
+        $game->platform = $request->platform;
         $game->save(); //Can be used for both creating and updating
 
         //Redirect to a specified route with flash message.
