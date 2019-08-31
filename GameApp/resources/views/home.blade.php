@@ -3,6 +3,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+        @guest
+        <h2>Welcome</h2>
+        @else
+        <h2>Welcome {{ Auth::user()->name }}</h2>
+        @endif
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
