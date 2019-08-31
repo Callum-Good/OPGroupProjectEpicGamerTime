@@ -67,6 +67,18 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 
+.card{
+    background-color: #ece8e8;
+    color: #022009;
+
+}
+
+.btn-primary{
+    background-color: #12c438;
+
+}
+
+
 .navbar-light .navbar-nav .nav-link{
     color: #00ff37;
 }
