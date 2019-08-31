@@ -12,6 +12,13 @@
 
 }
 
+body{
+    background-color: #000;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
 /*headings*/
 h1{
     color:#00ff37;
@@ -60,12 +67,7 @@ th{
 }
 
 
-body{
-background-color: #000;
-background-image: url("../images/background.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-}
+/*Login register cards*/
 
 .card{
     background-color: #ece8e8;
@@ -78,7 +80,17 @@ background-size: cover;
 
 }
 
+/*Forms*/
 
+form{
+    width:400px;
+    margin:0 auto;
+}
+label{
+    color: #00ff37;
+}
+
+/*misc*/
 .navbar-light .navbar-nav .nav-link{
     color: #00ff37;
 }

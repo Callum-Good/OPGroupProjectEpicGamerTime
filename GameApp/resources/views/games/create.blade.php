@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h3 class="text-center">Create Game</h3>
+    <h2 class="text-center">Create Game</h2>
     <form action="{{route('games.store')}}" method="post">
         @csrf
 <!-- title of game -->
