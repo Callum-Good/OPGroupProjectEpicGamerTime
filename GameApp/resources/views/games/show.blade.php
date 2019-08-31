@@ -2,10 +2,16 @@
 @section('content')
     <h3 class="text-center">{{$game->title}}</h3>
     <p>{{$game->body}}</p>
+    <p>{{$game->release}}</p>
+    <p>{{$game->genre}}</p>
+    <p>{{$game->perspective}}</p>
+    <p>{{$game->platform}}</p>
     <br>
     <a href="{{route('games.edit',$game->id)}}" class="btn btn-primary float-left">Update</a>
     <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
     <div class="clearfix"></div>
+              
+                <!-- Delete for game should be taken out at some stage -->
     <div class="modal fade" id="delete-modal">
         <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -29,4 +35,5 @@
         @csrf
         @method('DELETE')
     </form>
+
 @endsection
