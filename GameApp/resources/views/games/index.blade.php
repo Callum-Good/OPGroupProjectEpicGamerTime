@@ -4,13 +4,13 @@
    <!-- <ul class="list-group py-3 mb-3">-->
                 <table>
                 <tr>
-                    <th>Title</th>
-                    <th>Description</th>
+                    <th>@sortablelink('Title')</th>
+                    <th>@sortablelink('Description')</th>
                     
-                    <th>Release</th>
-                    <th>Genre</th>
-                    <th>Perspective</th>
-                    <th>Platform</th>
+                    <th>@sortablelink('Release')</th>
+                    <th>@sortablelink('Genre')</th>
+                    <th>@sortablelink('Perspective')</th>
+                    <th>@sortablelink('Platform')</th>
                 </tr>
 
         @forelse($games as $game)

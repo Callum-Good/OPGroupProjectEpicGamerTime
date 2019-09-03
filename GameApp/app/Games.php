@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Games extends Model
 {
+    use Sortable;
     /**
      * Table for this Model.
      * 
