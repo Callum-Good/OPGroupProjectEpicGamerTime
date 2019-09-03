@@ -1,22 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    <style>
-        .sortable {  cursor: pointer;}
-        .st-sort-ascent i,.st-sort-descent i {  padding-left: 4px;}
-        .st-sort-ascent i:before {  content: '\25B2';}
-        .st-sort-descent i:before {  content: '\25BC';}
-    </style>
     <h2 class="text-center">Games</h2>
    <!-- <ul class="list-group py-3 mb-3">-->
-        <table st-table="data">
-            <tr class="sortable">
-                <th>@sortablelink('Title') </th>
-                <th>@sortablelink('Description')</th>  
-                <th>@sortablelink('Release')</th>
-                <th>@sortablelink('Genre')</th>
-                <th>@sortablelink('Perspective')</th>
-                <th>@sortablelink('Platform')</th>
-            </tr>
+                <table>
+                <tr>
+                    <th>@sortablelink('title', 'Title') </th>
+                    <th>@sortablelink('description')</th>  
+                    <th>@sortablelink('release')</th>
+                    <th>@sortablelink('genre')</th>
+                    <th>@sortablelink('perspective')</th>
+                    <th>@sortablelink('platform')</th>
+                </tr>
 
         @forelse($games as $game)
 
