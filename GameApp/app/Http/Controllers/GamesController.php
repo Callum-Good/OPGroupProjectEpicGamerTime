@@ -17,7 +17,7 @@ class GamesController extends Controller
         // get all the games with pagination.
         // $games = Games::orderBy('created_at','desc')->paginate(8);
 
-        $games = Games::sortable()->paginate(5);
+        $games = Games::sortable()->paginate(8);
 
         //return a view with all the games.
         return view('games.index',[

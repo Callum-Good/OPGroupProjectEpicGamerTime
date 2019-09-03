@@ -1,17 +1,22 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .sortable {  cursor: pointer;}
+        .st-sort-ascent i,.st-sort-descent i {  padding-left: 4px;}
+        .st-sort-ascent i:before {  content: '\25B2';}
+        .st-sort-descent i:before {  content: '\25BC';}
+    </style>
     <h2 class="text-center">Games</h2>
    <!-- <ul class="list-group py-3 mb-3">-->
-                <table>
-                <tr>
-                    <th>@sortablelink('Title')</th>
-                    <th>@sortablelink('Description')</th>
-                    
-                    <th>@sortablelink('Release')</th>
-                    <th>@sortablelink('Genre')</th>
-                    <th>@sortablelink('Perspective')</th>
-                    <th>@sortablelink('Platform')</th>
-                </tr>
+        <table st-table="data">
+            <tr class="sortable">
+                <th>@sortablelink('Title') </th>
+                <th>@sortablelink('Description')</th>  
+                <th>@sortablelink('Release')</th>
+                <th>@sortablelink('Genre')</th>
+                <th>@sortablelink('Perspective')</th>
+                <th>@sortablelink('Platform')</th>
+            </tr>
 
         @forelse($games as $game)
 
@@ -19,7 +24,7 @@
 
             <tr>
                     <td><a class="gpLink" href="{{route('games.show',$game->id)}}">{{$game->title}}</a></td>
-                    <td><a class="gpLink" href="{{route('games.show',$game->id)}}">{{str_limit($game->body,20)}} </a></td>
+                    <td><a class="gpLink" href="{{route('games.show',$game->id)}}">{{str_limit($game->description,20)}} </a></td>
                     <!--<small class="float-right">{{$game->created_at->diffForHumans()}}</small>-->
                     
                     <td><a class="gpLink" href="{{route('games.show',$game->id)}}">{{$game->release}}</a></td>
