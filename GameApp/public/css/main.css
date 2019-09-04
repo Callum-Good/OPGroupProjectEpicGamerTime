@@ -2,7 +2,7 @@
 /*main content*/
 .py-4
 {
-    width:800px;
+    width:850px;
     margin:0 auto;
 
     background-color: #0000008a;
@@ -49,6 +49,7 @@ tr{
 th{
     font-size: 1.5em;
     color: #00ff37;
+    padding-right: 10px;
 }
 
 .gpLink{

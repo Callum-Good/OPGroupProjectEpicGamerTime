@@ -4,7 +4,7 @@
    <!-- <ul class="list-group py-3 mb-3">-->
                 <table>
                 <tr>
-                    <th>@sortablelink('title', 'Title') </th>
+                    <th>@sortablelink('title') </th>
                     <th>@sortablelink('description')</th>  
                     <th>@sortablelink('release')</th>
                     <th>@sortablelink('genre')</th>
