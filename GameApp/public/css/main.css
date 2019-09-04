@@ -88,7 +88,12 @@ form{
     margin:0 auto;
 }
 label{
+    color: #000000;
+}
+
+.gameForm label{
     color: #ffffff;
+
 }
 
 /*Game view info*/

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h3 class="text-center">Edit Game</h3>
-    <form action="{{route('games.update',$game->id)}}" method="post">
+    <form action="{{route('games.update',$game->id)}}" method="post" class="gameForm">
         @csrf
         @method('PUT')
         <div class="form-group">
