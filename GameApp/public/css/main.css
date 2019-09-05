@@ -2,36 +2,41 @@
 /*main content*/
 .py-4
 {
-    width:850px;
+    width:90%;
     margin:0 auto;
 
-    background-color: #0000008a;
-    /*border-left: #00ff37 solid 5px;
+    /*background-color: #fffafa;
+    border-left: #00ff37 solid 5px;
     border-right: #00ff37 solid 5px;*/
     padding:15px;
 
 }
 
 body{
-    background-color: #000;
-    background-image: url("../images/background.jpg");
+    background-color: rgb(255, 255, 255);
+    /*background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
     }
 
 /*headings*/
 h1{
-    color:#00ff37;
+    font-size: 50px;
+    color:#ffffff;
+    font-weight: bold;
+    font-variant: small-caps;
 }
 h2{
-    font-size: 50px;
+    font-size: 60px;
     text-align: center;
-    color:#00ff37;
+    color:#000000;
+    font-weight: bold;
 }
 
 h3{
     text-align: center;
-    color:#00ff37;
+    color:#000000;
+    
 }
 
 /*tables*/
@@ -58,16 +63,39 @@ th{
 
 /* nav */
 .navbar{
-    background-image: url("../images/background.jpg");
+    /*background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
+    width: 100%;
+    margin: 0 auto;
+    
 }
 
 .nav-link{
-    color: #00ff37;
+    color: #000000;
 }
 
+.bg-white{
+    background-color: #000;
+    background-image: url(../images/navBG.jpg);
+}
 
+.navbar-light .navbar-nav .nav-link{
+    color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color:#c5bcbc;
+}
+
+.nav-link{
+    color: #ffffff;
+
+}
+
+.nav-item{
+    list-style-type: none;
+}
 /*Login register cards*/
 
 .card{
@@ -105,30 +133,105 @@ label{
 
 /*dropdown*/
 .dropdown-menu{
-    background-image: url("../images/background.jpg");
+    /*background-image: url("../images/background.jpg");*/
+    background-color: #000;
     
 }
 
 .dropdown-item{
-    color: #00ff37;
+    color: #ffffff;
 }
 
+
+/*Home page features*/
+.featuredGame{
+    float: left;
+    width: 70%;
+    border: solid rgb(0, 0, 0) 2px;
+    background-color: rgb(0, 0, 0);
+    margin-top: 0;
+}
+
+/*.featuredGame:hover{
+    border: solid rgb(88, 235, 88) 5px;
+    background-color: rgb(88, 235, 88);
+}*/
+
+.featuredGame h3{
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-variant: small-caps;
+    color: #ffffff;
+}
+
+.featuredGame img{
+    width: 100%;
+}
+
+.yourGroups{
+    float: right;
+    width: 28%;
+    text-align: center;
+    border: solid rgb(0, 0, 0) 2px;
+    background-color: rgb(141, 192, 144);
+}
+.yourGroups h3{
+    color: #000000;
+    border-bottom:solid #ffffff 2px;
+    margin:0;
+    font-size: 40px;
+}
+
+.ftdGrp{
+    border-bottom:solid #ffffff 2px;
+    padding: 5px;
+}
+
+.yourGroups h4{
+    color: #000000;
+    padding: 5px;
+
+}
+
+.ftdGrp p{
+    color: #000000;
+}
+
+.homeMenu{
+    width:500px;
+    margin: 0 auto;
+    
+}
+.homeMenulog{
+    width:335px;
+    margin: 0 auto;
+}
+.homeList li{
+        display: inline;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-weight: bold;
+}
+
+a{
+    color:#000000;
+    
+}
+
+a:hover{
+    text-decoration: none;
+}
 /*misc*/
-.navbar-light .navbar-nav .nav-link{
-    color: #00ff37;
-}
-.bg-white{
-    background-color: #000;
-}
-.a{
-    color:#00ff37;
-}
+
+
+
 h3, h4, h5, h6, p{
-    color:#d5e4d8;
+    color:#000000;
 }
 .list-group-item{
-    background-color: #000; 
-}
-.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
-    color:#00ff37;
+    background-color: rgb(255, 255, 255); 
 }
