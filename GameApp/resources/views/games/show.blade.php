@@ -4,7 +4,7 @@
     
         <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
     
-    <p>{{$game->body}}</p>
+    <p>{{$game->description}}</p>
     
     <br>
     <a href="{{route('games.edit',$game->id)}}" class="btn btn-primary float-right">Update</a>
