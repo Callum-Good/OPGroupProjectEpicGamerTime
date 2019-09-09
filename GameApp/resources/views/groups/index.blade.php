@@ -4,10 +4,10 @@
                 <table>
                 <tr>
                     <th>@sortablelink('name') </th>
-                    <th>@sortablelink('description')</th>  
-                    <th>@sortablelink('age')</th>
-                    <th>@sortablelink('gender')</th>
-                    <th>@sortablelink('location')</th>
-                    <th>@sortablelink('platform')</th>
+                    <th>@sortablelink('game')</th>  
+                    <th>@sortablelink('type')</th>
+                    <th>@sortablelink('description')</th>
+                    <th>@sortablelink('created at')</th>
+                    <th>@sortablelink('updated at')</th>
                 </tr>
 @endsection
