@@ -18,14 +18,14 @@
             <li><a href="{{ route('login') }}">Login</a></li>
             <li><a href="{{ route('register') }}">Register</a></li>
             <li><a href="{{ route('games.index') }}">Browse Games</a></li>
-            <li><a href="">Browse Groups</a></li>
+            <li><a href="{{ route('groups.index') }}">Browse Groups</a></li>
         </ul>
     </div>
         @else
     <div class="homeMenulog">
         <ul class="homeList">
             <li><a href="{{ route('games.index') }}">Browse Games</a></li>
-            <li><a href="">Browse Groups</a></li>
+            <li><a href="{{ route('groups.index') }}">Browse Groups</a></li>
         </ul>
     </div>
         @endif
