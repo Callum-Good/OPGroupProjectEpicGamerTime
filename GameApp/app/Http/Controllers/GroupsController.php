@@ -43,8 +43,6 @@ class GroupsController extends Controller
             'game'  => 'required|string|min:5|max:1000',
             'type' => 'required|string',
             'description' => 'required|string',
-            'created_at' => 'required|string',
-            'updated_at' => 'required|string',
         ];
 
         //custom validation error messages
@@ -61,8 +59,6 @@ class GroupsController extends Controller
         $group->game  = $request->game;
         $group->type = $request->type;
         $group->description = $request->description;
-        $group->created_at = $request->created_at;
-        $group->updated_at = $request->updated_at;
         $group->save(); // save it to the database.
 
         //Redirect to a specified route with flash message.
