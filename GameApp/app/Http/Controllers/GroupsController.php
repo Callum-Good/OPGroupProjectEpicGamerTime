@@ -14,8 +14,11 @@ class GroupsController extends Controller
      */
     public function index()
     {
+        $groups = Groups::sortable()->paginate(8);
         //
-        return view('groups.index');
+        return view('groups.index',[
+            'groups' => $groups,
+        ]);
     }
 
     /**
