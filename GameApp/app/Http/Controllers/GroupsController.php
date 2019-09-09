@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Groups;
 use Illuminate\Http\Request;
 
 class GroupsController extends Controller
@@ -36,7 +37,34 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation rules
+        $rules = [
+            'name' => 'required|string|unique:games,title|min:2|max:191',
+            'game'  => 'required|string|min:5|max:1000',
+            'type' => 'required|string',
+            'description' => 'required|string',
+        ];
+
+        //custom validation error messages
+        $messages = [
+            'name.unique' => 'Group name should be unique',
+        ];
+
+        //First Validate the form data
+        $request->validate($rules,$messages);
+
+        //Create a Group
+        $group        = new Groups;
+        $group->name = $request->name;
+        $group->game  = $request->game;
+        $group->type = $request->type;
+        $group->description = $request->description;
+        $group->save(); // save it to the database.
+
+        //Redirect to a specified route with flash message.
+        return redirect()
+            ->route('groups.index')
+            ->with('status','Added a new group!');
     }
 
     /**
