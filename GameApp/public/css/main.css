@@ -136,6 +136,17 @@ label{
 
 }
 
+.form-check-label{
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 1em;
+}
+
+.loginRForm
+{
+    background-image: none;
+}
+
 
 /*Game view info*/
 
