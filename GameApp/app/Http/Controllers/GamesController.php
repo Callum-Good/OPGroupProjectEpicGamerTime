@@ -46,7 +46,7 @@ class GamesController extends Controller
         //validation rules
         $rules = [
             'title' => 'required|string|unique:games,title|min:2|max:191',
-            'body'  => 'required|string|min:5|max:1000',
+            'description'  => 'required|string|min:5|max:1000',
             'release' => 'required|date',
             'genre' => 'required|string',
             'perspective' => 'required|string',
@@ -64,7 +64,7 @@ class GamesController extends Controller
         //Create a Game
         $game        = new Games;
         $game->title = $request->title;
-        $game->body  = $request->body;
+        $game->description  = $request->description;
         $game->release = $request->release;
         $game->genre = $request->genre;
         $game->perspective = $request->perspective;
@@ -121,7 +121,7 @@ class GamesController extends Controller
         //validation rules
         $rules = [
             'title' => "required|string|unique:games,title,{$id}|min:2|max:191",
-            'body'  => 'required|string|min:5|max:1000',
+            'description'  => 'required|string|min:5|max:1000',
             'release' => 'required|date',
             'genre' => 'required|string',
             'perspective' => 'required|string',
@@ -139,7 +139,7 @@ class GamesController extends Controller
         //Update the Game
         $game        = Games::findOrFail($id);
         $game->title = $request->title;
-        $game->body  = $request->body;
+        $game->description  = $request->description;
         $game->release = $request->release;
         $game->genre = $request->genre;
         $game->perspective = $request->perspective;

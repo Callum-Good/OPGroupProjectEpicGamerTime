@@ -23,7 +23,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-description">
                 <p>Are you sure!</p>
             </div>
             <div class="modal-footer">

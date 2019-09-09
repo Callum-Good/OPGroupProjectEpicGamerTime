@@ -15,11 +15,11 @@
         </div>
 <!-- description of game -->
         <div class="form-group">
-            <label for="body">Game Description</label>
-            <textarea name="body" id="body" rows="4" class="form-control {{$errors->has('body') ? 'is-invalid' : ''}}" placeholder="Enter Game Description">{{old('body')}}</textarea>
-            @if($errors->has('body')) {{-- <-check if we have a validation error --}}
+            <label for="description">Game Description</label>
+            <textarea name="description" id="description" rows="4" class="form-control {{$errors->has('description') ? 'is-invalid' : ''}}" placeholder="Enter Game Description">{{old('description')}}</textarea>
+            @if($errors->has('description')) {{-- <-check if we have a validation error --}}
                 <span class="invalid-feedback">
-                    {{$errors->first('body')}} {{-- <- Display the First validation error --}}
+                    {{$errors->first('description')}} {{-- <- Display the First validation error --}}
                 </span>
             @endif
         </div>
