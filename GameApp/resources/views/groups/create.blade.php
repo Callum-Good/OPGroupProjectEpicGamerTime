@@ -25,21 +25,21 @@
         </div>
 <!-- type of group -->
         <div class="form-group">
-            <label for="release">Type of group</label>
-            <input type="text" name="release" id="release" class="form-control {{$errors->has('release') ? 'is-invalid' : '' }}" value="{{old('release')}}" placeholder="">
-            @if($errors->has('release')) {{-- <-check if we have a validation error --}}
+            <label for="type">Type of group</label>
+            <input type="text" name="type" id="type" class="form-control {{$errors->has('type') ? 'is-invalid' : '' }}" value="{{old('type')}}" placeholder="">
+            @if($errors->has('type')) {{-- <-check if we have a validation error --}}
                 <span class="invalid-feedback">
-                    {{$errors->first('release')}} {{-- <- Display the First validation error --}}
+                    {{$errors->first('type')}} {{-- <- Display the First validation error --}}
                 </span>
             @endif
         </div>
 <!-- game -->
         <div class="form-group">
-                    <label for="genre">Favourite Game</label>
-                    <input type="text" name="genre" id="genre" class="form-control {{$errors->has('genre') ? 'is-invalid' : '' }}" value="{{old('genre')}}" placeholder="Favourite Games">
-                    @if($errors->has('genre')) {{-- <-check if we have a validation error --}}
+                    <label for="game_id">Favourite Game</label>
+                    <input type="text" name="game_id" id="game_id" class="form-control {{$errors->has('game_id') ? 'is-invalid' : '' }}" value="{{old('game_id')}}" placeholder="Favourite Games">
+                    @if($errors->has('game_id')) {{-- <-check if we have a validation error --}}
                         <span class="invalid-feedback">
-                            {{$errors->first('genre')}} {{-- <- Display the First validation error --}}
+                            {{$errors->first('game_id')}} {{-- <- Display the First validation error --}}
                         </span>
                     @endif
                 </div>

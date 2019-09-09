@@ -19,6 +19,8 @@ Route::get('/home', function () {
     return view('home');
 });
 
+
+
 Auth::routes();
 
 Route::resource('/games','GamesController');

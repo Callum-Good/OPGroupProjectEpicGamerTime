@@ -6,7 +6,7 @@
         @method('PUT')
         <!-- Group Name -->
         <div class="form-group">
-            <label for="title">Group name</label>
+            <label for="name">Group name</label>
             <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') ? : $group->name }}" placeholder="Enter Name">
             @if($errors->has('name')) {{-- <-check if we have a validation error --}}
                 <span class="invalid-feedback">
@@ -16,11 +16,11 @@
         </div>
         <!-- game -->
         <div class="form-group">
-                    <label for="game">Game</label>
-                    <input type="text" name="game" id="game" class="form-control {{$errors->has('game') ? 'is-invalid' : '' }}" value="{{old('game') ? : $group->game }}" placeholder="Enter Games...">
-                    @if($errors->has('game')) {{-- <-check if we have a validation error --}}
+                    <label for="game_id">Game</label>
+                    <input type="text" name="game_id" id="game_id" class="form-control {{$errors->has('game_id') ? 'is-invalid' : '' }}" value="{{old('game_id') ? : $group->game_id }}" placeholder="Enter Games...">
+                    @if($errors->has('game_id')) {{-- <-check if we have a validation error --}}
                         <span class="invalid-feedback">
-                            {{$errors->first('game')}} {{-- <- Display the First validation error --}}
+                            {{$errors->first('game_id')}} {{-- <- Display the First validation error --}}
                         </span>
                     @endif
                 </div>
@@ -28,7 +28,7 @@
         <div class="form-group">
                     <label for="type">Type</label>
                     <input type="text" name="type" id="type" class="form-control {{$errors->has('type') ? 'is-invalid' : '' }}" value="{{old('type') ? : $group->type }}" placeholder="Enter Group Type">
-                    @if($errors->has('genre')) {{-- <-check if we have a validation error --}}
+                    @if($errors->has('type')) {{-- <-check if we have a validation error --}}
                         <span class="invalid-feedback">
                             {{$errors->first('type')}} {{-- <- Display the First validation error --}}
                         </span>

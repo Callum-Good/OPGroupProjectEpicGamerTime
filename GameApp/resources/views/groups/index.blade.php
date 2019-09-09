@@ -4,7 +4,7 @@
                 <table>
                 <tr>
                     <th>@sortablelink('name') </th>
-                    <th>@sortablelink('game') </th>
+                    <th>@sortablelink('game_id') </th>
 
                     <th>@sortablelink('type')</th>
                     <th>@sortablelink('description')</th>
@@ -16,7 +16,7 @@
 
             <tr>
                     <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{$group->name}}</a></td>
-                    <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{$group->game}}</a></td>
+                    <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{$group->game_id}}</a></td>
 
                     <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{str_limit($group->description,20)}} </a></td>
                     

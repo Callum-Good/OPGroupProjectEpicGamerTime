@@ -30,6 +30,7 @@ class GroupsController extends Controller
     {
         //
         return view('groups.create');
+
     }
 
     /**
@@ -42,12 +43,11 @@ class GroupsController extends Controller
     {
         //validation rules
         $rules = [
-            'name' => 'required|string|unique:games,title|min:2|max:191',
-            'game'  => 'required|string|min:5|max:1000',
+            'name' => 'required|string|unique:groups,name|min:2|max:191',
+            'game_id'  => 'required|string|min:5|max:1000',
             'type' => 'required|string',
             'description' => 'required|string',
         ];
-
         //custom validation error messages
         $messages = [
             'name.unique' => 'Group name should be unique',
@@ -59,7 +59,7 @@ class GroupsController extends Controller
         //Create a Group
         $group        = new Groups;
         $group->name = $request->name;
-        $group->game  = $request->game;
+        $group->game_id  = $request->game_id;
         $group->type = $request->type;
         $group->description = $request->description;
         $group->save(); // save it to the database.
@@ -68,6 +68,8 @@ class GroupsController extends Controller
         return redirect()
             ->route('groups.index')
             ->with('status','Added a new group!');
+           
+
     }
 
     /**
@@ -76,7 +78,7 @@ class GroupsController extends Controller
      * @param  \App\Groups  $groups
      * @return \Illuminate\Http\Response
      */
-    public function show(Groups $groups)
+    public function show($id)
     {
         //Find a Game by it's ID
         $group = Groups::findOrFail($id);
@@ -109,8 +111,8 @@ class GroupsController extends Controller
         //
         //validation rules
         $rules = [
-            'name' => 'required|string|unique:games,title|min:2|max:191',
-            'game'  => 'required|string|min:5|max:1000',
+            'name' => 'required|string|unique:groups,name|min:2|max:191',
+            'game_id'  => 'required|string|min:5|max:1000',
             'type' => 'required|string',
             'description' => 'required|string',
         ];
@@ -126,7 +128,7 @@ class GroupsController extends Controller
         //Update the Group
         $groups        = Games::findOrFail($id);
         $group->name = $request->name;
-        $group->game  = $request->game;
+        $group->game_id  = $request->game_id;
         $group->type = $request->type;
         $group->description = $request->description;
         $group->save(); // save it to the database.
