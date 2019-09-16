@@ -32,8 +32,4 @@ class Groups extends Model
     protected $fillable = [
         'name', 'game', 'type', 'description'
     ];
-    public function usersAdd()
-    {
-        return $this->belongsToMany(User::class);
-    }
 }

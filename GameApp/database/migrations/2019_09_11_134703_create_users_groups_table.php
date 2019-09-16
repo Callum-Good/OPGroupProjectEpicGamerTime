@@ -17,6 +17,9 @@ class CreateUsersGroupsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
             $table->integer('group_id')->unsigned();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('group_id')->references('id')->on('groups');
         });
     }
 

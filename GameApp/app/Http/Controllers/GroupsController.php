@@ -63,7 +63,7 @@ class GroupsController extends Controller
         $group->type = $request->type;
         $group->description = $request->description;
         $group->save(); // save it to the database.
-
+        
         //Redirect to a specified route with flash message.
         return redirect()
             ->route('groups.index')
