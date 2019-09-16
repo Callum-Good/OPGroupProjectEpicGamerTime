@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
     public function groupsAdd()
     {
-        return $this->belongsToMany(Groups::class);
+        return $this->belongsToMany('app\Groups');
     }
 }
