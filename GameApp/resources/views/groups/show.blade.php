@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <h2 class="text-center">{{$group->title}}</h2>
+    <h2 class="text-center">{{$group->name}}</h2>
     
-        <p class="gInfo">Created {{$group->type}} | {{$group->game_id}} | </p>
+        <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
     
     <p>{{$group->description}}</p>
     
