@@ -147,6 +147,10 @@ label{
     background-image: none;
 }
 
+.deleteF{
+    background-image: none;
+}
+
 
 /*Game view info*/
 
@@ -282,4 +286,8 @@ h3, h4, h5, h6, p{
 }
 .list-group-item{
     background-color: rgb(255, 255, 255); 
+}
+
+.btn{
+    width: 100px;
 }

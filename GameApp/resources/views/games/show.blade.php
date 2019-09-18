@@ -9,7 +9,7 @@
     <br>
     <a href="{{route('games.edit',$game->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>
-  <!--  Delete for game should be taken out at some stage 
+  
   <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
     <div class="clearfix"></div>
               
@@ -33,9 +33,9 @@
         </div>
         </div>
     </div>
-    <form method="POST" id="delete-form" action="{{route('games.destroy',$game->id)}}" class="hide">
+    <form method="POST" id="delete-form" class="deleteF" action="{{route('games.destroy',$game->id)}}" class="hide">
         @csrf
         @method('DELETE')
-    </form>-->
+    </form>
 
 @endsection
