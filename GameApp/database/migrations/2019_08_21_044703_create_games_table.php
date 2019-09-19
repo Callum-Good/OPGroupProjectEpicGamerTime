@@ -14,7 +14,7 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('title')->unique(); //unique varchar equivalent column
             $table->text('body'); //text equivalent column
             $table->timestamps();
