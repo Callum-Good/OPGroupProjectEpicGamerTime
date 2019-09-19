@@ -35,6 +35,16 @@ class UserGroupsController extends Controller
     public function store(Request $request)
     {
         //
+        $users_group      = new Groups;
+        $users_group->name = $request->name;
+        $users_group->game_id  = $request->game_id;
+        
+        $group->save(); // save it to the database.
+        
+        //Redirect to a specified route with flash message.
+        return redirect()
+            ->route('groups.show')
+            ->with('status','Added a new group!');
     }
 
     /**

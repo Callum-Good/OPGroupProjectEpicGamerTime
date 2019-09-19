@@ -120,7 +120,7 @@ class GamesController extends Controller
     {
         //validation rules
         $rules = [
-            'title' => "required|string|unique:games,title,{$id}|min:2|max:191",
+            'title' => "required|string|title,{$id}|min:2|max:191",
             'description'  => 'required|string|min:5|max:1000',
             'release' => 'required|date',
             'genre' => 'required|string',
@@ -128,13 +128,7 @@ class GamesController extends Controller
             'platform' => 'required|string',
         ];
 
-        //custom validation error messages
-        $messages = [
-            'title.unique' => 'Game title should be unique',
-        ];
 
-        //First Validate the form data
-        $request->validate($rules,$messages);
 
         //Update the Game
         $game        = Games::findOrFail($id);

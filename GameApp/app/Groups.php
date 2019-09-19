@@ -32,4 +32,8 @@ class Groups extends Model
     protected $fillable = [
         'name', 'game', 'type', 'description'
     ];
+
+    public function users_groups(){
+        return $this->hasMany('UserGroup');
+    }
 }
