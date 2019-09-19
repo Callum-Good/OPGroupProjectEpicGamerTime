@@ -8,10 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\Models\Media;
 
 class User extends Authenticatable implements HasMedia
 {
-    // ...
     use HasMediaTrait;
 
     /**
@@ -20,7 +20,7 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'bio', 'favorite_game'
     ];
 
     /**
@@ -40,4 +40,11 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(50)
+            ->height(50);
+    }
 }
