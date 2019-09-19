@@ -94,9 +94,14 @@ class GroupsController extends Controller
      * @param  \App\Groups  $groups
      * @return \Illuminate\Http\Response
      */
-    public function edit(Groups $groups)
+    public function edit($id)
     {
-        //
+        //Find a Game by it's ID
+        $group = Groups::findOrFail($id);
+
+        return view('groups.edit',[
+            'group' => $group,
+        ]);
     }
 
     /**
@@ -106,7 +111,7 @@ class GroupsController extends Controller
      * @param  \App\Groups  $groups
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Groups $groups)
+    public function update(Request $request, $id)
     {
         //
         //validation rules
@@ -126,7 +131,7 @@ class GroupsController extends Controller
         $request->validate($rules,$messages);
 
         //Update the Group
-        $groups        = Games::findOrFail($id);
+        $group        = Groups::findOrFail($id);
         $group->name = $request->name;
         $group->game_id  = $request->game_id;
         $group->type = $request->type;
