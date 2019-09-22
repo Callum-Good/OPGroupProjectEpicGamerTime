@@ -75,6 +75,8 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="../auth/login#masuk">Login</button>
+
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
