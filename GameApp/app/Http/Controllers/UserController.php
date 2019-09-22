@@ -2,27 +2,90 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function myProfile()
+
+    /*
+    |--------------------------------------------------------------------------
+    | TodosController
+    |--------------------------------------------------------------------------
+    | This controller will be responsible for creating, retrieving, updating
+    | and deleting user from the database.
+    |
+    */
+
+    public function __construct()
     {
-        //returns the user's own profile page
-        return view('user.myProfile');
+        $this->middleware('auth');
     }
 
-    public function editProfile()
+    /**
+     * Display a specified User.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        //returns a view where a user can edit their own profile
-        return view('user.editProfile');
+        //Find a User by their ID
+        $user = auth::user()->id;
+
+        return view('users.show',[
+            'user' => $user,
+        ]);
     }
 
-    // TO BE IMPLEMENTED
-    /*public function yourProfile()
+    /**
+     * Show a form for editing a specified User.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        //returns another user's profile
+        //Find a User by it's ID
+        $user = User::findOrFail($id);
 
-        return view('user.yourProfile');
-    }*/
+        return view('users.edit',[
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * Update a specified User from the database.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //validation rules
+        $rules = [
+            'title' => "required|string|unique:users,title,{$id}|min:2|max:191",
+            'body'  => 'required|string|min:5|max:1000',
+        ];
+
+        //custom validation error messages
+        $messages = [
+            'title.unique' => 'User title should be unique',
+        ];
+
+        //First Validate the form data
+        $request->validate($rules,$messages);
+
+        //Update the User
+        $user        = User::findOrFail($id);
+        $user->title = $request->title;
+        $user->body  = $request->body;
+        $user->save(); //Can be used for both creating and updating
+
+        //Redirect to a specified route with flash message.
+        return redirect()
+            ->route('users.show',$id)
+            ->with('status','Updated the selected User!');
+    }
 }

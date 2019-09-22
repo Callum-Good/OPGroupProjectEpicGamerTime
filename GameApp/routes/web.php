@@ -19,10 +19,14 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/profile', function () {
+    return view('profile');
+});
+
 Auth::routes();
 
 Route::resource('/games','GamesController');
 
 Route::resource('/groups', 'GroupsController');
 
-Route::resource('/user', 'UserController');
+Route::resource('/users', 'UserController');
