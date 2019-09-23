@@ -63,7 +63,7 @@ class GroupsController extends Controller
         $group->type = $request->type;
         $group->description = $request->description;
         $group->save(); // save it to the database.
-
+        
         //Redirect to a specified route with flash message.
         return redirect()
             ->route('groups.index')
@@ -116,19 +116,12 @@ class GroupsController extends Controller
         //
         //validation rules
         $rules = [
-            'name' => 'required|string|unique:groups,name|min:2|max:191',
+            'name' => 'required|string|name|min:2|max:191',
             'game_id'  => 'required|string|min:5|max:1000',
             'type' => 'required|string',
             'description' => 'required|string',
         ];
 
-        //custom validation error messages
-        $messages = [
-            'name.unique' => 'Group name should be unique',
-        ];
-
-        //First Validate the form data
-        $request->validate($rules,$messages);
 
         //Update the Group
         $group        = Groups::findOrFail($id);
