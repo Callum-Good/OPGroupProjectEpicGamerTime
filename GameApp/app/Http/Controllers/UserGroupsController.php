@@ -60,7 +60,11 @@ class UserGroupsController extends Controller
      */
     public function show($id)
     {
-        //
+        $users_group = UserGroup::findOrFail($id);
+
+        return view('usergroups.show',[
+            'usergroup' => $users_group,
+        ]);
     }
 
     /**
