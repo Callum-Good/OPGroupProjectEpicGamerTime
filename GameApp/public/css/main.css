@@ -306,6 +306,10 @@ a:hover{
     color: white;
 }
 
+.profile p, .profile a{
+    color: rgb(180, 236, 255);
+}
+
 .bio{
     width: 400px;
     float: left;
@@ -321,6 +325,7 @@ a:hover{
 .bio p{
     clear: left;
     overflow-wrap: break-word;
+    color: rgb(180, 236, 255);
 }
 
 .bio h2{

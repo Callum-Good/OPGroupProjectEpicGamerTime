@@ -39,6 +39,12 @@ class ProfileController extends Controller
         $user = User::findOrFail(auth()->user()->id);
         // Set user name
         $user->name = $request->input('name');
+        // Set email
+        $user->email  = $request->input('email');
+        // Set bio
+        $user->bio  = $request->input('bio');
+        // Set favorite game
+        $user->favorite_game  = $request->input('favorite_game');
 
         //custom validation error messages
         $messages = [
@@ -61,10 +67,6 @@ class ProfileController extends Controller
             $user->profile_image = $filePath;
         }
 
-        $user->name = $request->name;
-        $user->email  = $request->email;
-        $user->bio  = $request->bio;
-        $user->favorite_game  = $request->favorite_game;
         // Persist user record to database
         $user->save();
 
