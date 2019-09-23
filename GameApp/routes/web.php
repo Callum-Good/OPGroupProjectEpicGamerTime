@@ -19,12 +19,14 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::view('/profile', 'profile')->name('profile');
+Route::get('/profile', 'ProfileController@index')->name('profile');
+
+Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
+
+Route::get('/editProfile', 'ProfileController@editProfile')->name('editProfile');
 
 Auth::routes();
 
 Route::resource('/games','GamesController');
 
 Route::resource('/groups', 'GroupsController');
-
-Route::resource('/users', 'UserController');

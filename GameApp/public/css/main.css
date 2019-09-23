@@ -404,3 +404,7 @@ h3, h4, h5, h6, p{
 .list-group-item{
     background-color: rgb(255, 255, 255); 
 }
+
+.file{
+    padding-bottom: 45px;
+}

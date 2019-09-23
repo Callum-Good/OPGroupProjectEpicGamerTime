@@ -6,22 +6,31 @@
         <div class="col-md-8">
             <div class="profileWrapper">
                 <div class="profile">
-                    <img id="dp" src="images/default.jpg">
+                    @if (auth()->user()->image)
+                        <img src="{{ asset(auth()->user()->image) }}">
+                    @else
+                        <img id="dp" src="images/default.jpg">
+                    @endif
                     <h1>{{ Auth::user()->name }}</h2>
                     <h2>Favorite Game:</h2>
-                    <p><a href="">{{ Auth::user()->favorite_game }}</a></p>
+                    @if (auth()->user()->favorite_game)
+                        <p><a href="">{{ Auth::user()->favorite_game }}</a></p>
+                    @else
+                        <p><i>No favorite game</i></p>
+                    @endif
                 </div>
 
                 <div class="bio">
                     <h2>{{ Auth::user()->name }}'s Bio</h2>
-                    <p>{{ Auth::user()->bio }}</p>
+                    @if (auth()->user()->favorite_game)
+                        <p>{{ Auth::user()->bio }}</p>
+                    @else
+                        <p><i>{{ Auth::user()->name }} has not created a bio. How boring!</i></p>
+                    @endif
                 </div>
         
                 <div class="update">
-                    <?php
-                        $user = Auth::user();
-                    ?>
-                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary">Update Your Profile</a>
+                    <a href="{{ route('editProfile') }}" class="btn btn-primary">Update Your Profile</a>
                 </div>
             </div>
         </div>
