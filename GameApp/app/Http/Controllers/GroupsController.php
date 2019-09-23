@@ -142,7 +142,7 @@ class GroupsController extends Controller
      * @param  \App\Groups  $groups
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Groups $groups)
+    public function destroy($id)
     {
         //
         $groups = Groups::findOrFail($id);

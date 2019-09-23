@@ -8,15 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'bio', 'favorite_game', 'profile_image'
     ];
 
     /**
@@ -37,7 +35,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function users_groups(){
         return $this->hasMany('UserGroup');
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->profile_image;
+
     }
 }

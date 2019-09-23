@@ -123,6 +123,7 @@ form{
     margin:0 auto;
     padding: 20px;
     background-image: url(../images/sideTileBg.jpg);
+    border-radius: 10px;
 }
 label{
     color: #000000;
@@ -277,15 +278,144 @@ a{
 a:hover{
     text-decoration: none;
 }
+
+/*profile page*/
+.profile{
+    vertical-align: middle;
+    width: 225px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, rgb(65, 63, 63), rgb(9, 105, 6));
+    padding: 15px;
+    float: left;
+    text-align: center;
+    border: solid black;
+    min-height: 280px;
+}
+
+.profile img{
+    width: 150px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    border: solid black;
+}
+
+.profile h1{
+    font-size: 30px;
+    color: white;
+}
+
+.profile h2{
+    font-size: 20px;
+    color: white;
+}
+
+.profile p, .profile a{
+    color: rgb(180, 236, 255);
+}
+
+.bio{
+    width: 400px;
+    float: left;
+    margin-left: 15px;
+    background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
+    padding: 5px;
+    border-radius: 10px;
+    border: solid black;
+    min-height: 280px;
+    vertical-align: center;
+}
+
+.bio p{
+    clear: left;
+    overflow-wrap: break-word;
+    color: rgb(180, 236, 255);
+}
+
+.bio h2{
+    font-size: 20px;
+    color: white;
+    float: left;
+}
+
+.yourGroupsProfileWrapper{
+    width: 100%;
+    text-align: center;
+}
+
+.yourGroupsProfile{
+    width: 80%;
+    text-align: center;
+    border: solid rgb(0, 0, 0) 2px;
+    background-color: rgb(0, 0, 0);
+    background-image: url(../images/sideTileBg.jpg);
+    margin-top: 15px;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.yourGroupsProfile h3{
+    color: #ffffff;
+    background-color: #000;
+    margin:0;
+    font-size: 30px;
+    font-weight: bold;
+    font-variant: small-caps;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.ftdGrpProfile{
+    border-right:solid #ffffff 2px;
+    padding-bottom: 5px;
+    float:left;
+    width: 20%;
+    min-height: 130px;
+}
+
+.lastProfile{
+    border: none;
+}
+
+.ftdGrpProfile img{
+    width: 40%;
+    float: left;
+    margin: 5px;
+}
+
+.yourGroupsProfile h4{
+    color: #000000;
+    font-weight: bold;
+    margin: 0;
+    font-size: 100%;
+    padding-top: 10px;
+
+
+}
+
+.ftdGrpProfile p{
+    color: #000000;
+    margin:0;
+}
+
+.profileWrapper a{
+    margin-top: 5px;
+}
+
+.update{
+    clear: left;
+}
+
 /*misc*/
-
-
-
 h3, h4, h5, h6, p{
     color:#000000;
 }
 .list-group-item{
     background-color: rgb(255, 255, 255); 
+}
+
+.file{
+    padding-bottom: 45px;
 }
 
 .btn{
