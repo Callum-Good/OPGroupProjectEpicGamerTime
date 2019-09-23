@@ -8,6 +8,15 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#masuk">Login</button>
+                <div class="modal fade" id="masuk" role="dialog">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">LOG IN</h4>
+                </div>
+                <div class="modal-body">
                     <form class="loginRForm" method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -65,6 +74,13 @@
                             </div>
                         </div>
                     </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-prmary m-t-10" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
