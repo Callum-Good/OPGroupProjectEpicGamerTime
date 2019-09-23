@@ -71,7 +71,7 @@ class UserController extends Controller
 
         //custom validation error messages
         $messages = [
-            'name.unique' => 'Username should be unique',
+            'name.unique' => 'This name is taken!',
         ];
 
         //First Validate the form data
