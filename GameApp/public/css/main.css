@@ -148,6 +148,10 @@ label{
     background-image: none;
 }
 
+.deleteF{
+    background-image: none;
+}
+
 
 /*Game view info*/
 
@@ -412,4 +416,8 @@ h3, h4, h5, h6, p{
 
 .file{
     padding-bottom: 45px;
+}
+
+.btn{
+    width: 100px;
 }
