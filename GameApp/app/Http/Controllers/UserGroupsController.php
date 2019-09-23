@@ -14,9 +14,9 @@ class UserGroupsController extends Controller
      */
     public function index()
     { 
-        $user_group = UserGroup::sortable()->paginate(8);
+        $users_group = UserGroup::sortable()->paginate(8);
         return view('usergroups.index',[
-            'usergroup' => $user_group,
+            'usergroups' => $users_group,
         ]);
     }
 
