@@ -26,3 +26,5 @@ Auth::routes();
 Route::resource('/games','GamesController');
 
 Route::resource('/groups', 'GroupsController');
+
+Route::resource('/usergroups', 'UserGroupsController');

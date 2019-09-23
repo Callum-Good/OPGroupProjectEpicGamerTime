@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\UserGroup;
 use Illuminate\Http\Request;
 
 class UserGroupsController extends Controller
@@ -12,7 +13,7 @@ class UserGroupsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         //
     }
 
@@ -38,13 +39,14 @@ class UserGroupsController extends Controller
         $users_group      = new Groups;
         $users_group->name = $request->name;
         $users_group->game_id  = $request->game_id;
+        $users_group->user_id  = $request->user_id;
         
-        $group->save(); // save it to the database.
+        $users_group->save(); // save it to the database.
         
         //Redirect to a specified route with flash message.
         return redirect()
-            ->route('groups.show')
-            ->with('status','Added a new group!');
+            ->route('usergroups.index')
+            ->with('status','Group joined');
     }
 
     /**
