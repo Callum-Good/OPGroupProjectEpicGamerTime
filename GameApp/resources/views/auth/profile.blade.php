@@ -30,7 +30,7 @@
                 </div>
         
                 <div class="update">
-                    <a href="{{ route('editProfile') }}" class="btn btn-primary">Update Your Profile</a>
+                    <a href="{{ route('editProfile') }}" class="btn btn-primary updateProfileBtn">Update Your Profile</a>
                 </div>
             </div>
         </div>
