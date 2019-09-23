@@ -1,17 +1,27 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="profile">
-                <img id="dp" src="images/default.jpg">
-                <h1>{{ Auth::user()->name }}</h2>
-                <p>Favorite Game: <a href="">{{ Auth::user()->favorite_game }}</a></p>
-            </div>
+            <div class="profileWrapper">
+                <div class="profile">
+                    <img id="dp" src="images/default.jpg">
+                    <h1>{{ Auth::user()->name }}</h2>
+                    <p>Favorite Game: <a href="">{{ Auth::user()->favorite_game }}</a></p>
+                </div>
 
-            <div class="bio">
-                <h2>{{ Auth::user()->name }}'s Bio</h2>
-                <p>{{ Auth::user()->bio }}</p>
+                <div class="bio">
+                    <h2>{{ Auth::user()->name }}'s Bio</h2>
+                    <p>{{ Auth::user()->bio }}</p>
+                </div>
+        
+                <div class="update">
+                    <?php
+                        $user = Auth::user();
+                    ?>
+                    <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary">Update Your Profile</a>
+                </div>
             </div>
         </div>
     </div>

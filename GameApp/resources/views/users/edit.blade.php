@@ -5,20 +5,38 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="title">User Title</label>
-            <input type="text" name="title" id="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" value="{{ old('title') ? : $user->title }}" placeholder="Enter Title">
-            @if($errors->has('title')) {{-- <-check if we have a validation error --}}
+            <label for="name">User Name</label>
+            <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') ? : $user->name }}" placeholder="Enter Title">
+            @if($errors->has('name')) {{-- <-check if we have a validation error --}}
                 <span class="invalid-feedback">
-                    {{$errors->first('title')}} {{-- <- Display the First validation error --}}
+                    {{$errors->first('name')}} {{-- <- Display the First validation error --}}
                 </span>
             @endif
         </div>
         <div class="form-group">
-            <label for="body">User Description</label>
-            <textarea name="body" id="body" rows="4" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" placeholder="Enter User Description">{{ old('body') ? : $user->body }}</textarea>
-            @if($errors->has('body')) {{-- <-check if we have a validation error --}}
+            <label for="email">User E-Mail</label>
+            <textarea name="email" id="email" rows="4" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Enter User Description">{{ old('email') ? : $user->email }}</textarea>
+            @if($errors->has('email')) {{-- <-check if we have a validation error --}}
                 <span class="invalid-feedback">
-                    {{$errors->first('body')}} {{-- <- Display the First validation error --}}
+                    {{$errors->first('email')}} {{-- <- Display the First validation error --}}
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="bio">User Bio</label>
+            <textarea name="bio" id="bio" rows="4" class="form-control {{ $errors->has('bio') ? 'is-invalid' : '' }}" placeholder="Enter User Description">{{ old('bio') ? : $user->bio }}</textarea>
+            @if($errors->has('bio')) {{-- <-check if we have a validation error --}}
+                <span class="invalid-feedback">
+                    {{$errors->first('bio')}} {{-- <- Display the First validation error --}}
+                </span>
+            @endif
+        </div>
+        <div class="form-group">
+            <label for="favorite_game">User's favorite game</label>
+            <textarea name="favorite_game" id="favorite_game" rows="4" class="form-control {{ $errors->has('favorite_game') ? 'is-invalid' : '' }}" placeholder="Enter User Description">{{ old('favorite_game') ? : $user->favorite_game }}</textarea>
+            @if($errors->has('favorite_game')) {{-- <-check if we have a validation error --}}
+                <span class="invalid-feedback">
+                    {{$errors->first('favorite_game')}} {{-- <- Display the First validation error --}}
                 </span>
             @endif
         </div>

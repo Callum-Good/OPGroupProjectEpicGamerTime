@@ -344,7 +344,8 @@ a:hover{
     font-size: 30px;
     font-weight: bold;
     font-variant: small-caps;
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .ftdGrpProfile{
@@ -378,7 +379,10 @@ a:hover{
 .ftdGrpProfile p{
     color: #000000;
     margin:0;
+}
 
+.profileWrapper a{
+    margin-top: 5px;
 }
 
 /*misc*/

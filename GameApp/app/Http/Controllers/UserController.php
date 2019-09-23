@@ -65,13 +65,15 @@ class UserController extends Controller
     {
         //validation rules
         $rules = [
-            'title' => "required|string|unique:users,title,{$id}|min:2|max:191",
-            'body'  => 'required|string|min:5|max:1000',
+            'name' => "required|string|unique:users,name,{$id}|min:2|max:191",
+            'email'  => 'required|string|min:5|max:1000',
+            'bio'  => 'required|string|min:5|max:1000',
+            'favorite_game'  => 'required|string|min:5|max:1000',
         ];
 
         //custom validation error messages
         $messages = [
-            'title.unique' => 'User title should be unique',
+            'name.unique' => 'Username should be unique',
         ];
 
         //First Validate the form data
@@ -79,13 +81,15 @@ class UserController extends Controller
 
         //Update the User
         $user        = User::findOrFail($id);
-        $user->title = $request->title;
-        $user->body  = $request->body;
+        $user->name = $request->name;
+        $user->email  = $request->email;
+        $user->bio  = $request->bio;
+        $user->favorite_game  = $request->favorite_game;
         $user->save(); //Can be used for both creating and updating
 
         //Redirect to a specified route with flash message.
         return redirect()
-            ->route('users.show',$id)
-            ->with('status','Updated the selected User!');
+            ->route('/profile')
+            ->with('status','Updated your profile!');
     }
 }
