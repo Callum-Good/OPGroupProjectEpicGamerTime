@@ -28,14 +28,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //Find a User by their ID
-        $user = auth::user()->id;
+        $user = User::findOrFail($id);
 
-        return view('users.show',[
-            'user' => $user,
-        ]);
+        return view('users.show');
     }
 
     /**
@@ -89,7 +87,7 @@ class UserController extends Controller
 
         //Redirect to a specified route with flash message.
         return redirect()
-            ->route('/profile')
+            ->route('profile')
             ->with('status','Updated your profile!');
     }
 }

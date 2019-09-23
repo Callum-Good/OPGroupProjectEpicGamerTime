@@ -8,8 +8,7 @@
                 <div class="profile">
                     <img id="dp" src="images/default.jpg">
                     <h1>{{ Auth::user()->name }}</h2>
-                    <h2>Favorite Game:</h2>
-                    <p><a href="">{{ Auth::user()->favorite_game }}</a></p>
+                    <p>Favorite Game: <a href="">{{ Auth::user()->favorite_game }}</a></p>
                 </div>
 
                 <div class="bio">

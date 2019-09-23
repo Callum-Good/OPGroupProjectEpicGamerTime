@@ -299,6 +299,10 @@ a:hover{
     font-size: 30px;
 }
 
+.profile h2{
+    font-size: 20px;
+}
+
 .bio{
     width: 400px;
     float: left;
@@ -313,6 +317,7 @@ a:hover{
 
 .bio p{
     clear: left;
+    overflow-wrap: break-word;
 }
 
 .bio h2{
@@ -383,6 +388,10 @@ a:hover{
 
 .profileWrapper a{
     margin-top: 5px;
+}
+
+.update{
+    clear: left;
 }
 
 /*misc*/
