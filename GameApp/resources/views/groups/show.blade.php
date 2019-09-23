@@ -9,7 +9,7 @@
     <br>
     <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>
-    <a href="{{route('usergroups.store')}}" class="btn btn-primary float-right">Join</a>
+    <a href="{{route('usergroups.store',$group->id)}}" class="btn btn-primary float-right">Join</a>
     <br><br>
 
  <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
