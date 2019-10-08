@@ -3,7 +3,6 @@
     <h2 class="text-center">Users</h2>
                 <table>
                 <tr>
-                    <th>@sortablelink('id') </th>
                     <th>@sortablelink('name') </th>
                 </tr>
 
@@ -12,8 +11,7 @@
             <!--<li class="list-group-item my-2">-->
 
                 <tr>
-                    <td><a class="gpLink" href="{{route('users.show',$user->id)}}">{{$user->id}}</a></td>
-                    <td><a class="gpLink" href="{{route('users.show',$user->id)}}">{{$user->name}}</a></td>                
+                    <td><a class="gpLink" href="{{route('users.show',$user->id)}}"><img src="{{ asset($user->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> {{$user->name}}</a></td>                
                 </tr>
  
             <!--</li>-->
