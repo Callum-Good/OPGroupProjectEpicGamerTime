@@ -6,26 +6,26 @@
         <div class="col-md-8">
             <div class="profileWrapper">
                 <div class="profile">
-                    @if (user()->image)
-                        <img src="{{ asset(user()->image) }}">
+                    @if ($user->image)
+                        <img src="{{ asset($user->image) }}">
                     @else
                         <img id="dp" src="images/default.jpg">
                     @endif
-                    <h1>{{ user()->name }}</h2>
+                    <h1>{{ $user->name }}</h2>
                     <h2>Favorite Game:</h2>
-                    @if (user()->favorite_game)
-                        <p><a href="">{{ user()->favorite_game }}</a></p>
+                    @if ($user->favorite_game)
+                        <p><a href="">{{ $user->favorite_game }}</a></p>
                     @else
                         <p><i>No favorite game</i></p>
                     @endif
                 </div>
 
                 <div class="bio">
-                    <h2>{{ user()->name }}'s Bio</h2>
-                    @if (user()->bio)
-                        <p>{{ user()->bio }}</p>
+                    <h2>{{ $user->name }}'s Bio</h2>
+                    @if ($user->bio)
+                        <p>{{ $user->bio }}</p>
                     @else
-                        <p><i>{{ user()->name }} has not created a bio. How boring!</i></p>
+                        <p><i>{{ $user->name }} has not created a bio. How boring!</i></p>
                     @endif
                 </div>
             </div>
