@@ -7,7 +7,7 @@
                     <th>@sortablelink('name') </th>
                 </tr>
 
-                @forelse($groups as $group)
+                @forelse($users as $user)
 
             <!--<li class="list-group-item my-2">-->
 
@@ -24,6 +24,6 @@
 </table>
 
     <div class="d-flex justify-content-center">
-        {{$groups->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
+        {{$users->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
     </div>
 @endsection

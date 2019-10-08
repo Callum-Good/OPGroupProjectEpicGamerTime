@@ -80,7 +80,7 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        //Find a Game by it's ID
+        //Find a group by it's ID
         $group = Groups::findOrFail($id);
 
         return view('groups.show',[

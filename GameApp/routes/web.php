@@ -33,3 +33,7 @@ Route::resource('/groups', 'GroupsController');
 
 Route::resource('/usergroups', 'UserGroupsController');
 
+Route::resource('/users', 'UserController');
+
+//Route::resource('/auth', 'ProfileController');
+

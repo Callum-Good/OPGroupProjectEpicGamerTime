@@ -15,15 +15,6 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $users = Users::sortable()->paginate(8);
-        //
-        return view('users.index',[
-            'users' => $users,
-        ]);
-    }
-
     public function viewProfile()
     {
         return view('auth.profile');
