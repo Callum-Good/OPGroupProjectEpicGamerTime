@@ -51,6 +51,7 @@ class GamesController extends Controller
             'genre' => 'required|string',
             'perspective' => 'required|string',
             'platform' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
 
         //custom validation error messages
@@ -69,6 +70,26 @@ class GamesController extends Controller
         $game->genre = $request->genre;
         $game->perspective = $request->perspective;
         $game->platform = $request->platform;
+        
+        // Check if a profile image has been uploaded
+        if ($request->has('image')) {
+            // Get image file
+            $image = $request->file('image');
+            // Make a image name based on user name and current timestamp
+            $name = str_slug($request->input('name')).'_'.time();
+            // Define folder path
+            $folder = '/uploads/gameImages';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $game->image = $filePath;
+        }
+        else{
+            $game->image = 'gameDefault.jpg';
+        }
+
         $game->save(); // save it to the database.
 
         //Redirect to a specified route with flash message.
@@ -126,6 +147,7 @@ class GamesController extends Controller
             'genre' => 'required|string',
             'perspective' => 'required|string',
             'platform' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
 
 
@@ -138,6 +160,23 @@ class GamesController extends Controller
         $game->genre = $request->genre;
         $game->perspective = $request->perspective;
         $game->platform = $request->platform;
+
+        // Check if a profile image has been uploaded
+        if ($request->has('image')) {
+            // Get image file
+            $image = $request->file('image');
+            // Make a image name based on user name and current timestamp
+            $name = str_slug($request->input('name')).'_'.time();
+            // Define folder path
+            $folder = '/uploads/gameImages';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $game->image = $filePath;
+        }
+
         $game->save(); //Can be used for both creating and updating
 
         //Redirect to a specified route with flash message.

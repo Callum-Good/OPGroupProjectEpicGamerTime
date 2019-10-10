@@ -29,7 +29,7 @@ class Games extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'release', 'genre', 'perspective', 'platform'
+        'title', 'description', 'release', 'genre', 'perspective', 'platform', 'image'
     ];
 
    
