@@ -6,8 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Kyslik\ColumnSortable\Sortable;
+
 class User extends Authenticatable
 {
+    use Sortable;
+    
     /**
      * The attributes that are mass assignable.
      *

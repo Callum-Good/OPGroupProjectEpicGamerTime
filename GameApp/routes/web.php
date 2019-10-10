@@ -19,7 +19,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
 
 Route::get('/editProfile', 'ProfileController@editProfile')->name('editProfile');
 
@@ -29,8 +29,11 @@ Auth::routes();
 
 Route::resource('/games','GamesController');
 
-
 Route::resource('/groups', 'GroupsController');
 
 Route::resource('/usergroups', 'UserGroupsController');
+
+Route::resource('/users', 'UserController');
+
+//Route::resource('/auth', 'ProfileController');
 

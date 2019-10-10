@@ -15,7 +15,7 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function viewProfile()
     {
         return view('auth.profile');
     }
@@ -28,11 +28,11 @@ class ProfileController extends Controller
     {
         // Form validation
         $request->validate([
-            'name'              =>  'required',
-            'email'  => 'required|string|min:5|max:100',
-            'bio'  => 'max:1000',
-            'favorite_game'  => 'max:50',
-            'profile_image'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
+            'name'              => 'required',
+            'email'             => 'required|string|min:5|max:100',
+            'bio'               => 'max:1000',
+            'favorite_game'     => 'max:50',
+            'profile_image'     => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         // Get current user
