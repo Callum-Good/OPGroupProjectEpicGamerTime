@@ -25,6 +25,9 @@
                     <td><a class="gpLink" href="{{route('games.show',$game->id)}}">{{$game->genre}}</a></td>
                     <td><a class="gpLink" href="{{route('games.show',$game->id)}}">{{$game->perspective}}</a></td>
                     <td><a class="gpLink" href="{{route('games.show',$game->id)}}">{{$game->platform}}</a></td>
+                    <td><a class="gpLink" href="{{route('games.show',$game->id)}}">
+                    <img src="uploads/gameImages/{{$game->image}}"></a></td>
+
                 </tr>
  
             <!--</li>-->

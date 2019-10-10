@@ -32,6 +32,11 @@ class Games extends Model
         'title', 'description', 'release', 'genre', 'perspective', 'platform', 'image'
     ];
 
+    public function getImageAttribute()
+    {
+        return $this->image;
+
+    }
    
 
 }

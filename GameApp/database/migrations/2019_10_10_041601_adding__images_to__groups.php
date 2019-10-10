@@ -15,7 +15,7 @@ class AddingImagesToGroups extends Migration
     {
         Schema::table('groups', function (Blueprint $table) {
             //
-            $table->string('image')->nullable();
+            $table->string('grp_image')->nullable();
         });
     }
 

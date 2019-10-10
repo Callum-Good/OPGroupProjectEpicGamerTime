@@ -2,6 +2,10 @@
 @section('content')
     <h2 class="text-center">{{$game->title}}</h2>
     
+    <div class="gameImgFeature">
+        <img src="uploads/gameImages/{{$game->image}}">
+    </div>
+
         <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
     
     <p>{{$game->description}}</p>

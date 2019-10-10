@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Games;
 use Illuminate\Http\Request;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class GamesController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +55,7 @@ class GamesController extends Controller
             'genre' => 'required|string',
             'perspective' => 'required|string',
             'platform' => 'required|string',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            //'game_art' => 'image|mimes:jpeg,png,jpg,gif',
         ];
 
         //custom validation error messages
@@ -71,23 +75,25 @@ class GamesController extends Controller
         $game->perspective = $request->perspective;
         $game->platform = $request->platform;
         
+
+       
         // Check if a profile image has been uploaded
-        if ($request->has('image')) {
+        if ($request->has('game_art')) {
             // Get image file
-            $image = $request->file('image');
-            // Make a image name based on user name and current timestamp
-            $name = str_slug($request->input('name')).'_'.time();
+            $image = $request->file('game_art');
+            // Make a image name based on game title and current timestamp
+            $name = str_slug($request->input('title'));
             // Define folder path
-            $folder = '/uploads/gameImages';
+            $folder = '/uploads/gameImages/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
             // Upload image
-            $this->uploadOne($image, $folder, 'public', $name);
+            $this->uploadOne($image, $folder, 'public', $title);
             // Set user profile image path in database to filePath
-            $game->image = $filePath;
+            $game->game_art = $filePath;
         }
         else{
-            $game->image = 'gameDefault.jpg';
+            $game->game_art = 'gameDefault.jpg';
         }
 
         $game->save(); // save it to the database.

@@ -36,4 +36,10 @@ class Groups extends Model
     public function users_groups(){
         return $this->hasMany('UserGroup');
     }
+
+    public function getImageAttribute()
+    {
+        return $this->image;
+
+    }
 }
