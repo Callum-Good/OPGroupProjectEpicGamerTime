@@ -1,36 +1,36 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">Groups</h2>
-                <table>
-                <tr>
-                    <th>@sortablelink('name') </th>
-                    <th>@sortablelink('game_id') </th>
 
-                    <th>@sortablelink('type')</th>
-                    <th>@sortablelink('description')</th>
-                </tr>
+    <p class="gInfo">@sortablelink('name') | @sortablelink('game_id') | 
+    @sortablelink('type') | @sortablelink('description')</p>
 
+    <div class="row">
                 @forelse($groups as $group)
 
             <!--<li class="list-group-item my-2">-->
+            <a class="gpLink" href="{{route('groups.show',$group->id)}}">
+    <div class="card grpcard">
+    <div class="imgCen">
+    <img class="card-img-top" src="{{$group->grp_image}}" alt="Card image cap">
+    </div>
+    <div class="card-body">
+      <h3 >{{$group->name}}</h3>
+      <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
+      <ul>
+    <li>{{str_limit($group->description,40)}}</li>
+    </ul>     
+</div>
+    </div>
+    </a>
 
-            <tr>
-                    <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{$group->name}}</a></td>
-                    <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{$group->game_id}}</a></td>
-
-                    <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{str_limit($group->description,20)}} </a></td>
-                    
-                    <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{$group->type}}</a></td>
-                    <img src="{{$group->grp_image}}"></a></td>
-
-                </tr>
+            
  
             <!--</li>-->
         @empty
             <h4 class="text-center">No Groups Found!</h4>
-            </table>
         @endforelse
-</table>
+        </div>
 
     <div class="d-flex justify-content-center">
         {{$groups->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}

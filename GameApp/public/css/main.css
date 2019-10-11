@@ -431,11 +431,14 @@ a:hover{
     border: #000000 solid 2px;
     margin: 5px;
     padding:0;
-    display: inline-table;
-
+    display: flow-root;
     
 }
 
+.grpcard{
+    width: 45%;
+    float: left;
+}
 .card-body {
     padding:0;
     padding-top:10px;
@@ -463,6 +466,8 @@ a:hover{
     margin:0 auto;
     padding:5px;
     display: inline-table;
+    width: 100%;
+
 }
 
 li{
