@@ -3,7 +3,7 @@
     <h2 class="text-center">{{$game->title}}</h2>
     
     <div class="gameImgFeature">
-        <img src="uploads/gameImages/{{$game->image}}">
+        <img src="{{$game->image}}">
     </div>
 
         <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
