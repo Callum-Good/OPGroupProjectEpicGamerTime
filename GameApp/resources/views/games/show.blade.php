@@ -1,13 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">{{$game->title}}</h2>
-    
+
+        <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
     <div class="imgFeature">
         <img src="{{$game->game_art}}">
     </div>
-
-        <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
-    
     <p>{{$game->description}}</p>
     
     <br>
