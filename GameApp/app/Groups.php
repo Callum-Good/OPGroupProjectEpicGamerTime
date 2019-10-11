@@ -30,7 +30,7 @@ class Groups extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'game', 'type', 'description'
+        'name', 'game', 'type', 'description', 'grp_image'
     ];
 
     public function users_groups(){
@@ -39,7 +39,7 @@ class Groups extends Model
 
     public function getImageAttribute()
     {
-        return $this->image;
+        return $this->grp_image;
 
     }
 }

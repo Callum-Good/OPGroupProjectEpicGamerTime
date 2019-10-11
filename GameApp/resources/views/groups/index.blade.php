@@ -21,7 +21,8 @@
                     <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{str_limit($group->description,20)}} </a></td>
                     
                     <td><a class="gpLink" href="{{route('groups.show',$group->id)}}">{{$group->type}}</a></td>
-                 
+                    <img src="{{$group->grp_image}}"></a></td>
+
                 </tr>
  
             <!--</li>-->
