@@ -34,7 +34,7 @@ class Games extends Model
 
     public function getImageAttribute()
     {
-        return $this->image;
+        return $this->game_art;
 
     }
    

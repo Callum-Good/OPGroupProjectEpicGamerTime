@@ -55,7 +55,7 @@ class GamesController extends Controller
             'genre' => 'required|string',
             'perspective' => 'required|string',
             'platform' => 'required|string',
-           // 'game_art' => 'image|mimes:jpeg,png,jpg,gif'
+            'game_art' => 'image|mimes:jpeg,png,jpg,gif'
         ]);
 
         //custom validation error messages
@@ -88,7 +88,7 @@ class GamesController extends Controller
             // Make a file path where image will be stored [ folder path + file name + file extension]
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
             // Upload image
-            $this->uploadOne($image, $folder, 'public', $title);
+            $this->uploadOne($image, $folder, 'public', $name);
             // Set user profile image path in database to filePath
             $game->game_art = $filePath;
         }
