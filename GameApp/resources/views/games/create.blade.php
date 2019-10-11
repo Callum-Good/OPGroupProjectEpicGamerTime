@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">Create Game</h2>
-    <form action="{{route('games.store')}}" method="post" class="gameForm">
+    <form action="{{route('games.store')}}" method="post" class="gameForm" enctype="multipart/form-data">
         @csrf
 <!-- title of game -->
         <div class="form-group">

@@ -48,15 +48,15 @@ class GamesController extends Controller
     public function store(Request $request)
     {
         //validation rules
-        $rules = [
+        $request->validate([
             'title' => 'required|string|unique:games,title|min:2|max:191',
             'description'  => 'required|string|min:5|max:1000',
             'release' => 'required|date',
             'genre' => 'required|string',
             'perspective' => 'required|string',
             'platform' => 'required|string',
-            //'game_art' => 'image|mimes:jpeg,png,jpg,gif',
-        ];
+           // 'game_art' => 'image|mimes:jpeg,png,jpg,gif'
+        ]);
 
         //custom validation error messages
         $messages = [
@@ -64,16 +64,16 @@ class GamesController extends Controller
         ];
 
         //First Validate the form data
-        $request->validate($rules,$messages);
+        //$request->validate($rules,$messages);
 
         //Create a Game
         $game        = new Games;
-        $game->title = $request->title;
-        $game->description  = $request->description;
-        $game->release = $request->release;
-        $game->genre = $request->genre;
-        $game->perspective = $request->perspective;
-        $game->platform = $request->platform;
+        $game->title = $request->input('title');
+        $game->description  = $request->input('description');
+        $game->release = $request->input('release');
+        $game->genre = $request->input('genre');
+        $game->perspective = $request->input('perspective');
+        $game->platform = $request->input('platform');
         
 
        
