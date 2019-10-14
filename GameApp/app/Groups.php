@@ -30,10 +30,16 @@ class Groups extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'game', 'type', 'description'
+        'name', 'game', 'type', 'description', 'grp_image'
     ];
 
     public function users_groups(){
         return $this->hasMany('UserGroup');
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->grp_image;
+
     }
 }

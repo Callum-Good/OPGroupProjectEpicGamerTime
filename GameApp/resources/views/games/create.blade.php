@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">Create Game</h2>
-    <form action="{{route('games.store')}}" method="post" class="gameForm">
+    <form action="{{route('games.store')}}" method="post" class="gameForm" enctype="multipart/form-data">
         @csrf
 <!-- title of game -->
         <div class="form-group">
@@ -63,6 +63,13 @@
                         </span>
                     @endif
                 </div>
+<!-- Game image -->
+        <div class="form-group row">
+            <label for="game_art" class="col-md-4 col-form-label text-md-right">Game Image</label>
+            <div class="col-md-6">
+                <input id="game_art" type="file" class="form-control file" name="game_art">
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
 @endsection

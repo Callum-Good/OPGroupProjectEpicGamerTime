@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Groups;
 use Illuminate\Http\Request;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class GroupsController extends Controller
 {
+    use UploadTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -42,26 +47,48 @@ class GroupsController extends Controller
     public function store(Request $request)
     {
         //validation rules
-        $rules = [
+        $request->validate([
             'name' => 'required|string|unique:groups,name|min:2|max:191',
             'game_id'  => 'required|string|min:5|max:1000',
             'type' => 'required|string',
             'description' => 'required|string',
-        ];
+            'grp_image' => 'image|mimes:jpeg,png,jpg,gif'
+        ]);
         //custom validation error messages
         $messages = [
             'name.unique' => 'Group name should be unique',
         ];
 
         //First Validate the form data
-        $request->validate($rules,$messages);
+        //$request->validate($rules,$messages);
 
         //Create a Group
         $group        = new Groups;
-        $group->name = $request->name;
-        $group->game_id  = $request->game_id;
-        $group->type = $request->type;
-        $group->description = $request->description;
+        $group->name = $request->input('name');
+        $group->game_id  = $request->input('game_id');
+        $group->type = $request->input('type');
+        $group->description = $request->input('description');
+
+        // Check if a profile image has been uploaded
+        if ($request->has('grp_image')) {
+            // Get image file
+            $image = $request->file('grp_image');
+            // Make a image name based on game title and current timestamp
+            $name = str_slug($request->input('name'));
+            // Define folder path
+            $folder = '/uploads/grpImages/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $group->grp_image = $filePath;
+        }
+        else{
+            $group->grp_image = '/uploads/grpImages/grpDefault.jpg';
+        }
+
+
         $group->save(); // save it to the database.
         
         //Redirect to a specified route with flash message.
@@ -115,12 +142,13 @@ class GroupsController extends Controller
     {
         //
         //validation rules
-        $rules = [
-            'name' => 'required|string|name|min:2|max:191',
+        $request->validate([
+            'name' => 'required|string|min:2|max:191',
             'game_id'  => 'required|string|min:5|max:1000',
             'type' => 'required|string',
             'description' => 'required|string',
-        ];
+            'grp_image' => 'image|mimes:jpeg,png,jpg,gif'
+        ]);
 
 
         //Update the Group
@@ -129,11 +157,28 @@ class GroupsController extends Controller
         $group->game_id  = $request->game_id;
         $group->type = $request->type;
         $group->description = $request->description;
+
+        // Check if a profile image has been uploaded
+        if ($request->has('grp_image')) {
+            // Get image file
+            $image = $request->file('grp_image');
+            // Make a image name based on game title and current timestamp
+            $name = str_slug($request->input('title'));
+            // Define folder path
+            $folder = '/uploads/grpImages/';
+            // Make a file path where image will be stored [ folder path + file name + file extension]
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            // Upload image
+            $this->uploadOne($image, $folder, 'public', $name);
+            // Set user profile image path in database to filePath
+            $group->grp_image = $filePath;
+        }
+
         $group->save(); // save it to the database.
 
         return redirect()
-            ->route('groups.index')
-            ->with('status','Deleted the selected group');
+            ->route('groups.show', $id)
+            ->with('status','Updated the selected group');
     }
 
     /**

@@ -29,9 +29,14 @@ class Games extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'release', 'genre', 'perspective', 'platform'
+        'title', 'description', 'release', 'genre', 'perspective', 'platform', 'game_art'
     ];
 
+    public function getImageAttribute()
+    {
+        return $this->game_art;
+
+    }
    
 
 }

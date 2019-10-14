@@ -1,9 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">{{$group->name}}</h2>
-    
+
         <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
-    
+    <div class="grpimgFeature">
+        <img src="{{$group->grp_image}}">
+    </div>
     <p>{{$group->description}}</p>
     
     <br>

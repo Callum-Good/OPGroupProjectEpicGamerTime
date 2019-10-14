@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h3 class="text-center">Edit Game</h3>
-    <form action="{{route('games.update',$game->id)}}" method="post" class="gameForm">
+    <form action="{{route('games.update',$game->id)}}" method="post" class="gameForm" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -62,6 +62,14 @@
                         </span>
                     @endif
                 </div>
+<!-- Game image -->
+<div class="form-group row">
+            <label for="game_art" class="col-md-4 col-form-label text-md-right">Game Image</label>
+            <div class="col-md-6">
+                <input id="game_art" type="file" class="form-control file" name="game_art">
+            </div>
+        </div>
+        
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 @endsection
