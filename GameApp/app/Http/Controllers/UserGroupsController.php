@@ -44,7 +44,7 @@ class UserGroupsController extends Controller
     public function store(Request $request)
     {
         //
-        $users_group      = new Groups;
+        $users_group      = new UserGroup;
         $users_group->name = $request->name;
         $users_group->game_id  = $request->game_id;
         $users_group->user_id  = $request->user_id;
