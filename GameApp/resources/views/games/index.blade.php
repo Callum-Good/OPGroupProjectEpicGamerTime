@@ -5,7 +5,7 @@
    <p class="gInfo">@sortablelink('title') | @sortablelink('description') | 
    @sortablelink('release') | @sortablelink('genre') | @sortablelink('perspective') | @sortablelink('platform')</p>
 
-    <div class="row">
+    <div class="tableRow">
         @forelse($games as $game)
 
             <!--<li class="list-group-item my-2">-->
@@ -18,7 +18,7 @@
       <h3 >{{$game->title}}</h3>
       <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
 <ul>
-    <li>{{str_limit($game->description,200)}}</li>
+    <li class="tableListItem">{{str_limit($game->description,200)}}</li>
     </ul>     
 </div>
     </div>

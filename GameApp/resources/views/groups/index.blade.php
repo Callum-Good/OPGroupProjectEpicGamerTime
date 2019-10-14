@@ -5,7 +5,7 @@
     <p class="gInfo">@sortablelink('name') | @sortablelink('game_id') | 
     @sortablelink('type') | @sortablelink('description')</p>
 
-    <div class="row">
+    <div class="tableRow">
                 @forelse($groups as $group)
 
             <!--<li class="list-group-item my-2">-->
@@ -18,7 +18,7 @@
       <h3 >{{$group->name}}</h3>
       <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
       <ul>
-    <li>{{str_limit($group->description,40)}}</li>
+    <li class="tableListItem">{{str_limit($group->description,40)}}</li>
     </ul>     
 </div>
     </div>
