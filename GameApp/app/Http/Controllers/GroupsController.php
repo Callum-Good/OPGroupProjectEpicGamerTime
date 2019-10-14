@@ -198,4 +198,16 @@ class GroupsController extends Controller
             ->route('groups.index')
             ->with('status','Deleted the selected group');
     }
+
+    public function addUserToGroup($user_id, $group_id){
+        $group = Group::find([$group_id]);
+        $user = User::find([$user_id]);
+       
+
+        $user->groups()->attach($group);
+
+        return redirect()
+            ->route('groups.index')
+            ->with('status','Joined the selected group');
+    }
 }
