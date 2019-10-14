@@ -40,8 +40,8 @@ class User extends Authenticatable
     ];
 
 
-    public function users_groups(){
-        return $this->hasMany('UserGroup');
+    public function groups(){
+        return $this->belongsToMany(Group::class);
     }
 
     public function getImageAttribute()
