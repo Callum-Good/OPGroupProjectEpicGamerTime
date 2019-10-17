@@ -199,7 +199,7 @@ class GroupsController extends Controller
             ->with('status','Deleted the selected group');
     }
 
-    public function addUserToGroup($user_id, $group_id){
+    /*public function addUserToGroup($user_id, $group_id){
         $group = Group::find([$group_id]);
         $user = User::find([$user_id]);
        
@@ -209,5 +209,5 @@ class GroupsController extends Controller
         return redirect()
             ->route('groups.index')
             ->with('status','Joined the selected group');
-    }
+    }*/
 }

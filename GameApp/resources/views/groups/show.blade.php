@@ -11,11 +11,11 @@
     <br>
     <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>
-    <!--<a href="{{route('usergroups.store',$group->id)}}" class="btn btn-primary float-right">Join</a>-->
-    <form method="POST" id="" class="" action="{{route('groups.addUserToGroup', Auth::user()->id, $group->id)}}" class="hide">
-        @csrf
-        
-    </form>
+    
+
+    <div class="joinGroup">
+        <!--<a href="{{route('addUserToGroup', Auth::user()->id, $group->id)}}" class="btn btn-primary updateProfileBtn">Update Your Profile</a>-->
+    </div>
     <br><br>
 
  <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
