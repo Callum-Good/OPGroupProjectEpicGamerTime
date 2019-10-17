@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Groups;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+
 
 class GroupsController extends Controller
 {
@@ -74,7 +73,7 @@ class GroupsController extends Controller
             // Get image file
             $image = $request->file('grp_image');
             // Make a image name based on game title and current timestamp
-            $name = str_slug($request->input('name'));
+            $name = str_slug($request->input('name').'_'.time());
             // Define folder path
             $folder = '/uploads/grpImages/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
@@ -85,7 +84,7 @@ class GroupsController extends Controller
             $group->grp_image = $filePath;
         }
         else{
-            $group->grp_image = '/uploads/grpImages/grpDefault.jpg';
+            $group->grp_image = '/images/grpDefault.jpg';
         }
 
 
@@ -163,7 +162,7 @@ class GroupsController extends Controller
             // Get image file
             $image = $request->file('grp_image');
             // Make a image name based on game title and current timestamp
-            $name = str_slug($request->input('title'));
+            $name = str_slug($request->input('name').'_'.time());
             // Define folder path
             $folder = '/uploads/grpImages/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
