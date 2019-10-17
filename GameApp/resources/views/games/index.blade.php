@@ -12,7 +12,7 @@
     <a class="gpLink" href="{{route('games.show',$game->id)}}">
     <div class="card">
     <div class="imgCen">
-    <img class="card-img-top" src="{{$game->image}}" alt="Card image cap">
+    <img class="card-img-top" src="{{asset($game->game_art)}}" alt="Card image cap">
     </div>
     <div class="card-body">
       <h3 >{{$game->title}}</h3>

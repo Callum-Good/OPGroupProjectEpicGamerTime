@@ -4,7 +4,7 @@
 
         <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
     <div class="grpimgFeature">
-        <img src="{{$group->grp_image}}">
+        <img src="{{asset($group->grp_image)}}">
     </div>
     <p>{{$group->description}}</p>
     
