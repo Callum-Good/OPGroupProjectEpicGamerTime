@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h2 class="text-center">{{$group->name}}</h2>
+    <!--<h2 class="text-center">{{$group->name}}</h2>
 
         <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
     <div class="grpimgFeature">
@@ -40,6 +40,48 @@
     <form method="POST" id="delete-form" class="deleteF" action="{{route('groups.destroy',$group->id)}}" class="hide">
         @csrf
         @method('DELETE')
-    </form>
+    </form>-->
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+            <div class="col-md-12">
+            <h2>
+                    {{$group->name}}
+			</h2>
+				</div>
+				<div class="col-md-3">					
+					<p>
+                    <b>Group Game:<br>
+                    <h3>{{$group->game_id}}</h3><br>
+                    Group type:<br>
+                    <h3>{{$group->type}}</h3></b><br>
 
+                    {{$group->description}}
+					</p>
+				</div>
+				<div class="col-md-6">
+                    <img src="{{asset($group->grp_image)}}" style="display:block; margin-left: auto; margin-right: auto;">
+				</div>
+				<div class="col-md-3">
+					<div class="btn-group btn-group-vertical" role="group">
+						 
+                    <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
+                    <br><br>
+                    <a href="{{route('usergroups.store',$group->id)}}" class="btn btn-primary float-right">Join</a>
+                    <br><br>
+
+                    <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+				</div>
+				<div class="col-md-6">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
