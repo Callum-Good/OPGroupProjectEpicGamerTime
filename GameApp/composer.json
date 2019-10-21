@@ -13,7 +13,8 @@
         "fideloper/proxy": "^4.0",
         "kyslik/column-sortable": "^5.8",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "musonza/groups": "^1.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
