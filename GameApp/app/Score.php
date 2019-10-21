@@ -29,4 +29,12 @@ class Score extends Model
     protected $fillable = [
         'score'
     ];
+    public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
+    public function games()
+    {
+        return $this->belongsTo('App\Games');
+    }
 }
