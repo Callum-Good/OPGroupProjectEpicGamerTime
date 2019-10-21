@@ -13,6 +13,6 @@ class UserGroup extends Model
         return $this->belongsTo('App\User');
     }
     public function groups(){
-        return $this->belongsTo('App\Group');
+        return $this->belongsTo('App\Groups');
     }
 }

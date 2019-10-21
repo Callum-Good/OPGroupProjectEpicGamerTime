@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Groups;
+
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Groups;
+use App\User;
 
 class GroupsController extends Controller
 {

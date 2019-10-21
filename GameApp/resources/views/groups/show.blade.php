@@ -14,7 +14,7 @@
     
 
     <div class="joinGroup">
-        <!--<a href="{{route('addUserToGroup', Auth::user()->id, $group->id)}}" class="btn btn-primary updateProfileBtn">Update Your Profile</a>-->
+        <a href="{{route('AddUsersToGroup.addUsersToGroup', Auth::user()->id, $group->id)}}" class="btn btn-primary updateProfileBtn">Update Your Profile</a>
     </div>
     <br><br>
 
