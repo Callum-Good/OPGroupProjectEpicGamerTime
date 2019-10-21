@@ -37,3 +37,4 @@ Route::resource('/users', 'UserController');
 
 //Route::resource('/auth', 'ProfileController');
 
+Route::resource('/scores', 'ScoreController');
