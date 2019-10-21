@@ -12,11 +12,11 @@
             <a class="gpLink" href="{{route('groups.show',$group->id)}}">
     <div class="card" style="width: 45%;
     float: left; display: flow-root;">
-    <div class="imgCen" style="width:25%;
+    <div class="imgCen" style="width:160px;
     padding:5px;
     float: left;
     margin-right:10px;">
-    <img class="card-img-top" src="{{asset($group->grp_image)}}" alt="Card image cap">
+    <img class="card-img-top" src="{{asset($group->grp_image)}}" alt="Card image cap" style="height:150px; width:150px;">
     </div>
     <div class="card-body">
       <h3 >{{$group->name}}</h3>

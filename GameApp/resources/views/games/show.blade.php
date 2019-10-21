@@ -4,7 +4,7 @@
 
         <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
     <div class="imgFeature" style="margin: 0 auto;
-    width: 60%;">
+    width: 30%;">
         <img src="{{asset($game->game_art)}}" style="margin: 0 auto;
     width: 100%;">
     </div>

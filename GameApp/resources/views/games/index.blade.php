@@ -10,13 +10,13 @@
 
             <!--<li class="list-group-item my-2">-->
     <a class="gpLink" href="{{route('games.show',$game->id)}}">
-    <div class="card" style="width: 45%;
-    float: left; display: flow-root;">
-    <div class="imgCen" style="width:25%;
+    <div class="card" style="
+    display: flow-root;">
+    <div class="imgCen" style="width:160px;
     padding:5px;
     float: left;
     margin-right:10px;">
-    <img class="card-img-top" src="{{asset($game->game_art)}}" alt="Card image cap">
+    <img class="card-img-top" src="{{asset($game->game_art)}}" alt="Card image cap" style="height:150px; width:150px;">
     </div>
     <div class="card-body">
       <h3 >{{$game->title}}</h3>
