@@ -10,7 +10,8 @@ use App\UserGroup;
 class AddUsersToGroup extends Controller
 {
     //
-    public function joinGroup(){
+    public function joinGroup()
+    {
         $formData = request()->all();
 
         $group_id = $formData['group_id'];
@@ -32,8 +33,8 @@ class AddUsersToGroup extends Controller
             ->with('status','Joined the selected group');
     }
 
-    public function leaveGroup(){
-        dd($joined);
+    public function leaveGroup()
+    {
         $formData = request()->all();
 
         $gid = $formData['group_id'];
