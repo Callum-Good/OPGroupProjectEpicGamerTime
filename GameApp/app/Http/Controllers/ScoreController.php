@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Games;
+use App\Score;
+
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -23,7 +27,9 @@ class ScoreController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('scores.create');
+
     }
 
     /**
@@ -32,9 +38,20 @@ class ScoreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $request->validate([
+            'score'=>'required'
+        ]);
+
+        $input = $request->all();
+        $input['user_id'] = auth()->user()->id;
+        $score = new Score;
+        $score->title = $request->input('score');
+        $score->save();
+        
+        return redirect()
+            ->route('games.show',$id);
     }
 
     /**
