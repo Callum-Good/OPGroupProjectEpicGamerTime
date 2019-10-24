@@ -50,7 +50,7 @@ class GroupsController extends Controller
             'name' => 'required|string|unique:groups,name|min:2|max:191',
             'game_id'  => 'required|string|min:5|max:1000',
             'type' => 'required|string',
-            'description' => 'required|string',
+            'description' => 'required|string|max:1000',
             'grp_image' => 'image|mimes:jpeg,png,jpg,gif'
         ]);
         //custom validation error messages
