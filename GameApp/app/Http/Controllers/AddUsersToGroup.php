@@ -31,4 +31,21 @@ class AddUsersToGroup extends Controller
             ->route('groups.show',$group_id)
             ->with('status','Joined the selected group');
     }
+
+    public function leaveGroup(){
+        dd($joined);
+        $formData = request()->all();
+
+        $gid = $formData['group_id'];
+        $uid = $formData['user_id'];
+
+        $joined = UserGroup::where(['group_id',$gid],['user_id', $uid]);
+
+        
+            
+        return redirect()
+            ->route('groups.show',$gid)
+            ->with('status','Left the selected group');
+
+    }
 }

@@ -6,24 +6,52 @@
     <div class="grpimgFeature">
         <img src="{{$group->grp_image}}">
     </div>
+
+    <!-- Shows each member in Group -->
+    @foreach($memberArray as $member)
+    <a href="{{route('users.show',$member->id)}}">{{$member->name}}</a>
+    @endforeach
+
+    <!-- Checks to see if logged in user is currently in group -->
+    @foreach($memberArray as $member)
+        @if(Auth::user()->id == $member->id)
+        @php 
+        $joined = true    
+        @endphp  
+        @endif      
+    @endforeach  
+
     <p>{{$group->description}}</p>
     
     <br>
     <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>
+    @guest
+        <!-- doesnt show join button if no one is logged in -->
+    @else 
+           <!-- @if($joined==true)<!-- Checks to see if user in group, changes join button to leave 
+                <div class="joinGroup">
+                <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.leaveGroup')}}">
+                @csrf
+                <input type='submit' name='submit' value='Leave Group'>
+                <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
+               <!--  <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
+                <!-- </form>
+                </div>-->
+            @else<!-- shows join button when logged in -->
+                <div class="joinGroup">
+                <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">
+                @csrf
+                <input type='submit' name='submit' value='Join Group'>
+                <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
+                <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
+                </form>
+                </div>
+            @endif
+    @endif
 
-       <div class="joinGroup">
-    <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">
-     
-        @csrf
-        <input type='submit' name='submit' value='Join Group'>
-        <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends picked role to next page-->
-        <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends picked role to next page-->
-
-    </form>
- 
-        <!--<a href="{{route('AddUsersToGroup.joinGroup', Auth::user()->id, $group->id)}}" class="btn btn-primary updateProfileBtn">Join Group</a>
-    --></div>
+  
+       
     <br><br>
 
  <a href="#" class="btn btn-danger float-right" data-toggle="modal" data-target="#delete-modal">Delete</a>

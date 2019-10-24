@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Groups;
 use App\User;
+use App\UserGroup;
 
 class GroupsController extends Controller
 {
@@ -112,9 +113,16 @@ class GroupsController extends Controller
         //Find a group by it's ID
         $group = Groups::findOrFail($id);
 
+        //find members in group
+        $members = UserGroup::where('group_id',$id)->get();
+        
+        foreach($members as $member){
+            $user = User::findOrFail($member->id);
+            $memberArray[] = $user;
+        }
         return view('groups.show',[
             'group' => $group,
-        ]); 
+        ],compact('memberArray'));
     }
 
     /**
