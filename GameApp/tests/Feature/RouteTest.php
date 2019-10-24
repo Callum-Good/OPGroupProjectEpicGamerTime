@@ -13,10 +13,15 @@ class ImageCheck extends TestCase
      *
      * @return void
      */
-    public function testImage()
+    public function testRouteEditProfile()
     {
-        $response = $this->get('');
+        $response=$this->get("/editProfile");
+        $response->assertStatus(200);
+    }
 
+    public function testRouteGames()
+    {
+        $response=$this->get("/games");
         $response->assertStatus(200);
     }
 }
