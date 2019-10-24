@@ -110,20 +110,24 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
+        $memberArray = null;
         //Find a group by it's ID
         $group = Groups::findOrFail($id);
 
         //find members in group
         $members = UserGroup::where('group_id',$group->id)->get();
-   
-        foreach($members as $member)
-        {            
-            $user = User::findOrFail($member->user_id);
-             
-            $memberArray[] = $user;
-           
-        }
+        
+        //add each member to array
+            foreach($members as $member)
+            {            
+                $user = User::findOrFail($member->user_id);
+                
+                $memberArray[] = $user;
+            
+            }
+        
 
+        //boolean to be changed in view if logged in member already in group
         $joined = false;
         
         return view('groups.show',[

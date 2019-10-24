@@ -8,10 +8,12 @@
     </div>
   
     <!-- Shows each member in Group -->
+    @if(is_null($memberArray) || count($memberArray) < 1)
+    @else
     @foreach($memberArray as $member)
     <a href="{{route('users.show',$member->id)}}">{{$member->name}}</a>
     @endforeach
-
+    @endif
     <!-- Checks to see if logged in user is currently in group -->
     @foreach($memberArray as $member)
         @if(Auth::user()->id == $member->id)
