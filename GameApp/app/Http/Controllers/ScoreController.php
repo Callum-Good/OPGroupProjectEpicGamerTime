@@ -25,10 +25,13 @@ class ScoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
+        $game = Games::findOrFail($id);
 
-        return view('scores.create');
+        return view('score.create',[
+            'game' => $game,
+        ]);
 
     }
 
@@ -49,7 +52,7 @@ class ScoreController extends Controller
         $score = new Score;
         $score->title = $request->input('score');
         $score->save();
-        
+
         return redirect()
             ->route('games.show',$id);
     }
