@@ -14,7 +14,7 @@ class ChangeCharacterLimitInGroupDescription extends Migration
     public function up()
     {
         Schema::table('groups', function (Blueprint $table) {
-            //
+            $table->string('description', 900)->change();
         });
     }
 
