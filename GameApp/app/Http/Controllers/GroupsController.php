@@ -114,12 +114,14 @@ class GroupsController extends Controller
         $group = Groups::findOrFail($id);
 
         //find members in group
-        $members = UserGroup::where('group_id',$id)->get();
-
+        $members = UserGroup::where('group_id',$group->id)->get();
+   
         foreach($members as $member)
-        {
-            
-            $memberArray[] = $member;
+        {            
+            $user = User::findOrFail($member->user_id);
+             
+            $memberArray[] = $user;
+           
         }
         
         return view('groups.show',[

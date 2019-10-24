@@ -6,6 +6,7 @@
     <div class="grpimgFeature">
         <img src="{{$group->grp_image}}">
     </div>
+  
     <!-- Shows each member in Group -->
     @foreach($memberArray as $member)
     <a href="{{route('users.show',$member->id)}}">{{$member->name}}</a>
