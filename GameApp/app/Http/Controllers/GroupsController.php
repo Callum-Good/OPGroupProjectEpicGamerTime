@@ -123,9 +123,11 @@ class GroupsController extends Controller
             $memberArray[] = $user;
            
         }
+
+        $joined = false;
         
         return view('groups.show',[
-            'group' => $group], compact('memberArray'));
+            'group' => $group], compact('memberArray', 'joined'));
     }
 
     /**
