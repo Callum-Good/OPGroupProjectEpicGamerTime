@@ -39,10 +39,20 @@ class AddUsersToGroup extends Controller
 
         $gid = $formData['group_id'];
         $uid = $formData['user_id'];
-
-        $joined = UserGroup::where(['group_id',$gid],['user_id', $uid]);
-
-        
+    
+        $joined = UserGroup::where([
+            ['group_id',$gid],
+            ['user_id', $uid]
+            ])->get();
+    
+           
+        $userGroup = UserGroup::findOrFail($joined);
+        foreach($userGroup as $u){
+            $uGid = $u->id;
+        }
+       
+        UserGroup::where('id', $uGid)->delete();
+       // $userGroup->delete();
             
         return redirect()
             ->route('groups.show',$gid)
