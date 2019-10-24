@@ -28,16 +28,16 @@
     <br><br>
     @guest
         <!-- doesnt show join button if no one is logged in -->
-    @else 
-           <!-- @if($joined==true)<!-- Checks to see if user in group, changes join button to leave 
+        @else 
+            @if($joined==true)<!-- Checks to see if user in group, changes join button to leave -->
                 <div class="joinGroup">
                 <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.leaveGroup')}}">
                 @csrf
                 <input type='submit' name='submit' value='Leave Group'>
                 <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
-               <!--  <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
-                <!-- </form>
-                </div>-->
+                <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
+                </form>
+                </div>
             @else<!-- shows join button when logged in -->
                 <div class="joinGroup">
                 <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">

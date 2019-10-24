@@ -26,6 +26,7 @@ Route::get('/editProfile', 'ProfileController@editProfile')->name('editProfile')
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
 
 Route::post('/group/join', 'AddUsersToGroup@joinGroup')->name('AddUsersToGroup.joinGroup');
+Route::post('/group/leave', 'AddUsersToGroup@leaveGroup')->name('AddUsersToGroup.leaveGroup');
 
 Auth::routes();
 
