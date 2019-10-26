@@ -439,6 +439,7 @@ a:hover{
     width: 45%;
     float: left;
 }
+
 .card-body {
     padding:0;
     padding-top:10px;
@@ -462,15 +463,14 @@ a:hover{
     background-color: #000000;
 }
 
-.row{
+.tableRow{
     margin:0 auto;
     padding:5px;
     display: inline-table;
     width: 100%;
-
 }
 
-li{
+.tableListItem{
     list-style-type: none;
     font-size: 16px;
 }

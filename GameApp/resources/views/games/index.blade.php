@@ -5,20 +5,24 @@
    <p class="gInfo">@sortablelink('title') | @sortablelink('description') | 
    @sortablelink('release') | @sortablelink('genre') | @sortablelink('perspective') | @sortablelink('platform')</p>
 
-    <div class="row">
+    <div class="tableRow">
         @forelse($games as $game)
 
             <!--<li class="list-group-item my-2">-->
     <a class="gpLink" href="{{route('games.show',$game->id)}}">
-    <div class="card">
-    <div class="imgCen">
-    <img class="card-img-top" src="{{$game->image}}" alt="Card image cap">
+    <div class="card" style="
+    display: flow-root;">
+    <div class="imgCen" style="width:160px;
+    padding:5px;
+    float: left;
+    margin-right:10px;">
+    <img class="card-img-top" src="{{asset($game->game_art)}}" alt="Card image cap" style="height:150px; width:150px;">
     </div>
     <div class="card-body">
       <h3 >{{$game->title}}</h3>
       <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
 <ul>
-    <li>{{str_limit($game->description,200)}}</li>
+    <li class="tableListItem">{{str_limit($game->description,200)}}</li>
     </ul>     
 </div>
     </div>

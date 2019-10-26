@@ -3,8 +3,10 @@
     <h2 class="text-center">{{$game->title}}</h2>
 
         <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
-    <div class="imgFeature">
-        <img src="{{$game->game_art}}">
+    <div class="imgFeature" style="margin: 0 auto;
+    width: 30%;">
+        <img src="{{asset($game->game_art)}}" style="margin: 0 auto;
+    width: 100%;">
     </div>
     <p>{{$game->description}}</p>
     

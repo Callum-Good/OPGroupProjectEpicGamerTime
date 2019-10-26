@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Games;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+
+
 
 
 class GamesController extends Controller
@@ -83,7 +83,7 @@ class GamesController extends Controller
             // Get image file
             $image = $request->file('game_art');
             // Make a image name based on game title and current timestamp
-            $name = str_slug($request->input('title'));
+            $name = str_slug($request->input('title').'_'.time());
             // Define folder path
             $folder = '/uploads/gameImages/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
@@ -94,7 +94,7 @@ class GamesController extends Controller
             $game->game_art = $filePath;
         }
         else{
-            $game->game_art = '/uploads/gameImages/gameDefault.jpg';
+            $game->game_art = '/images/gameDefault.jpg';
         }
 
         $game->save(); // save it to the database.
@@ -172,7 +172,7 @@ class GamesController extends Controller
             // Get image file
             $image = $request->file('game_art');
             // Make a image name based on game title and current timestamp
-            $name = str_slug($request->input('title'));
+            $name = str_slug($request->input('title')).'_'.time();
             // Define folder path
             $folder = '/uploads/gameImages/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
