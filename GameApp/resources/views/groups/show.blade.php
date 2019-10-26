@@ -7,27 +7,35 @@
         <img src="{{$group->grp_image}}">
     </div>
   
+    <!-- checking if anyone in group -->
+    @if($memberArray == 0)
+    <!-- shows nothing -->
+    @else <!-- Shows all member things -->
     <!-- Shows each member in Group -->
-    @if(is_null($memberArray) || count($memberArray) < 1)
-    @else
     @foreach($memberArray as $member)
     <a href="{{route('users.show',$member->id)}}">{{$member->name}}</a>
     @endforeach
-    @endif
+    
     <!-- Checks to see if logged in user is currently in group -->
     @foreach($memberArray as $member)
-        @if(Auth::user()->id == $member->id)
+        @guest
+        <!-- Does nothing if no one logged in -->
+        @elseif(Auth::user()->id == $member->id) <!-- if is in group set joined to true -->
         @php 
         $joined = true    
         @endphp  
         @endif      
     @endforeach  
+    @endif
+<!-- End of member checks -->
 
     <p>{{$group->description}}</p>
     
     <br>
     <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>
+
+    <!-- Join and Leave Group button start -->
     @guest
         <!-- doesnt show join button if no one is logged in -->
         @else 
@@ -51,6 +59,7 @@
                 </div>
             @endif
     @endif
+    <!-- Join and Leave Group button end -->
 
   
        

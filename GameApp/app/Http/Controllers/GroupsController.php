@@ -113,7 +113,7 @@ class GroupsController extends Controller
         $memberArray = null;
         //Find a group by it's ID
         $group = Groups::findOrFail($id);
-
+        
         //find members in group
         $members = UserGroup::where('group_id',$group->id)->get();
         
