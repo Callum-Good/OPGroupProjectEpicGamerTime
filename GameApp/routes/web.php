@@ -27,6 +27,7 @@ Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile
 
 Auth::routes();
 
+
 Route::resource('/games','GamesController');
 
 Route::resource('/groups', 'GroupsController');
@@ -38,3 +39,7 @@ Route::resource('/users', 'UserController');
 //Route::resource('/auth', 'ProfileController');
 
 Route::resource('/scores', 'ScoreController');
+
+Route::post('/games/addScore', 'AddScoreToGamesController@addScore')->score('AddScoreToGamesController.addScore');
+Route::post('/games/deleteScore', 'AddScoreToGamesController@deleteScore')->score('AddScoreToGamesController.deleteScore');
+

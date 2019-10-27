@@ -127,14 +127,6 @@ class ScoreController extends Controller
      */
     public function destroy($id)
     {
-        $score = Score::findOrFail($id);
-        $score->delete();
-
-        // Game::destroy([id]) is also avaliable
-
-        //Redirect to a specified route with flash message.
-        return redirect()
-            ->route('games.show')
-            ->with('status','Deleted your highscore.');
+        //
     }
 }
