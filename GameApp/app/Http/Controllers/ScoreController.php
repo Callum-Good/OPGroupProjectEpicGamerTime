@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class ScoreController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +34,7 @@ class ScoreController extends Controller
     {
         $game = Games::findOrFail($id);
 
-        return view('score.create',[
+        return view('scores.create',[
             'game' => $game,
         ]);
 
@@ -47,14 +52,16 @@ class ScoreController extends Controller
             'score'=>'required'
         ]);
 
-        $input = $request->all();
-        $input['user_id'] = auth()->user()->id;
         $score = new Score;
-        $score->title = $request->input('score');
+        $score->score = $request->input('score');
+        $score->game_id  = $request->game_id;
+        $score->user_id  = $request->user_id;
+
         $score->save();
 
         return redirect()
-            ->route('games.show',$id);
+            ->route('games.show',$id)
+            >with('status','Added new score');
     }
 
     /**
@@ -65,7 +72,11 @@ class ScoreController extends Controller
      */
     public function show($id)
     {
-        //
+        $score = Score::findOrFail($id);
+
+        return view('scores.show',[
+            'score' => $score
+        ]);
     }
 
     /**
@@ -76,7 +87,11 @@ class ScoreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $score = Score::findOrFail($id);
+
+        return view('scores.edit',[
+            'score' => $score,
+        ]);
     }
 
     /**
@@ -88,7 +103,20 @@ class ScoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'score'=>'required'
+        ]);
+
+        $score = Score::findOrFail($id);
+        $score->score = $request->input('score');
+        $score->game_id  = $request->game_id;
+        $score->user_id  = $request->user_id;
+
+        $score->save();
+
+        return redirect()
+            ->route('games.show',$id)
+            >with('status','Updated score');
     }
 
     /**
@@ -99,6 +127,14 @@ class ScoreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $score = Score::findOrFail($id);
+        $score->delete();
+
+        // Game::destroy([id]) is also avaliable
+
+        //Redirect to a specified route with flash message.
+        return redirect()
+            ->route('games.show')
+            ->with('status','Deleted your highscore.');
     }
 }
