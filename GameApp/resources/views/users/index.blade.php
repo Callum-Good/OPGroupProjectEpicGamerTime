@@ -13,10 +13,27 @@
         @forelse($users as $user)
 
     <!--<li class="list-group-item my-2">-->
-
+        @if (Auth::check()) && ($user->id == Auth::user()->id)
         <tr>
-            <td><a class="gpLink" href="{{route('users.show',$user->id)}}">@if ($user->image)<img src="{{ asset($user->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> @else <img src="{{ asset('images/default.jpg') }}" style="width: 100px; height: 100px; border-radius: 20%;"> @endif {{$user->name}}</a></td>                
+            <td><a class="gpLink" href="{{route('profile')}}">
+                @if (Auth::user()->image)
+                    <img src="{{ asset(Auth::user()->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+                @else 
+                    <img src="{{ asset('images/default.jpg') }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+                @endif 
+            {{Auth::user()->name}}</a></td>                
         </tr>
+        @else
+        <tr>
+            <td><a class="gpLink" href="{{route('users.show',$user->id)}}">
+                @if ($user->image)
+                    <img src="{{ asset($user->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+                @else 
+                    <img src="{{ asset('images/default.jpg') }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+                @endif 
+            {{$user->name}}</a></td>          
+        </tr>
+        @endif
 
     <!--</li>-->
     @empty
