@@ -19,7 +19,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/users/show', 'UserController@voteToBan');
+Route::get('user/{id}', 'VoteToBan')->name('VoteToBan');
 
 Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
 

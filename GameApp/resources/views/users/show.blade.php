@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <a href="{{action('UserController@voteToBan',['id' => $user->id])}}">Vote to ban</a>
+            <a href="{{route('VoteToBan',$user->id)}}" type="submit" class="btn btn-primary">Vote to ban</a>
         </div>
     </div>
 
