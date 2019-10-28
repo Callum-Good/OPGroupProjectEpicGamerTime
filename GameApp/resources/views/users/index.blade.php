@@ -23,7 +23,7 @@
                 @endif 
             {{Auth::user()->name}}</a></td>                
         </tr>
-        @else
+        @elseif ($user->votes_to_ban < 2)
         <tr>
             <td><a class="gpLink" href="{{route('users.show',$user->id)}}">
                 @if ($user->image)
