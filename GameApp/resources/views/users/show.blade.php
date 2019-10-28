@@ -29,8 +29,15 @@
                     @endif
                 </div>
             </div>
+            <form action="{{ route('UserController@voteToBan', $user->id) }}" method="POST" role="form" enctype="multipart/form-data">
+                @csrf
+                <div class="update">
+                    <button type="submit" class="btn btn-primary">Vote to ban</button>
+                </div>
+            </form>
         </div>
     </div>
+
     <div class="yourGroupsProfileWrapper">
         <div class="yourGroupsProfile">
             <a href=""><h3>Their Groups</h3></a>

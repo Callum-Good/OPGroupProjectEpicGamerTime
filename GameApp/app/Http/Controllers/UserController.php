@@ -25,4 +25,9 @@ class UserController extends Controller
             'user' => $user,
         ]); 
     }
+
+    public function voteToBan($id){
+        $user = User::findOrFail($id);
+        $user->increment('votes_to_ban');
+    }
 }

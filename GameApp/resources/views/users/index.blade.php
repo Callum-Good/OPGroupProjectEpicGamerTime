@@ -3,8 +3,8 @@
     <h2 class="text-center">Users</h2>
     
         @if (session('bannedMessage'))
-                <div class="alert alert-danger">{{ session('bannedMessage') }}</div>
-            @endif
+            <div class="alert alert-danger">{{ session('bannedMessage') }}</div>
+        @endif
         <table>
         <tr>
             <th>@sortablelink('name') </th>
