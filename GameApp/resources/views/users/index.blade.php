@@ -15,7 +15,7 @@
     <!--<li class="list-group-item my-2">-->
 
         <tr>
-            <td><a class="gpLink" href="{{route('users.show',$user->id)}}"><img src="{{ asset($user->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> {{$user->name}}</a></td>                
+            <td><a class="gpLink" href="{{route('users.show',$user->id)}}">@if ($user->image)<img src="{{ asset($user->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> @else <img src="{{ asset('images/default.jpg') }}" style="width: 100px; height: 100px; border-radius: 20%;"> @endif {{$user->name}}</a></td>                
         </tr>
 
     <!--</li>-->

@@ -14,7 +14,7 @@ class AddVotesBanToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('votes_to_ban')->nullable();
+            $table->integer('votes_to_ban')->default('0');
         });
     }
 

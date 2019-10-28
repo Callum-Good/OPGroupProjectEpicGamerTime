@@ -16,5 +16,9 @@ class VoteToBan extends Controller
     public function __invoke($id){
         $user = User::findOrFail($id);
         $user->increment('votes_to_ban');
+
+        return view('users.show',[
+            'user' => $user,
+        ]); 
     }
 }
