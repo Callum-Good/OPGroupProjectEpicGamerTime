@@ -27,10 +27,12 @@
                     @else
                         <p><i>{{ $user->name }} has not created a bio. How boring!</i></p>
                     @endif
+                    
+                    @if (Auth::check())
+                        <a href="{{route('VoteToBan',$user->id)}}" type="submit" class="btn btn-primary updateProfileBtn">Vote to ban</a>
+                    @endif
                 </div>
             </div>
-
-            <a href="{{route('VoteToBan',$user->id)}}" type="submit" class="btn btn-primary">Vote to ban</a>
         </div>
     </div>
 
