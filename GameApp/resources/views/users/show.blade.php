@@ -9,7 +9,7 @@
                     @if ($user->image)
                         <img src="{{ asset($user->image) }}">
                     @else
-                        <img id="dp" src="images/default.jpg">
+                        <img id="dp" src="{{ asset('images/default.jpg') }}">
                     @endif
                     <h1>{{ $user->name }}</h2>
                     <h2>Favorite Game:</h2>
@@ -29,12 +29,8 @@
                     @endif
                 </div>
             </div>
-            <form action="{{ route('UserController@voteToBan', $user->id) }}" method="POST" role="form" enctype="multipart/form-data">
-                @csrf
-                <div class="update">
-                    <button type="submit" class="btn btn-primary">Vote to ban</button>
-                </div>
-            </form>
+
+            <a href="{{action('UserController@voteToBan',['id' => $user->id])}}">Vote to ban</a>
         </div>
     </div>
 

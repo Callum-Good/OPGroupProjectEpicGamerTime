@@ -19,6 +19,8 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/users/show', 'UserController@voteToBan');
+
 Route::get('/profile', 'ProfileController@viewProfile')->name('profile');
 
 Route::get('/editProfile', 'ProfileController@editProfile')->name('editProfile');
