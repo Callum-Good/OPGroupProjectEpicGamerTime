@@ -8,16 +8,10 @@ class CheckBanned
 {
     public function handle($request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->banned_until && now()->lessThan(auth()->user()->banned_until)) {
-            $banned_days = now()->diffInDays(auth()->user()->banned_until);
-            $bannedMessage;
+        if (auth()->check() && auth()->user()->votes_to_ban >= 2) {
             auth()->logout();
-
-            if ($banned_days > 14) {
-                $bannedMessage = 'Your account has been suspended.';
-            } else {
-                $bannedMessage = 'Your account has been suspended for '.$banned_days.' '.str_plural('day', $banned_days).'.';
-            }
+                
+            $bannedMessage = 'Your account has been suspended.';
 
             return redirect()->route('users.index')->with($bannedMessage);
         }
