@@ -13,7 +13,7 @@ class CheckBanned
                 
             $bannedMessage = 'Your account has been suspended.';
 
-            return redirect()->route('users.index')->with($bannedMessage);
+            return redirect()->route('home')->with($bannedMessage);
         }
 
         return $next($request);

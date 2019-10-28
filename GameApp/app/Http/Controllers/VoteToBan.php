@@ -27,8 +27,6 @@ class VoteToBan extends Controller
         $votingUser->has_voted = 1;
         $votingUser->update();
 
-        return view('users.show',[
-            'user' => $user,
-        ]); 
+        return back();
     }
 }
