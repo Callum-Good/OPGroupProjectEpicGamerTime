@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Groups;
+
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use App\Groups;
+use App\User;
+use App\UserGroup;
 
 
 class GroupsController extends Controller
@@ -106,12 +111,28 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
+        $memberArray = null;
         //Find a group by it's ID
         $group = Groups::findOrFail($id);
+        
+        //find members in group
+        $members = UserGroup::where('group_id',$group->id)->get();
+        
+        //add each member to array
+            foreach($members as $member)
+            {            
+                $user = User::findOrFail($member->user_id);
+                
+                $memberArray[] = $user;
+            
+            }
+        
 
+        //boolean to be changed in view if logged in member already in group
+        $joined = false;
+        
         return view('groups.show',[
-            'group' => $group,
-        ]); 
+            'group' => $group], compact('memberArray', 'joined'));
     }
 
     /**
@@ -197,4 +218,5 @@ class GroupsController extends Controller
             ->route('groups.index')
             ->with('status','Deleted the selected group');
     }
+
 }

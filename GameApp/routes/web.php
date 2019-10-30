@@ -25,15 +25,22 @@ Route::get('/editProfile', 'ProfileController@editProfile')->name('editProfile')
 
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
 
+
+Route::post('/groups/join', 'AddUsersToGroup@joinGroup')->name('AddUsersToGroup.joinGroup');
+
+Route::post('/groups/leave', 'AddUsersToGroup@leaveGroup')->name('AddUsersToGroup.leaveGroup');
+
+//Route::get('/groups/{group}', 'GroupsController@show');
+
 Auth::routes();
 
 Route::resource('/games','GamesController');
 
 Route::resource('/groups', 'GroupsController');
 
-Route::resource('/usergroups', 'UserGroupsController');
-
 Route::resource('/users', 'UserController');
+
+
 
 //Route::resource('/auth', 'ProfileController');
 

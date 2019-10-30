@@ -6,12 +6,16 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 use Kyslik\ColumnSortable\Sortable;
 
 class User extends Authenticatable
 {
     use Sortable;
     
+    public function groups(){
+        return $this->belongsToMany(Groups::class, 'group_id');
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -40,9 +44,7 @@ class User extends Authenticatable
     ];
 
 
-    public function groups(){
-        return $this->belongsToMany(Group::class);
-    }
+    
 
     public function getImageAttribute()
     {
