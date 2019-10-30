@@ -3,6 +3,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        @if (session('bannedMessage'))
+            <div class="alert alert-danger">{{ session('bannedMessage') }}</div>
+        @endif
 
         @guest
         <h2>Welcome Epic Gamer</h2>

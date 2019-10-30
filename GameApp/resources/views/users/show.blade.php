@@ -9,7 +9,7 @@
                     @if ($user->image)
                         <img src="{{ asset($user->image) }}">
                     @else
-                        <img id="dp" src="images/default.jpg">
+                        <img id="dp" src="{{ asset('images/default.jpg') }}">
                     @endif
                     <h1>{{ $user->name }}</h2>
                     <h2>Favorite Game:</h2>
@@ -27,10 +27,15 @@
                     @else
                         <p><i>{{ $user->name }} has not created a bio. How boring!</i></p>
                     @endif
+
+                    @if ((Auth::check()) && (Auth::user()->has_voted != 1))
+                        <a href="{{route('VoteToBan',$user->id)}}" type="submit" class="btn btn-primary updateProfileBtn">Vote to ban</a>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+
     <div class="yourGroupsProfileWrapper">
         <div class="yourGroupsProfile">
             <a href=""><h3>Their Groups</h3></a>

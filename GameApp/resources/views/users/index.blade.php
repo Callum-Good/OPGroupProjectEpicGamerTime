@@ -1,24 +1,41 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">Users</h2>
-                <table>
-                <tr>
-                    <th>@sortablelink('name') </th>
-                </tr>
+        <table>
+        <tr>
+            <th>@sortablelink('name') </th>
+        </tr>
 
-                @forelse($users as $user)
+        @forelse($users as $user)
 
-            <!--<li class="list-group-item my-2">-->
+    <!--<li class="list-group-item my-2">-->
+    @if ((Auth::check()) && ($user->name == Auth::user()->name))
+    <tr>
+        <td><a class="gpLink" href="{{route('profile')}}">
+            @if (Auth::user()->image)
+                <img src="{{ asset(Auth::user()->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+            @else 
+                <img src="{{ asset('images/default.jpg') }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+            @endif 
+        {{Auth::user()->name}}</a></td>                
+    </tr>
+    @elseif ($user->votes_to_ban < 2)
+    <tr>
+        <td><a class="gpLink" href="{{route('users.show',$user->id)}}">
+            @if ($user->image)
+                <img src="{{ asset($user->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+            @else 
+                <img src="{{ asset('images/default.jpg') }}" style="width: 100px; height: 100px; border-radius: 20%;"> 
+            @endif 
+        {{$user->name}}</a></td>          
+    </tr>
+    @endif
 
-                <tr>
-                    <td><a class="gpLink" href="{{route('users.show',$user->id)}}"><img src="{{ asset($user->image) }}" style="width: 100px; height: 100px; border-radius: 20%;"> {{$user->name}}</a></td>                
-                </tr>
- 
-            <!--</li>-->
-        @empty
-            <h4 class="text-center">No Users Found!</h4>
-            </table>
-        @endforelse
+    <!--</li>-->
+    @empty
+        <h4 class="text-center">No Users Found!</h4>
+        </table>
+    @endforelse
 </table>
 
     <div class="d-flex justify-content-center">
