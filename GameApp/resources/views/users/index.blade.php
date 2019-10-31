@@ -9,7 +9,7 @@
         @forelse($users as $user)
 
     <!--<li class="list-group-item my-2">-->
-    @if ((Auth::check()) && ($user->name == Auth::user()->name))
+    @if ((Auth::check()) && ($user->id == Auth::user()->id))
     <tr>
         <td><a class="gpLink" href="{{route('profile')}}">
             @if (Auth::user()->image)
