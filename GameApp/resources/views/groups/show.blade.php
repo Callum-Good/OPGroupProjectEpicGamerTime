@@ -31,18 +31,15 @@
     <br>
     <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>-->
-
-
-<div class="container-fluid">
+    <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="row">
-            <div class="col-md-12">
-            <h2>
+        <h2>
                     {{$group->name}}
 			</h2>
-				</div>
-				<div class="col-md-3 groupDescription">					
+			<div class="row">
+
+				<div class="col-md-8 groupDescription">					
 					<p>
                     Group Game:<br>
                     <h3>{{$group->game_id}}</h3><br>
@@ -51,12 +48,31 @@
 
                     {{$group->description}}
 					</p>
+                    <div>
+                <h2>Members:</h2>
+                    @if($memberArray == 0)
+                    <!-- shows nothing -->
+                    @else <!-- Shows all member things -->
+                    <!-- Shows each member in Group -->
+                    <ul>
+                    @foreach($memberArray as $member)
+                    
+                    <li><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></li>
+                    
+                    @endforeach
+                    @endif
 				</div>
-				<div class="col-md-6">
-                    <img src="{{asset($group->grp_image)}}" style="display:block; margin-left: auto; margin-right: auto;">
 				</div>
-				<div class="col-md-3 groupButtons">
-                    <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right buttonPos">Update</a>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-12">
+                        <img src="{{asset($group->grp_image)}}" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
+						</div>
+					</div>
+					<div class="row">
+                    <div class="col-md-12">
+                
+                    <a href="{{route('groups.edit',$group->id)}}" class="btn btn-success btn-block width:100%">Update</a>
                         <br><br>
                             @guest
                                 <!-- doesnt show join button if no one is logged in -->
@@ -65,7 +81,7 @@
                                         <div class="joinGroup">
                                         <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.leaveGroup')}}">
                                         @csrf
-                                        <input type='submit' name='submit' value='Leave Group' class="btn btn-primary float-right fudgePadding">
+                                        <input type='submit' name='submit' value='Leave Group' class="btn btn-success btn-block">
                                         <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
                                         <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
                                         </form>
@@ -74,7 +90,7 @@
                                         <div class="joinGroup">
                                         <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">
                                         @csrf
-                                        <input type='submit' name='submit' value='Join Group' class="btn btn-primary float-right fudgePadding">
+                                        <input type='submit' name='submit' value='Join Group' class="btn btn-success btn-block">
                                         <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
                                         <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
                                         </form>
@@ -83,7 +99,7 @@
                             @endif
                         <br><br>
 
-                        <a href="#" class="btn btn-danger float-right buttonPos" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                        <a href="#" class="btn btn-danger btn-success btn-block" data-toggle="modal" data-target="#delete-modal">Delete</a>
                         <!--Delete button method-->
                         <div class="modal fade" id="delete-modal">
                             <div class="modal-dialog" role="document">
@@ -111,24 +127,12 @@
                         <!--Delete button method END-->
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6">
-                    @if($memberArray == 0)
-                    <!-- shows nothing -->
-                    @else <!-- Shows all member things -->
-                    <!-- Shows each member in Group -->
-                    <ul>
-                    @foreach($memberArray as $member)
-                    
-                    <li><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></li>
-                    
-                    @endforeach
-                    @endif
-				</div>
-				<div class="col-md-6">
+		
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+
 @endsection
