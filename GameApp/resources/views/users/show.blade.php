@@ -28,7 +28,7 @@
                         <p><i>{{ $user->name }} has not created a bio. How boring!</i></p>
                     @endif
 
-                    @if ((Auth::check()) && (Auth::user()->has_voted != 1))
+                    @if ((Auth::check()) && ((Auth::user()->id != $user->voter_1) && (Auth::user()->id != $user->voter_2)))
                         <a href="{{route('VoteToBan',$user->id)}}" type="submit" class="btn btn-primary updateProfileBtn">Vote to ban</a>
                     @endif
                 </div>
