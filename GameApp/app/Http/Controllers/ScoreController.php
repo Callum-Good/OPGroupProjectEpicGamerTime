@@ -42,7 +42,7 @@ class ScoreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $request->validate([
             'score'=>'required'
@@ -56,7 +56,7 @@ class ScoreController extends Controller
         $score->save();
 
         return redirect()
-            ->route('games.show',$id)
+            ->route('games.show')
             >with('status','Added new score');
     }
 
@@ -111,7 +111,7 @@ class ScoreController extends Controller
         $score->save();
 
         return redirect()
-            ->route('games.show',$id)
+            ->route('scores.show',$id)
             >with('status','Updated score');
     }
 

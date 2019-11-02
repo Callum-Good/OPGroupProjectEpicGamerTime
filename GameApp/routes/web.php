@@ -25,6 +25,10 @@ Route::get('/editProfile', 'ProfileController@editProfile')->name('editProfile')
 
 Route::post('/profile/update', 'ProfileController@updateProfile')->name('profile.update');
 
+Route::post('/games/addScore', 'AddScoreToGamesController@addScore')->name('AddScoreToGamesController.addScore');
+
+Route::post('/games/deleteScore', 'AddScoreToGamesController@deleteScore')->name('AddScoreToGamesController.deleteScore');
+
 Auth::routes();
 
 
@@ -40,6 +44,5 @@ Route::resource('/users', 'UserController');
 
 Route::resource('/scores', 'ScoreController');
 
-//Route::post('/games/addScore', 'AddScoreToGamesController@addScore')->score('AddScoreToGamesController.addScore');
-//Route::post('/games/deleteScore', 'AddScoreToGamesController@deleteScore')->score('AddScoreToGamesController.deleteScore');
+
 

@@ -48,10 +48,19 @@
             </table>
         </div>
     </div>
-    <form class="form-inline" action="/create" method="POST" role="create">
+    <form class="form-inline" action="{{route('AddScoreToGamesController.addScore')}}" method="POST" role="create">
         {{csrf_field()}}
-        <div>
-            <a href="{{route('scores.create',$game->id)}}" class="btn btn-primary float-right">Add Highscore</a>
+        <div><input type="text" name="score" id="title" class="form-control {{$errors->has('score') ? 'is-invalid' : '' }}" value="{{old('score')}}" placeholder="Enter Highscore">
+            @if($errors->has('score')) {{-- <-check if we have a validation error --}}
+            <span class="invalid-feedback">
+                {{$errors->first('score')}} {{-- <- Display the First validation error --}}
+            </span>
+            @endif
+            <input type='hidden' name='user_id' value='{{Auth::user()->id}}'>
+            <!--Sends to next page-->
+            <input type='hidden' name='game_id' value='{{$game->id}}'>
+            <!--Sends to next page-->
+            <input type='submit' name='submit' value='Add new Highscore'>      
         </div>
         <br>
     </form>

@@ -9,14 +9,20 @@ use App\Score;
 
 class AddScoreToGamesController extends Controller
 {
-    public function addScore()
+    public function addScore(Request $request)
     {
+
+        $request->validate([
+            'score'=>'required'
+        ]);
+
         $formData = request()->all();
 
         $game_id = $formData['game_id'];
         $user_id = $formData['user_id'];
 
         $score = New Score;
+        $score->score = $request->input('score');
         $score->user_id = $user_id;
         $score->game_id = $game_id;
 
