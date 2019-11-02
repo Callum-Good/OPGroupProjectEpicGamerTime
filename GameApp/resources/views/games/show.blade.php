@@ -48,7 +48,7 @@
             </table>
         </div>
     </div>
-    <form class="form-inline" action="{{route('AddScoreToGamesController.addScore')}}" method="POST" role="create">
+    <form class="form-inline" action="{{route('AddScoreToGamesController.addScore')}}" method="POST">
         {{csrf_field()}}
         <div><input type="text" name="score" id="title" class="form-control {{$errors->has('score') ? 'is-invalid' : '' }}" value="{{old('score')}}" placeholder="Enter Highscore">
             @if($errors->has('score')) {{-- <-check if we have a validation error --}}

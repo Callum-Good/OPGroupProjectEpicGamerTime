@@ -3,30 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kyslik\ColumnSortable\Sortable;
 use App\Games;
 use App\User;
 use App\Score;
+
 
 class AddScoreToGamesController extends Controller
 {
     public function addScore(Request $request)
     {
 
-        $request->validate([
-            'score'=>'required'
-        ]);
-
         $formData = request()->all();
 
         $game_id = $formData['game_id'];
         $user_id = $formData['user_id'];
+        $highscore = $formData['score'];
 
         $score = New Score;
-        $score->score = $request->input('score');
+        
         $score->user_id = $user_id;
         $score->game_id = $game_id;
+        $score->highscore = $highscore;
 
-        $game_id->save();
+        $score->save();
+
+        $request->validate([
+            'score'=>'required'
+        ]);
 
         return redirect()
             ->route('games.show',$game_id)
