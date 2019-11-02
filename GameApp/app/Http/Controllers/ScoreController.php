@@ -30,14 +30,10 @@ class ScoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $game = Games::findOrFail($id);
-
         return view('scores.create',[
-            'game' => $game,
         ]);
-
     }
 
     /**

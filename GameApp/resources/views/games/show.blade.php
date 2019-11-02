@@ -48,8 +48,14 @@
             </table>
         </div>
     </div>
-    <a href="{{route('scores.create',$game->id)}}" class="btn btn-primary float-right">Add Highscore</a>
-<br><br>
+    <form class="form-inline" action="/create" method="POST" role="create">
+        {{csrf_field()}}
+        <div>
+            <a href="{{route('scores.create',$game->id)}}" class="btn btn-primary float-right">Add Highscore</a>
+        </div>
+        <br>
+    </form>
+    <br><br>
 </div>
 
 <div class="modal fade" id="delete-modal">

@@ -40,6 +40,6 @@ Route::resource('/users', 'UserController');
 
 Route::resource('/scores', 'ScoreController');
 
-Route::post('/games/addScore', 'AddScoreToGamesController@addScore')->score('AddScoreToGamesController.addScore');
-Route::post('/games/deleteScore', 'AddScoreToGamesController@deleteScore')->score('AddScoreToGamesController.deleteScore');
+//Route::post('/games/addScore', 'AddScoreToGamesController@addScore')->score('AddScoreToGamesController.addScore');
+//Route::post('/games/deleteScore', 'AddScoreToGamesController@deleteScore')->score('AddScoreToGamesController.deleteScore');
 
