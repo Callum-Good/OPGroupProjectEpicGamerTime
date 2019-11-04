@@ -22,6 +22,7 @@
 
                 <div class="bio">
                     <h2>{{ $user->name }}'s Bio</h2>
+                    
                     @if ($user->bio)
                         <p>{{ $user->bio }}</p>
                     @else
