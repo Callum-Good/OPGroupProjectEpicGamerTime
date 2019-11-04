@@ -42,7 +42,12 @@ Route::resource('/groups', 'GroupsController');
 
 Route::resource('/users', 'UserController');
 
-
-
 //Route::resource('/auth', 'ProfileController');
 
+//Email Verification
+
+Auth::routes(['verify' => true]);
+
+Route::get('profile', function () {
+    // Only verified users may enter...
+})->middleware('verified');
