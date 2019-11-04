@@ -22,9 +22,6 @@
                 <thead>
                     <tr>
                         <th>
-                            #
-                        </th>
-                        <th>
                             Username
                         </th>
                         <th>
@@ -32,19 +29,18 @@
                         </th>
                     </tr>
                 </thead>
+                @foreach($scoreArray as $score)
                 <tbody>
-                    <tr>
+                    <tr>            
                         <td>
-                            #
+                            {{$score['name']}}
                         </td>
                         <td>
-                            #
-                        </td>
-                        <td>
-                            #
+                            {{$score['score']}}
                         </td>
                     </tr>
                 </tbody>
+                @endforeach
             </table>
         </div>
     </div>
@@ -60,7 +56,7 @@
             <!--Sends to next page-->
             <input type='hidden' name='game_id' value='{{$game->id}}'>
             <!--Sends to next page-->
-            <input type='submit' name='submit' value='Add new Highscore'>      
+            <input type='submit' name='submit' value='Add new Highscore'>
         </div>
         <br>
     </form>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Games;
+use App\Score;
+use App\User;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\Storage;
@@ -113,12 +115,27 @@ class GamesController extends Controller
      */
     public function show($id)
     {
+        $scoreArray = null;
         //Find a Game by it's ID
         $game = Games::findOrFail($id);
+        $score = Score::all();
 
+        //find scores in game
+        $scores = Score::where('game_id',$game->id)->get();
+
+        //add each score to array
+            foreach($scores as $score)
+            {            
+                $user = User::findOrFail($score->user_id); 
+                
+                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score];
+            
+            }
+
+        //boolean to be changed in view if logged in user already has a score
+        $hasScore = false;
         return view('games.show',[
-            'game' => $game,
-        ]);
+            'game' => $game], compact('scoreArray', 'hasScore'));
     }
 
     /**

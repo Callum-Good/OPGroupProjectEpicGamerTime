@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Score extends Model
 {
@@ -20,7 +21,7 @@ class Score extends Model
      * 
      * @var boolean
      */
-    public $timestamps = true;
+    public $timestamps = false;
     /**
      * Properties that are mass assignable.
      * 

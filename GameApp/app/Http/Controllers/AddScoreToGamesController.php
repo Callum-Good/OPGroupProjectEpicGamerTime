@@ -24,7 +24,7 @@ class AddScoreToGamesController extends Controller
         
         $score->user_id = $user_id;
         $score->game_id = $game_id;
-        $score->highscore = $highscore;
+        $score->score = $highscore;
 
         $score->save();
 
