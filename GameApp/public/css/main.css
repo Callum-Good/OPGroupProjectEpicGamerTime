@@ -499,7 +499,7 @@ h3, h4, h5, h6, p{
 /*Group page styles*/
 .groupDescription{
     background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
-    padding: 5px;
+    padding: 20px;
     border-radius: 10px;
     border: solid black;
     color: #ffffff;
@@ -513,6 +513,7 @@ h3, h4, h5, h6, p{
 }
 .groupDescription p{
     color: #ffffff;
+    font-size:  20px;
 }
 .groupDescription h3{
     color: #ffffff;
@@ -524,4 +525,35 @@ h3, h4, h5, h6, p{
 }
 .fudgePadding{
     margin-right: 196px;
+}
+.groupbtns{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    border-radius: .25rem;
+    transition: color .15s;
+    overflow: visible;
+    margin: 35px;
+    width: 460px;
+}
+.btn-text{
+    font-size: 40px;
+}
+h2.groupText{
+    color: white;
+    float: left;
+    font-size: 30px;
+}
+.groupDescription li a{
+    color: white;
 }

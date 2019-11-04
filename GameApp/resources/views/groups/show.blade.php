@@ -41,15 +41,15 @@
 
 				<div class="col-md-8 groupDescription">					
 					<p>
-                    Group Game:<br>
-                    <h3>{{$group->game_id}}</h3><br>
-                    Group type:<br>
-                    <h3>{{$group->type}}</h3><br>
-
-                    {{$group->description}}
-					</p>
+                    Group Game:<br></p>
+                    <h2 class="groupText">{{$group->game_id}}</h2><br><br><br>
+                    <p>Group type:<br></p>
+                    <h2 class="groupText">{{$group->type}}</h2><br><br><hr>
+                    <h2 class="groupText">Description:</h2><br><br>
+                    <p>{{$group->description}}
+					</p><hr>
                     <div>
-                <h2>Members:</h2>
+                <h2 class="groupText">Members:</h2><br><br><br>
                     @if($memberArray == 0)
                     <!-- shows nothing -->
                     @else <!-- Shows all member things -->
@@ -60,6 +60,7 @@
                     <li><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></li>
                     
                     @endforeach
+                    </ul>
                     @endif
 				</div>
 				</div>
@@ -72,7 +73,7 @@
 					<div class="row">
                     <div class="col-md-12">
                 
-                    <a href="{{route('groups.edit',$group->id)}}" class="btn btn-success btn-block width:100%">Update</a>
+                    <a href="{{route('groups.edit',$group->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
                         <br><br>
                             @guest
                                 <!-- doesnt show join button if no one is logged in -->
@@ -81,7 +82,7 @@
                                         <div class="joinGroup">
                                         <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.leaveGroup')}}">
                                         @csrf
-                                        <input type='submit' name='submit' value='Leave Group' class="btn btn-success btn-block">
+                                        <input type='submit' name='submit' value='Leave Group' class="btn btn-success btn-block btn-text">
                                         <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
                                         <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
                                         </form>
@@ -90,7 +91,7 @@
                                         <div class="joinGroup">
                                         <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">
                                         @csrf
-                                        <input type='submit' name='submit' value='Join Group' class="btn btn-success btn-block">
+                                        <input type='submit' name='submit' value='Join Group' class="btn btn-success btn-block btn-text">
                                         <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
                                         <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
                                         </form>
@@ -99,7 +100,7 @@
                             @endif
                         <br><br>
 
-                        <a href="#" class="btn btn-danger btn-success btn-block" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                        <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
                         <!--Delete button method-->
                         <div class="modal fade" id="delete-modal">
                             <div class="modal-dialog" role="document">
