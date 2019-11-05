@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Groups;
+use App\Games;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $games = Games::all();
+
+        //Find random game to be featured each time page is loaded
+        $game_ids = $games->pluck('id')->all();
+        $max = count($game_ids);
+        $randIndex = array_rand($game_ids);
+        $randomId = $game_ids[$randIndex];
+        $featuredGame = Games::findOrFail($randomId);
+              
+
+        //$groups = Games::
+        return view('home', compact('featuredGame'));
     }
 }

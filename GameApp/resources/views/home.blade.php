@@ -33,9 +33,12 @@
     </div>
         @endif
     
-    <a href=""><div class="featuredGame">
-        <h3>Featured Game</h3>
-         <img class="featuredGame" src="images/halo5.jpg">
+    <a href="{{route('games.show',$featuredGame->id)}}"><div class="featuredGame">
+        <h3>
+        
+        {{$featuredGame->title}}
+        </h3>
+         <img class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:400px">
     </div> </a>
 
     @guest

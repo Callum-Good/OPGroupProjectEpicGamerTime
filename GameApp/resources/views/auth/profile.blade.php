@@ -22,7 +22,7 @@
 
                 <div class="bio">
                     <h2>{{ Auth::user()->name }}'s Bio</h2>
-                    @if (auth()->user()->favorite_game)
+                    @if (auth()->user()->bio)
                         <p>{{ Auth::user()->bio }}</p>
                     @else
                         <p><i>{{ Auth::user()->name }} has not created a bio. How boring!</i></p>
