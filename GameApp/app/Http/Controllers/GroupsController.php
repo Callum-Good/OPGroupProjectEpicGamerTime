@@ -96,6 +96,8 @@ class GroupsController extends Controller
         $group->save(); // save it to the database.
         
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$group->name was successfully created!");
+
         return redirect()
             ->route('groups.index')
             ->with('status','Added a new group!');
@@ -195,6 +197,7 @@ class GroupsController extends Controller
         }
 
         $group->save(); // save it to the database.
+        session()->flash('alert-success', "$group->name was successfully updated!");
 
         return redirect()
             ->route('groups.show', $id)
@@ -214,6 +217,8 @@ class GroupsController extends Controller
         $groups->delete();
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$groups->name was successfully deleted!");
+
         return redirect()
             ->route('groups.index')
             ->with('status','Deleted the selected group');

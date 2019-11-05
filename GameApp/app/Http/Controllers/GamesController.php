@@ -100,6 +100,7 @@ class GamesController extends Controller
         $game->save(); // save it to the database.
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$game->title was successfully created!");
         return redirect()
             ->route('games.index')
             ->with('status','Added a new game!');
@@ -187,6 +188,7 @@ class GamesController extends Controller
         $game->save(); //Can be used for both creating and updating
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$game->title was successfully updated!");
         return redirect()
             ->route('games.show',$id)
             ->with('status','Updated the selected game!');
@@ -207,6 +209,7 @@ class GamesController extends Controller
         // Game::destroy([id]) is also avaliable
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$game->title was successfully deleted!");
         return redirect()
             ->route('games.index')
             ->with('status','Deleted the selected game!');

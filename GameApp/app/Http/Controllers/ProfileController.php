@@ -83,6 +83,8 @@ class ProfileController extends Controller
 
 
         // Return user back and show a flash message
+        session()->flash('alert-success', "You successfully update your profile!");
+
         return redirect()
             ->route('profile');
     }

@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">Create Group</h2>
+    <!--
+    Checking for any errors
+    -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form action="{{route('groups.store')}}" method="post" class="gameForm" enctype="multipart/form-data">
         @csrf
 <!-- name of group -->
