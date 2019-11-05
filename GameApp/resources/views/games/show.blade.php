@@ -29,9 +29,13 @@
                         </th>
                     </tr>
                 </thead>
+                @if($scoreArray == 0)
+                <!-- shows nothing -->
+                @else
+                <!-- Shows all member things -->
                 @foreach($scoreArray as $score)
                 <tbody>
-                    <tr>            
+                    <tr>
                         <td>
                             {{$score['name']}}
                         </td>
@@ -41,9 +45,12 @@
                     </tr>
                 </tbody>
                 @endforeach
+                @endif
             </table>
         </div>
     </div>
+    @guest
+    @else
     <form class="form-inline" action="{{route('AddScoreToGamesController.addScore')}}" method="POST">
         {{csrf_field()}}
         <div><input type="text" name="score" id="title" class="form-control {{$errors->has('score') ? 'is-invalid' : '' }}" value="{{old('score')}}" placeholder="Enter Highscore">
@@ -60,6 +67,7 @@
         </div>
         <br>
     </form>
+    @endif
     <br><br>
 </div>
 
