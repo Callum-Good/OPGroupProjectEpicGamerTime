@@ -439,6 +439,7 @@ a:hover{
     width: 45%;
     float: left;
 }
+
 .card-body {
     padding:0;
     padding-top:10px;
@@ -462,15 +463,14 @@ a:hover{
     background-color: #000000;
 }
 
-.row{
+.tableRow{
     margin:0 auto;
     padding:5px;
     display: inline-table;
     width: 100%;
-
 }
 
-li{
+.tableListItem{
     list-style-type: none;
     font-size: 16px;
 }
@@ -494,4 +494,66 @@ h3, h4, h5, h6, p{
 
 .updateProfileBtn{
     width: 150px;
+}
+
+/*Group page styles*/
+.groupDescription{
+    background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
+    padding: 20px;
+    border-radius: 10px;
+    border: solid black;
+    color: #ffffff;
+}
+
+.groupButtons{
+    background-image: linear-gradient(to bottom right, rgb(65, 63, 63), rgb(9, 105, 6));
+    padding: 5px;
+    border-radius: 10px;
+    border: solid black;
+}
+.groupDescription p{
+    color: #ffffff;
+    font-size:  20px;
+}
+.groupDescription h3{
+    color: #ffffff;
+    font-weight: bold;
+}
+.buttonPos{
+    top: 50%; 
+    left: 50%; 
+}
+.fudgePadding{
+    margin-right: 196px;
+}
+.groupbtns{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    border-radius: .25rem;
+    transition: color .15s;
+    overflow: visible;
+    margin: 35px;
+    width: 460px;
+}
+.btn-text{
+    font-size: 40px;
+}
+h2.groupText{
+    color: white;
+    float: left;
+    font-size: 30px;
+}
+.groupDescription li a{
+    color: white;
 }

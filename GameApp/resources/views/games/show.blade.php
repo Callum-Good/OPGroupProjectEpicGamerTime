@@ -1,11 +1,24 @@
 @extends('layouts.app')
 @section('content')
-<h2 class="text-center">{{$game->title}}</h2>
+    <h2 class="text-center">{{$game->title}}</h2>
+    
+    <!--
+     checking for update message
+    -->
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
 
-<p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
-<div class="imgFeature">
-    <img src="{{$game->game_art}}">
-</div>
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div> <!-- end .flash-message -->
+
+        <p class="gInfo">Released {{$game->release}} | {{$game->genre}} | {{$game->perspective}} | {{$game->platform}}</p>
+    <div class="imgFeature" style="margin: 0 auto;
+    width: 30%;">
+        <img src="{{asset($game->game_art)}}" style="margin: 0 auto;
+    width: 100%;">
 <p>{{$game->description}}</p>
 
 <br>

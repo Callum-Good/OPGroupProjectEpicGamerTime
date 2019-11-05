@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Groups;
+
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Groups;
+use App\User;
+use App\UserGroup;
+
 
 class GroupsController extends Controller
 {
@@ -74,7 +78,7 @@ class GroupsController extends Controller
             // Get image file
             $image = $request->file('grp_image');
             // Make a image name based on game title and current timestamp
-            $name = str_slug($request->input('name'));
+            $name = str_slug($request->input('name').'_'.time());
             // Define folder path
             $folder = '/uploads/grpImages/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
@@ -85,13 +89,15 @@ class GroupsController extends Controller
             $group->grp_image = $filePath;
         }
         else{
-            $group->grp_image = '/uploads/grpImages/grpDefault.jpg';
+            $group->grp_image = '/images/grpDefault.jpg';
         }
 
 
         $group->save(); // save it to the database.
         
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$group->name was successfully created!");
+
         return redirect()
             ->route('groups.index')
             ->with('status','Added a new group!');
@@ -107,12 +113,28 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
+        $memberArray = null;
         //Find a group by it's ID
         $group = Groups::findOrFail($id);
+        
+        //find members in group
+        $members = UserGroup::where('group_id',$group->id)->get();
+        
+        //add each member to array
+            foreach($members as $member)
+            {            
+                $user = User::findOrFail($member->user_id);
+                
+                $memberArray[] = $user;
+            
+            }
+        
 
+        //boolean to be changed in view if logged in member already in group
+        $joined = false;
+        
         return view('groups.show',[
-            'group' => $group,
-        ]); 
+            'group' => $group], compact('memberArray', 'joined'));
     }
 
     /**
@@ -163,7 +185,7 @@ class GroupsController extends Controller
             // Get image file
             $image = $request->file('grp_image');
             // Make a image name based on game title and current timestamp
-            $name = str_slug($request->input('title'));
+            $name = str_slug($request->input('name').'_'.time());
             // Define folder path
             $folder = '/uploads/grpImages/';
             // Make a file path where image will be stored [ folder path + file name + file extension]
@@ -175,6 +197,7 @@ class GroupsController extends Controller
         }
 
         $group->save(); // save it to the database.
+        session()->flash('alert-success', "$group->name was successfully updated!");
 
         return redirect()
             ->route('groups.show', $id)
@@ -194,8 +217,11 @@ class GroupsController extends Controller
         $groups->delete();
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$groups->name was successfully deleted!");
+
         return redirect()
             ->route('groups.index')
             ->with('status','Deleted the selected group');
     }
+
 }

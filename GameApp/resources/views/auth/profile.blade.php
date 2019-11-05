@@ -2,6 +2,19 @@
 @section('content')
 
 <div class="container">
+
+<!--
+     checking for update message
+    -->
+    <div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div> <!-- end .flash-message -->
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="profileWrapper">
@@ -9,7 +22,7 @@
                     @if (auth()->user()->image)
                         <img src="{{ asset(auth()->user()->image) }}">
                     @else
-                        <img id="dp" src="images/default.jpg">
+                        <img id="dp" src="{{ asset('images/default.jpg') }}">
                     @endif
                     <h1>{{ Auth::user()->name }}</h2>
                     <h2>Favorite Game:</h2>
@@ -22,7 +35,7 @@
 
                 <div class="bio">
                     <h2>{{ Auth::user()->name }}'s Bio</h2>
-                    @if (auth()->user()->favorite_game)
+                    @if (auth()->user()->bio)
                         <p>{{ Auth::user()->bio }}</p>
                     @else
                         <p><i>{{ Auth::user()->name }} has not created a bio. How boring!</i></p>

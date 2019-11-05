@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">Create Game</h2>
+    <!--
+    Checking for any errors
+    -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form action="{{route('games.store')}}" method="post" class="gameForm" enctype="multipart/form-data">
         @csrf
 <!-- title of game -->

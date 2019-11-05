@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGroupsTable extends Migration
+class ReplaceHasVoted extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('groups', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('game_id');
-            $table->string('type');
-            $table->string('description');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('has_voted');
+            $table->integer('voter_1');
+            $table->integer('voter_2');
         });
     }
 
@@ -30,6 +27,8 @@ class CreateGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('groups');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

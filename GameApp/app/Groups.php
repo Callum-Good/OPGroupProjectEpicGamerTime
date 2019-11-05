@@ -33,8 +33,8 @@ class Groups extends Model
         'name', 'game', 'type', 'description', 'grp_image'
     ];
 
-    public function users_groups(){
-        return $this->hasMany('UserGroup');
+    public function users(){
+        return $this->belongsToMany(User::class, 'user_id');
     }
 
     public function getImageAttribute()

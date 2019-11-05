@@ -20,9 +20,11 @@ class UserController extends Controller
     {
         //Find a user by it's ID
         $user = User::findOrFail($id);
-
+    
         return view('users.show',[
             'user' => $user,
         ]); 
     }
+
+    
 }

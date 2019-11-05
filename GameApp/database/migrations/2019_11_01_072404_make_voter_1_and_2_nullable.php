@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeGamesColumnToGamesid extends Migration
+class MakeVoter1And2Nullable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class ChangeGamesColumnToGamesid extends Migration
      */
     public function up()
     {
-        Schema::table('groups', function (Blueprint $table) {
-            //
-            $table->renameColumn('game', 'game_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('voter_1')->nullable()->change();
+            $table->integer('voter_2')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeGamesColumnToGamesid extends Migration
      */
     public function down()
     {
-        Schema::table('groups', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

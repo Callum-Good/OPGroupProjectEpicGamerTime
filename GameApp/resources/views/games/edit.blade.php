@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
     <h3 class="text-center">Edit Game</h3>
+    <!--
+    Checking for any errors
+    -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form action="{{route('games.update',$game->id)}}" method="post" class="gameForm" enctype="multipart/form-data">
         @csrf
         @method('PUT')
