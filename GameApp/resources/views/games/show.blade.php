@@ -37,10 +37,12 @@
                 <tbody>
                     <tr>
                         <td>
-                            {{$score['name']}}
+                        <a href="{{route('scores.show',$score['score_id'])}}">
+                        {{$score['name']}}</a>
                         </td>
                         <td>
-                            {{$score['score']}}
+                        <a href="{{route('scores.show',$score['score_id'])}}">
+                        {{$score['score']}}</a>
                         </td>
                     </tr>
                 </tbody>
@@ -63,7 +65,7 @@
             <!--Sends to next page-->
             <input type='hidden' name='game_id' value='{{$game->id}}'>
             <!--Sends to next page-->
-            <input type='submit' name='submit' value='Add new Highscore'>
+            <input type='submit' name='submit'  value='Add new Highscore'>
         </div>
         <br>
     </form>

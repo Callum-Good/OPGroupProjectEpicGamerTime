@@ -118,7 +118,6 @@ class GamesController extends Controller
         $scoreArray = null;
         //Find a Game by it's ID
         $game = Games::findOrFail($id);
-        $score = Score::all();
 
         //find scores in game
         $scores = Score::where('game_id',$game->id)->get();
@@ -128,7 +127,7 @@ class GamesController extends Controller
             {            
                 $user = User::findOrFail($score->user_id); 
                 
-                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score];
+                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 'score_id' => $score->id,'user_id' => $user->id];
             
             }
 
