@@ -38,7 +38,7 @@
         
         {{$featuredGame->title}}
         </h3>
-         <img class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:400px">
+         <img class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:450px">
     </div> </a>
 
     
