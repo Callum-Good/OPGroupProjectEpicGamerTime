@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="container">
+
 <!--
      checking for update message
     -->
@@ -13,6 +14,7 @@
       @endif
     @endforeach
   </div> <!-- end .flash-message -->
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="profileWrapper">
@@ -33,7 +35,7 @@
 
                 <div class="bio">
                     <h2>{{ Auth::user()->name }}'s Bio</h2>
-                    @if (auth()->user()->favorite_game)
+                    @if (auth()->user()->bio)
                         <p>{{ Auth::user()->bio }}</p>
                     @else
                         <p><i>{{ Auth::user()->name }} has not created a bio. How boring!</i></p>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Groups;
+use App\UserGroup;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 
@@ -17,7 +19,15 @@ class ProfileController extends Controller
 
     public function viewProfile()
     {
-        return view('auth.profile');
+        $yourGroups[] = null;
+        $groups = UserGroup::where('user_id', auth()->user()->id)->get();
+        
+        foreach($groups as $g){
+            $grp = Groups::findorfail($g->group_id);
+            $yourGroups[] = $grp;
+        }
+        
+        return view('auth.profile', compact('yourGroups'));
     }
 
     public function editProfile(){
@@ -69,6 +79,8 @@ class ProfileController extends Controller
 
         // Persist user record to database
         $user->save();
+
+
 
         // Return user back and show a flash message
         session()->flash('alert-success', "You successfully update your profile!");

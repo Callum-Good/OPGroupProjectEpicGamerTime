@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('user/{id}', 'VoteToBan')->name('VoteToBan');
 
