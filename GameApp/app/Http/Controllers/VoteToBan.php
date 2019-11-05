@@ -38,7 +38,7 @@ class VoteToBan extends Controller
 
         // Updates the user being voted on.
         $user->update();
-
+        session()->flash('alert-success', "You voted to ban $user->name");
         return back();
     }
 }
