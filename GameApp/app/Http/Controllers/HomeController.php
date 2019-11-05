@@ -33,7 +33,9 @@ class HomeController extends Controller
         $randIndex = array_rand($game_ids);
         $randomId = $game_ids[$randIndex];
         $featuredGame = Games::findOrFail($randomId);
-              
+        
+        //High Scores
+
 
         //$groups = Games::
         return view('home', compact('featuredGame'));
