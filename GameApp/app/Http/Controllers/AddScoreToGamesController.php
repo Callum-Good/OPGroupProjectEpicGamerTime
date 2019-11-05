@@ -55,11 +55,11 @@ class AddScoreToGamesController extends Controller
             $uGid = $s->id;
         }
        
-        UserGroup::where('id', $uGid)->delete();
+        Score::where('id', $uGid)->delete();
             
         return redirect()
             ->route('games.show',$gid)
-            ->with('status','Deleted highscore from game.');
+            ->with('status','Deleted highscore.');
 
     }
 }
