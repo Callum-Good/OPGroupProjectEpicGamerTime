@@ -39,43 +39,22 @@
         </div>
     </div>
 
-    <div class="yourGroupsProfileWrapper">
-        <div class="yourGroupsProfile">
-            <a href=""><h3>Their Groups</h3></a>
-            <a href=""><div class="ftdGrpProfile">
-                <img src="{{ asset('images/bioshock.jpg') }}">
-                <h4>Bioshock Speed Run</h4>
-                <br>
-                <p>Top Score: 30min 2s</p>
-                <p>Player: XXxxjonnyxxXX</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile">
-            <img src="{{ asset('images/pubg.jpg') }}">
-                <h4>PUBG Chicken Dinners</h4>
-                <p>Top Score: 100</p>
-                <p>Player: pbandj</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile">
-            <img src="{{ asset('images/minecraft.jpg') }}">
-                <h4>Minecraft Gold Digger</h4>
-                <br>
-                <p>Top Score: 20,000 Blocks</p>
-                <p>Player: mineCraftHero</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile">
-            <img src="{{ asset('images/farmingSim.jpg') }}">
-                <h4>Farming Sim Cow Tipper</h4>
-                <br>
-                <p>Top Score: 7</p>
-                <p>Player: jstdatip</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile lastProfile">
-                <img src="{{ asset('images/halo5.jpg') }}">
-                <h4>Halo 5 Legendary Speed</h4>
-                <p>Top Score: 1h 20mins</p>
-                <p>Player: cheif117</p>
-            </div></a>
+    @if($yourGroups == 0)
+    @else
+        <div class="yourGroupsProfileWrapper">
+            <div class="yourGroupsProfile">
+                <h3>Your Groups</h3>
+
+                @foreach($yourGroups as $g)
+                <a href="{{route('groups.show',$g->id)}}"><div class="ftdGrpProfile">
+                    <img src="{{asset($g->grp_image)}}">
+                    <h4>{{$g->name}}</h4>
+                    <br>
+                </div></a>
+                @endforeach
+            </div>
         </div>
-    </div>
+    @endif
+    
 </div>
 @endsection

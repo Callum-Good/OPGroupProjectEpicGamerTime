@@ -53,7 +53,7 @@
     @else
         <div class="yourGroupsProfileWrapper">
             <div class="yourGroupsProfile">
-                <a href=""><h3>Your Groups</h3></a>
+                <h3>Your Groups</h3>
 
                 @foreach($yourGroups as $g)
                 <a href="{{route('groups.show',$g->id)}}"><div class="ftdGrpProfile">
