@@ -19,14 +19,14 @@ class ProfileController extends Controller
 
     public function viewProfile()
     {
-        $yourGroups[] = null;
+        $yourGroups = null;
         $groups = UserGroup::where('user_id', auth()->user()->id)->get();
         
         foreach($groups as $g){
             $grp = Groups::findorfail($g->group_id);
             $yourGroups[] = $grp;
         }
-        
+        //dd($yourGroups);
         return view('auth.profile', compact('yourGroups'));
     }
 

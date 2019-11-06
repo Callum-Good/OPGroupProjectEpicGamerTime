@@ -41,27 +41,24 @@ class HomeController extends Controller
         $scoreArray = null;
 
         //add each score to array
-            foreach($top as $score)
-            {            
-                $user = User::findOrFail($score->user_id);
-                $game = Games::findorfail($score->game_id); 
-                
-                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 
-                'game' => $game->title, 'gameImage' => $game->game_art, 'user_id' => $user->id, 'game_id' => $game->id];
+        foreach($top as $score)
+        {            
+            $user = User::findOrFail($score->user_id);
+            $game = Games::findorfail($score->game_id); 
             
-            }
+            $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 
+            'game' => $game->title, 'gameImage' => $game->game_art, 'user_id' => $user->id, 'game_id' => $game->id];
+        
+        }
 
-            //grabing just the top 5 scores to send to homepage
-            $top5[] = null;
-            for($i=0;$i<5;$i++){
-                if($scoreArray[$i] != 0){
-                    $top5[$i] = $scoreArray[$i];
-                }
+        //grabing just the top 5 scores to send to homepage
+        $top5[] = null;
+        for($i=0;$i<5;$i++){
+            if($scoreArray[$i] != 0){
+                $top5[$i] = $scoreArray[$i];
             }
-           
-            
-
-        //$groups = Games::
+        }
+       
         return view('home', compact('featuredGame', 'top5'));
     }
 }
