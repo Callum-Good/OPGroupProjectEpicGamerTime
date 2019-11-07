@@ -16,6 +16,10 @@ class AddScoreToGamesController extends Controller
 
         $formData = request()->all();
 
+        $request->validate([
+            'score'=>'required|numeric|max:99999999'
+        ]);
+
         $game_id = $formData['game_id'];
         $user_id = $formData['user_id'];
         $highscore = $formData['score'];
@@ -28,10 +32,8 @@ class AddScoreToGamesController extends Controller
 
         $score->save();
 
-        $request->validate([
-            'score'=>'required'
-        ]);
 
+        session()->flash('alert-success', "Score was successfully created!");
         return redirect()
             ->route('games.show',$game_id)
             ->with('status','Added new highscore to game.');
@@ -57,6 +59,7 @@ class AddScoreToGamesController extends Controller
        
         Score::where('id', $uGid)->delete();
             
+        session()->flash('alert-success', "Score was successfully deleted.");
         return redirect()
             ->route('games.show',$gid)
             ->with('status','Deleted highscore.');

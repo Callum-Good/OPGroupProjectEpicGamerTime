@@ -121,7 +121,7 @@ class GamesController extends Controller
         $game = Games::findOrFail($id);
 
         //find scores in game
-        $scores = Score::where('game_id',$game->id)->get();
+        $scores = Score::where('game_id',$game->id)->orderBy('score', 'desc')->get();
 
         //add each score to array
             foreach($scores as $score)

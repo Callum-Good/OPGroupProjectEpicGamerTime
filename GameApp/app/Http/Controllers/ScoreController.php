@@ -32,8 +32,7 @@ class ScoreController extends Controller
      */
     public function create()
     {
-        return view('scores.create',[
-        ]);
+        //
     }
 
     /**
@@ -101,11 +100,7 @@ class ScoreController extends Controller
      */
     public function edit($id)
     {
-        $score = Score::findOrFail($id);
-
-        return view('scores.edit',[
-            'score' => $score,
-        ]);
+        //
     }
 
     /**
@@ -117,20 +112,7 @@ class ScoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'score'=>'required'
-        ]);
-
-        $score = Score::findOrFail($id);
-        $score->score = $request->input('score');
-        $score->game_id  = $request->game_id;
-        $score->user_id  = $request->user_id;
-
-        $score->save();
-
-        return redirect()
-            ->route('scores.show',$id)
-            >with('status','Updated score');
+        //
     }
 
     /**
