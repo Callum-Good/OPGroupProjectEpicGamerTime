@@ -1,6 +1,19 @@
 @extends('layouts.app')
 @section('content')
     <h2 class="text-center">Games</h2>
+    <!--
+     checking for delete or create message
+    -->
+
+<div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div> <!-- end .flash-message -->
+  
    <!-- <ul class="list-group py-3 mb-3">-->
    <p class="gInfo">@sortablelink('title') | @sortablelink('description') | 
    @sortablelink('release') | @sortablelink('genre') | @sortablelink('perspective') | @sortablelink('platform')</p>

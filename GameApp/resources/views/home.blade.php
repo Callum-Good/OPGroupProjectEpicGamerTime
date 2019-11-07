@@ -33,81 +33,34 @@
     </div>
         @endif
     
-    <a href=""><div class="featuredGame">
-        <h3>Featured Game</h3>
-         <img class="featuredGame" src="images/halo5.jpg">
+    <a href="{{route('games.show',$featuredGame->id)}}"><div class="featuredGame">
+        <h3>
+        
+        {{$featuredGame->title}}
+        </h3>
+         <img class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:450px">
     </div> </a>
 
-    @guest
-    <div class="yourGroups">
-        <a href=""><h3>Popular Groups</h3></a>
-        <a href=""><div class="ftdGrp">
-            <img src="images/bioshock.jpg">
-            <h4>Bioshock Speed Run</h4>
-            <p>Top Score: 30min 2s</p>
-            <p>Player: XXxxjonnyxxXX</p>
-        </div></a>
-        <a href=""><div class="ftdGrp">
-        <img src="images/pubg.jpg">
-            <h4>PUBG Chicken Dinners</h4>
-            <p>Top Score: 100</p>
-            <p>Player: pbandj</p>
-        </div></a>
-        <a href=""><div class="ftdGrp">
-        <img src="images/minecraft.jpg">
-            <h4>Minecraft Gold Digger</h4>
-            <p>Top Score: 20,000 Blocks</p>
-            <p>Player: mineCraftHero</p>
-        </div></a>
-        <a href=""><div class="ftdGrp">
-        <img src="images/farmingSim.jpg">
-            <h4>Farming Sim Cow Tipper</h4>
-            <p>Top Score: 7</p>
-            <p>Player: jstdatip</p>
-        </div></a>
-        <a href=""><div class="ftdGrp last">
-            <img src="images/halo5.jpg">
-            <h4>Halo 5 Legendary Speed</h4>
-            <p>Top Score: 1h 20mins</p>
-            <p>Player: cheif117</p>
-        </div></a>
-    </div>
-    @else
-    <div class="yourGroups">
-    <a href=""><h3>Your Groups</h3></a>
-    <a href=""><div class="ftdGrp">
-            <img src="images/bioshock.jpg">
-            <h4>Bioshock Speed Run</h4>
-            <p>Top Score: 30min 2s</p>
-            <p>Player: XXxxjonnyxxXX</p>
-        </div></a>
-        <a href=""><div class="ftdGrp">
-        <img src="images/pubg.jpg">
-            <h4>PUBG Chicken Dinners</h4>
-            <p>Top Score: 100</p>
-            <p>Player: pbandj</p>
-        </div></a>
-        <a href=""><div class="ftdGrp">
-        <img src="images/minecraft.jpg">
-            <h4>Minecraft Gold Digger</h4>
-            <p>Top Score: 20,000 Blocks</p>
-            <p>Player: mineCraftHero</p>
-        </div></a>
-        <a href=""><div class="ftdGrp">
-        <img src="images/farmingSim.jpg">
-            <h4>Farming Sim Cow Tipper</h4>
-            <p>Top Score: 7</p>
-            <p>Player: jstdatip</p>
-        </div></a>
-        <a href=""><div class="ftdGrp last">
-            <img src="images/halo5.jpg">
-            <h4>Halo 5 Legendary Speed</h4>
-            <p>Top Score: 1h 20mins</p>
-            <p>Player: cheif117</p>
-        </div></a>
-    </div>
-    </div>
+    @if($top5!=0)
+        <div class="yourGroups">
+            <h3>High Scores</h3>
+
+            @foreach($top5 as $t)
+            
+            <a href="{{route('games.show',$t['game_id'])}}">
+                <div class="ftdGrp">
+                    <img src="{{asset($t['gameImage'])}}"style= "height:70px">
+                    
+                    <h4>{{$t['game']}}</h4>
+                    <p>Top Score: {{$t['score']}}</p>
+                    <a href="{{route('users.show',$t['user_id'])}}"><p>Player: {{$t['name']}}</p></a>
+                </div></a>
+            @endforeach
+        </div>
     @endif
+
+    </div>
+  
 
     
 </div>

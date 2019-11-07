@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Games;
+use App\Score;
+use App\User;
 use Illuminate\Http\Request;
 use App\Traits\UploadTrait;
 
@@ -100,6 +102,7 @@ class GamesController extends Controller
         $game->save(); // save it to the database.
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$game->title was successfully created!");
         return redirect()
             ->route('games.index')
             ->with('status','Added a new game!');
@@ -113,12 +116,26 @@ class GamesController extends Controller
      */
     public function show($id)
     {
+        $scoreArray = null;
         //Find a Game by it's ID
         $game = Games::findOrFail($id);
 
+        //find scores in game
+        $scores = Score::where('game_id',$game->id)->get();
+
+        //add each score to array
+            foreach($scores as $score)
+            {            
+                $user = User::findOrFail($score->user_id); 
+                
+                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 'score_id' => $score->id,'user_id' => $user->id];
+            
+            }
+
+        //boolean to be changed in view if logged in user already has a score
+        $hasScore = false;
         return view('games.show',[
-            'game' => $game,
-        ]);
+            'game' => $game], compact('scoreArray', 'hasScore'));
     }
 
     /**
@@ -187,6 +204,7 @@ class GamesController extends Controller
         $game->save(); //Can be used for both creating and updating
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$game->title was successfully updated!");
         return redirect()
             ->route('games.show',$id)
             ->with('status','Updated the selected game!');
@@ -207,6 +225,7 @@ class GamesController extends Controller
         // Game::destroy([id]) is also avaliable
 
         //Redirect to a specified route with flash message.
+        session()->flash('alert-success', "$game->title was successfully deleted!");
         return redirect()
             ->route('games.index')
             ->with('status','Deleted the selected game!');
