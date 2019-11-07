@@ -290,6 +290,10 @@ a:hover{
     text-align: center;
     border: solid black;
     min-height: 280px;
+    margin-left: 7%;
+    margin-top: 10px;
+
+
 }
 
 .profile img{
@@ -317,7 +321,8 @@ a:hover{
 .bio{
     width: 400px;
     float: left;
-    margin-left: 15px;
+    margin-left: 7%;
+    margin-top: 10px;
     background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
     padding: 5px;
     border-radius: 10px;
@@ -339,9 +344,10 @@ a:hover{
 }
 
 .yourGroupsProfileWrapper{
-    width: 100%;
+    width: 300px;
     text-align: center;
 }
+
 
 .yourGroupsProfile{
     width: 80%;
@@ -366,11 +372,7 @@ a:hover{
 }
 
 .ftdGrpProfile{
-    border-right:solid #ffffff 2px;
-    padding-bottom: 5px;
-    float:left;
-    width: 20%;
-    min-height: 130px;
+    
 }
 
 .lastProfile{
@@ -378,9 +380,7 @@ a:hover{
 }
 
 .ftdGrpProfile img{
-    width: 40%;
-    float: left;
-    margin: 5px;
+   margin-left: 30%
 }
 
 .yourGroupsProfile h4{
@@ -404,6 +404,7 @@ a:hover{
 
 .update{
     clear: left;
+    margin-left: 11%;
 }
 
 /*/////////Group and Game Images//////////*/

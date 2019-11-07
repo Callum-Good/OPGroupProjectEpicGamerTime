@@ -47,7 +47,8 @@
 
             @foreach($top5 as $t)
             
-            <a href="{{route('games.show',$t['game_id'])}}"><div class="ftdGrp">
+            <a href="{{route('games.show',$t['game_id'])}}">
+                <div class="ftdGrp">
                     <img src="{{asset($t['gameImage'])}}"style= "height:70px">
                     
                     <h4>{{$t['game']}}</h4>

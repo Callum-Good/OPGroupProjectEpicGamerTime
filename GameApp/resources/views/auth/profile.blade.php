@@ -47,23 +47,38 @@
                 </div>
             </div>
         </div>
-    </div>
-    
+        <div class="col-md-4">
     @if($yourGroups == 0)
+    <div class="yourGroupsProfileWrapper">
+            <div class="yourGroupsProfile">
+                <h3>Your Groups</h3>
+                    <div class="ftdGrp ftdGrpProfile"  style= "height:100px">
+                    <h4>You aren't in any groups</h4>
+                    <h4>When you join a group they will appear here</h4>                     
+                    <br>
+                </div>
+               
+            </div>
+        </div>
     @else
         <div class="yourGroupsProfileWrapper">
             <div class="yourGroupsProfile">
                 <h3>Your Groups</h3>
 
                 @foreach($yourGroups as $g)
-                <a href="{{route('groups.show',$g->id)}}"><div class="ftdGrpProfile">
-                    <img src="{{asset($g->grp_image)}}">
+                <a href="{{route('groups.show',$g->id)}}">
+                    <div class="ftdGrp ftdGrpProfile"  style= "height:100px">
                     <h4>{{$g->name}}</h4>
+                    <img src="{{asset($g->grp_image)}}"  style= "height:60px">
+                    
                     <br>
                 </div></a>
                 @endforeach
             </div>
         </div>
     @endif
+</div>
+    </div>
+  
 </div>
 @endsection
