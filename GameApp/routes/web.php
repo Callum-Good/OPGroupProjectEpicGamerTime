@@ -37,7 +37,7 @@ Route::post('/groups/leave', 'AddUsersToGroup@leaveGroup')->name('AddUsersToGrou
 //Route::get('/groups/{group}', 'GroupsController@show');
 
 
-Auth::routes();
+Auth::routes(['verify' =>true]);
 
 
 Route::resource('/games','GamesController');
