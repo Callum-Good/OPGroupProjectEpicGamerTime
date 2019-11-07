@@ -2,7 +2,7 @@
 /*main content*/
 .py-4
 {
-    width:90%;
+    width:85%;
     margin:0 auto;
 
     /*background-color: #fffafa;
@@ -284,7 +284,8 @@ a:hover{
     vertical-align: middle;
     width: 225px;
     border-radius: 10px;
-    background-image: linear-gradient(to bottom right, rgb(65, 63, 63), rgb(9, 105, 6));
+    /*background-image: linear-gradient(to bottom right, rgb(65, 63, 63), rgb(9, 105, 6));*/
+    background-color: #e3dede;
     padding: 15px;
     float: left;
     text-align: center;
@@ -306,24 +307,28 @@ a:hover{
 
 .profile h1{
     font-size: 30px;
-    color: white;
+    color: black;
 }
 
 .profile h2{
     font-size: 20px;
-    color: white;
+    color: black;
 }
 
 .profile p, .profile a{
-    color: rgb(180, 236, 255);
+    color: rgb(7, 193, 255);
 }
 
 .bio{
     width: 400px;
     float: left;
+
+    /*background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));*/
+    background-color: #ebe5e5;
+
     margin-left: 7%;
     margin-top: 10px;
-    background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
+
     padding: 5px;
     border-radius: 10px;
     border: solid black;
@@ -334,12 +339,12 @@ a:hover{
 .bio p{
     clear: left;
     overflow-wrap: break-word;
-    color: rgb(180, 236, 255);
+    color: rgb(0, 0, 0);
 }
 
 .bio h2{
     font-size: 20px;
-    color: white;
+    color: rgb(0, 0, 0);
     float: left;
 }
 
@@ -499,7 +504,8 @@ h3, h4, h5, h6, p{
 
 /*Group page styles*/
 .groupDescription{
-    background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
+    /*background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));*/
+    background-color: #e3dede;
     padding: 20px;
     border-radius: 10px;
     border: solid black;
@@ -513,11 +519,11 @@ h3, h4, h5, h6, p{
     border: solid black;
 }
 .groupDescription p{
-    color: #ffffff;
+    color: black;
     font-size:  20px;
 }
 .groupDescription h3{
-    color: #ffffff;
+    color: black;
     font-weight: bold;
 }
 .buttonPos{
@@ -544,17 +550,23 @@ h3, h4, h5, h6, p{
     border-radius: .25rem;
     transition: color .15s;
     overflow: visible;
-    margin: 35px;
-    width: 460px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: 20px;
+    width: 400px;
+    margin-right: 40px;
 }
 .btn-text{
     font-size: 40px;
 }
 h2.groupText{
-    color: white;
+    color: black;
     float: left;
     font-size: 30px;
 }
 .groupDescription li a{
-    color: white;
+    color: blue;
+}
+.joinLeave{
+    width: 400px;
 }

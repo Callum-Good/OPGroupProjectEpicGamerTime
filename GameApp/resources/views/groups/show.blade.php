@@ -31,7 +31,7 @@
     <br>
     <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>-->
-    <div class="container-fluid">
+    <div class="container-fluid py-4">
 	<div class="row">
 		<div class="col-md-12">
         <h2>
@@ -58,11 +58,11 @@
                     <h2 class="groupText">{{$group->game_id}}</h2><br><br><br>
                     <p>Group type:<br></p>
                     <h2 class="groupText">{{$group->type}}</h2><br><br><hr>
-                    <h2 class="groupText">Description:</h2><br><br>
+                    <h3 class="groupText">Description:</h3><br><br>
                     <p>{{$group->description}}
 					</p><hr>
                     <div>
-                <h2 class="groupText">Members:</h2><br><br><br>
+                <h3 class="groupText">Members:</h3><br><br><br>
                     @if($memberArray == 0)
                     <!-- shows nothing -->
                     @else <!-- Shows all member things -->
@@ -70,7 +70,7 @@
                     <ul>
                     @foreach($memberArray as $member)
                     
-                    <li><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></li>
+                    <li><b><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></b></li>
                     
                     @endforeach
                     </ul>
@@ -84,7 +84,7 @@
 						</div>
 					</div>
 					<div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 ">
                 
                     <a href="{{route('groups.edit',$group->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
                         <br><br>
@@ -95,7 +95,7 @@
                                         <div class="joinGroup">
                                         <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.leaveGroup')}}">
                                         @csrf
-                                        <input type='submit' name='submit' value='Leave Group' class="btn btn-success btn-block btn-text">
+                                        <input type='submit' name='submit' value='Leave Group' class="btn btn-danger btn-success btn-text joinLeave">
                                         <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
                                         <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
                                         </form>
@@ -104,7 +104,7 @@
                                         <div class="joinGroup">
                                         <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">
                                         @csrf
-                                        <input type='submit' name='submit' value='Join Group' class="btn btn-success btn-block btn-text">
+                                        <input type='submit' name='submit' value='Join Group' class="btn btn-success btn-text joinLeave">
                                         <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
                                         <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
                                         </form>
