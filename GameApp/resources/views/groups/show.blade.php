@@ -57,7 +57,7 @@
                     <ul>
                     @foreach($memberArray as $member)
                     
-                    <li><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></li>
+                    <li><b><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></b></li>
                     
                     @endforeach
                     </ul>

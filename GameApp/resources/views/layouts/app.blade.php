@@ -22,6 +22,9 @@
 
     <!-- Column sorting -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- favicon -->
+    <link rel="icon" href="{{asset('images/favicon.ico')}}" type="image/gif" sizes="16x16">
 </head>
 <body>
     <div id="app">
