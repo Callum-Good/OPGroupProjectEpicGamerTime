@@ -47,44 +47,38 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col-md-4">
+    @if($yourGroups == 0)
     <div class="yourGroupsProfileWrapper">
-        <div class="yourGroupsProfile">
-            <a href=""><h3>Your Groups</h3></a>
-            <a href=""><div class="ftdGrpProfile">
-                <img src="images/bioshock.jpg">
-                <h4>Bioshock Speed Run</h4>
-                <br>
-                <p>Top Score: 30min 2s</p>
-                <p>Player: XXxxjonnyxxXX</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile">
-            <img src="images/pubg.jpg">
-                <h4>PUBG Chicken Dinners</h4>
-                <p>Top Score: 100</p>
-                <p>Player: pbandj</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile">
-            <img src="images/minecraft.jpg">
-                <h4>Minecraft Gold Digger</h4>
-                <br>
-                <p>Top Score: 20,000 Blocks</p>
-                <p>Player: mineCraftHero</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile">
-            <img src="images/farmingSim.jpg">
-                <h4>Farming Sim Cow Tipper</h4>
-                <br>
-                <p>Top Score: 7</p>
-                <p>Player: jstdatip</p>
-            </div></a>
-            <a href=""><div class="ftdGrpProfile lastProfile">
-                <img src="images/halo5.jpg">
-                <h4>Halo 5 Legendary Speed</h4>
-                <p>Top Score: 1h 20mins</p>
-                <p>Player: cheif117</p>
-            </div></a>
+            <div class="yourGroupsProfile">
+                <h3>Your Groups</h3>
+                    <div class="ftdGrp ftdGrpProfile"  style= "height:100px">
+                    <h4>You aren't in any groups</h4>
+                    <h4>When you join a group they will appear here</h4>                     
+                    <br>
+                </div>
+               
+            </div>
         </div>
+    @else
+        <div class="yourGroupsProfileWrapper">
+            <div class="yourGroupsProfile">
+                <h3>Your Groups</h3>
+
+                @foreach($yourGroups as $g)
+                <a href="{{route('groups.show',$g->id)}}">
+                    <div class="ftdGrp ftdGrpProfile"  style= "height:100px">
+                    <h4>{{$g->name}}</h4>
+                    <img src="{{asset($g->grp_image)}}"  style= "height:60px">
+                    
+                    <br>
+                </div></a>
+                @endforeach
+            </div>
+        </div>
+    @endif
+</div>
     </div>
+  
 </div>
 @endsection
