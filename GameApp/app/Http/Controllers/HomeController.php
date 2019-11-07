@@ -36,29 +36,36 @@ class HomeController extends Controller
         $randomId = $game_ids[$randIndex];
         $featuredGame = Games::findOrFail($randomId);
         
+        
         //Scores from highest to lowest
         $top = Score::orderby('score', 'DESC')->get();
-        $scoreArray = null;
-
-        //add each score to array
-        foreach($top as $score)
-        {            
-            $user = User::findOrFail($score->user_id);
-            $game = Games::findorfail($score->game_id); 
-            
-            $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 
-            'game' => $game->title, 'gameImage' => $game->game_art, 'user_id' => $user->id, 'game_id' => $game->id];
+        $num = count($top);
         
-        }
-
-        //grabing just the top 5 scores to send to homepage
+        $scoreArray = null;
         $top5[] = null;
-        for($i=0;$i<5;$i++){
-            if($scoreArray[$i] != 0){
-                $top5[$i] = $scoreArray[$i];
+        if($num != 0){
+            //add each score to array
+            foreach($top as $score)
+            {            
+                $user = User::findOrFail($score->user_id);
+                $game = Games::findorfail($score->game_id); 
+                
+                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 
+                'game' => $game->title, 'gameImage' => $game->game_art, 'user_id' => $user->id, 'game_id' => $game->id];
+            
             }
-        }
-       
+
+            //grabing just the top 5 scores to send to homepage
+            
+            for($i=0;$i<5;$i++){
+                if($scoreArray[$i] != 0){
+                    $top5[$i] = $scoreArray[$i];
+                }
+            }
+       }
+       else{
+           $top5 = 0;
+       }
         return view('home', compact('featuredGame', 'top5'));
     }
 }

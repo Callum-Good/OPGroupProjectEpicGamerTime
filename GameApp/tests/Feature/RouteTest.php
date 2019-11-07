@@ -12,7 +12,7 @@ class ImageCheck extends TestCase
      * A basic feature test example.
      *
      * @return void
-     */
+    */
     public function testRouteEditProfile()
     {
         $response=$this->get("/editProfile");
@@ -23,5 +23,5 @@ class ImageCheck extends TestCase
     {
         $response=$this->get("/games");
         $response->assertStatus(200);
-    }
+    } 
 }
