@@ -128,8 +128,8 @@
                                     <p>Are you sure!</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" onclick="document.querySelector('#delete-form').submit()">Proceed</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" onclick="document.querySelector('#delete-form').submit()">Proceed</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                             </div>
