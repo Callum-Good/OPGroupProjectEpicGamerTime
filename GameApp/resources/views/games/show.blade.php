@@ -50,7 +50,12 @@
                 @guest
                 @else
                 <a href="{{route('games.edit',$game->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
+                @if($scoreArray != 0)
+                <!-- shows nothing -->
+                @else
+                 <!-- Shows game delete button -->
                 <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                @endif
                 @endif
                 <div class="clearfix"></div><br>
 

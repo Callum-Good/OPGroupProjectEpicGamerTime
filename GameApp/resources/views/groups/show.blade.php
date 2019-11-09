@@ -126,7 +126,12 @@ $joined = true
                             @guest
                             <!-- doesnt show join button if no one is logged in -->
                             @else
+                            @if($memberArray != 0)
+                            <!-- shows nothing -->
+                            @else
+                            <!-- Shows game delete button -->
                             <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                            @endif
                             <!--Delete button method-->
                             <div class="modal fade" id="delete-modal">
                                 <div class="modal-dialog" role="document">
