@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Games;
 use App\Score;
+use App\Traits\UploadTrait;
 
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
 {
+    use UploadTrait;
 
     public function __construct()
     {
@@ -32,6 +34,10 @@ class ScoreController extends Controller
      */
     public function create()
     {
+        if (isset($data['score_verification_image'])) {
+            $score->addMediaFromRequest('score_verification_image')->toMediaCollection('score_verification_images');
+        }
+
         return view('scores.create',[
         ]);
     }
@@ -45,7 +51,8 @@ class ScoreController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'score'=>'required'
+            'score'=>'required',
+            'score_verification_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048|required'
         ]);
 
         $score = new Score;
@@ -53,11 +60,24 @@ class ScoreController extends Controller
         $score->game_id  = $request->game_id;
         $score->user_id  = $request->user_id;
 
+        // Get image file
+        $image = $request->file('score_verification_image');
+        // Make a image name based on score name and current timestamp
+        $name = str_slug($request->input('id')).'_'.time();
+        // Define folder path
+        $folder = '/uploads/scoreImages/';
+        // Make a file path where image will be stored [ folder path + file name + file extension]
+        $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+        // Upload image
+        $this->uploadOne($image, $folder, 'public', $name);
+        // Set score profile image path in database to filePath
+        $score->score_verification_image = $filePath;
+
         $score->save();
 
         return redirect()
             ->route('games.show')
-            >with('status','Added new score');
+            ->with('status','Added new score');
     }
 
     /**
@@ -81,9 +101,11 @@ class ScoreController extends Controller
                 $user = User::findOrFail($score->user_id); 
                 $games = User::findOrFail($score->game_id); 
                 
-                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score,
-                 'score_id' => $score->id,'user_id' => $user->id,
-                'game_id'=> $games->id];
+                $scoreArray[] = ['name'=> $user->name, 
+                'score' => $score->score,
+                'score_id' => $score->id,'user_id' => $user->id,
+                'game_id'=> $games->id, 
+                'score_verification_image' => $score->score_verification_image];
             
             }
 
@@ -118,7 +140,8 @@ class ScoreController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'score'=>'required'
+            'score'=>'required',
+            'score_verification_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048|required'
         ]);
 
         $score = Score::findOrFail($id);
@@ -126,11 +149,24 @@ class ScoreController extends Controller
         $score->game_id  = $request->game_id;
         $score->user_id  = $request->user_id;
 
+        // Get image file
+        $image = $request->file('score_verification_image');
+        // Make a image name based on user name and current timestamp
+        $name = str_slug($request->input('id')).'_'.time();
+        // Define folder path
+        $folder = '/uploads/scoreImages/';
+        // Make a file path where image will be stored [ folder path + file name + file extension]
+        $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+        // Upload image
+        $this->uploadOne($image, $folder, 'public', $name);
+        // Set score score verification image path in database to filePath
+        $score->score_verification_image = $filePath;
+
         $score->save();
 
         return redirect()
             ->route('scores.show',$id)
-            >with('status','Updated score');
+            ->with('status','Updated score');
     }
 
     /**

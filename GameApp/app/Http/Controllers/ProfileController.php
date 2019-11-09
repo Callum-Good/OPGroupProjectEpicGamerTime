@@ -50,9 +50,9 @@ class ProfileController extends Controller
         // Set user name
         $user->name = $request->input('name');
         // Set email
-        $user->email  = $request->input('email');
+        $user->email = $request->input('email');
         // Set bio
-        $user->bio  = $request->input('bio');
+        $user->bio = $request->input('bio');
         // Set favorite game
         $user->favorite_game  = $request->input('favorite_game');
 

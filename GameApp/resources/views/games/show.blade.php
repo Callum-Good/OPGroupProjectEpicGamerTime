@@ -40,6 +40,9 @@
                         <th>
                             Highscore
                         </th>
+                        <th>
+                            Verification
+                        </th>
                     </tr>
                 </thead>
                 @if($scoreArray == 0)
@@ -68,6 +71,10 @@
                             <a href="{{route('scores.show',$score['score_id'])}}">
                                 {{$score['score']}}</a>
                         </td>
+                        <td>
+                            <a href="{{ $score['score_verification_image'] }}">
+                            <img src="{{asset($score['score_verification_image'])}}" style="margin: 0 auto; width: 100%;"></a>
+                        </td>
                     </tr>
                 </tbody>
                 @endforeach
@@ -89,14 +96,19 @@
 <br>
 </form>
 @else
-<form class="form-inline" action="{{route('AddScoreToGamesController.addScore')}}" method="POST">
+<form class="form-inline" action="{{route('AddScoreToGamesController.addScore')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
-    <div><input type="text" name="score" id="title" class="form-control {{$errors->has('score') ? 'is-invalid' : '' }}" value="{{old('score')}}" placeholder="Enter Highscore">
+    <div>
+        <input type="text" name="score" id="title" class="form-control {{$errors->has('score') ? 'is-invalid' : '' }}" value="{{old('score')}}" placeholder="Enter Highscore">
         @if($errors->has('score')) {{-- <-check if we have a validation error --}}
         <span class="invalid-feedback">
             {{$errors->first('score')}} {{-- <- Display the First validation error --}}
         </span>
         @endif
+        <label for="score_verification_image" class="col-md-4 col-form-label text-md-right">Score verification image</label>
+            <div class="col-md-6">
+                <input id="score_verification_image" type="file" class="form-control file" name="score_verification_image">
+            </div>
         <input type='hidden' name='user_id' value='{{Auth::user()->id}}'>
         <!--Sends to next page-->
         <input type='hidden' name='game_id' value='{{$game->id}}'>
