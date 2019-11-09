@@ -1,11 +1,8 @@
 /*main content*/
-
-.py-4 {
-    width: 90%;
-    margin: 0 auto;
-    /*background-color: #fffafa;
-    border-left: #00ff37 solid 5px;
-    border-right: #00ff37 solid 5px;*/
+.py-4
+{
+    width:85%;
+    margin:0 auto;
     padding: 15px;
 }
 
@@ -287,12 +284,17 @@ a:hover {
     vertical-align: middle;
     width: 225px;
     border-radius: 10px;
-    background-image: linear-gradient(to bottom right, rgb(65, 63, 63), rgb(9, 105, 6));
+    /*background-image: linear-gradient(to bottom right, rgb(65, 63, 63), rgb(9, 105, 6));*/
+    background-color: #e3dede;
     padding: 15px;
     float: left;
     text-align: center;
     border: solid black;
     min-height: 280px;
+    margin-left: 7%;
+    margin-top: 10px;
+
+
 }
 
 .profile img {
@@ -305,24 +307,28 @@ a:hover {
 
 .profile h1 {
     font-size: 30px;
-    color: white;
+    color: black;
 }
 
 .profile h2 {
     font-size: 20px;
-    color: white;
+    color: black;
 }
 
-.profile p,
-.profile a {
-    color: rgb(180, 236, 255);
+.profile p, .profile a{
+    color: rgb(7, 193, 255);
 }
 
 .bio {
     width: 400px;
     float: left;
-    margin-left: 15px;
-    background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
+
+    /*background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));*/
+    background-color: #ebe5e5;
+
+    margin-left: 7%;
+    margin-top: 10px;
+
     padding: 5px;
     border-radius: 10px;
     border: solid black;
@@ -333,21 +339,22 @@ a:hover {
 .bio p {
     clear: left;
     overflow-wrap: break-word;
-    color: rgb(180, 236, 255);
+    color: rgb(0, 0, 0);
 }
 
 .bio h2 {
     font-size: 20px;
-    color: white;
+    color: rgb(0, 0, 0);
     float: left;
 }
 
-.yourGroupsProfileWrapper {
-    width: 100%;
+.yourGroupsProfileWrapper{
+    width: 300px;
     text-align: center;
 }
 
-.yourGroupsProfile {
+
+.yourGroupsProfile{
     width: 80%;
     text-align: center;
     border: solid rgb(0, 0, 0) 2px;
@@ -369,22 +376,16 @@ a:hover {
     border-top-left-radius: 10px;
 }
 
-.ftdGrpProfile {
-    border-right: solid #ffffff 2px;
-    padding-bottom: 5px;
-    float: left;
-    width: 20%;
-    min-height: 130px;
+.ftdGrpProfile{
+    
 }
 
 .lastProfile {
     border: none;
 }
 
-.ftdGrpProfile img {
-    width: 40%;
-    float: left;
-    margin: 5px;
+.ftdGrpProfile img{
+   margin-left: 30%
 }
 
 .yourGroupsProfile h4 {
@@ -406,6 +407,7 @@ a:hover {
 
 .update {
     clear: left;
+    margin-left: 11%;
 }
 
 
@@ -512,9 +514,9 @@ p {
 
 
 /*Group page styles*/
-
-.groupDescription {
-    background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));
+.groupDescription{
+    /*background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));*/
+    background-color: #e3dede;
     padding: 20px;
     border-radius: 10px;
     border: solid black;
@@ -527,14 +529,12 @@ p {
     border-radius: 10px;
     border: solid black;
 }
-
-.groupDescription p {
-    color: #ffffff;
-    font-size: 20px;
+.groupDescription p{
+    color: black;
+    font-size:  20px;
 }
-
-.groupDescription h3 {
-    color: #ffffff;
+.groupDescription h3{
+    color: black;
     font-weight: bold;
 }
 
@@ -564,36 +564,24 @@ p {
     border-radius: .25rem;
     transition: color .15s;
     overflow: visible;
-    margin: 35px;
-    width: 460px;
-    height: auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: 20px;
+    width: 400px;
+    margin-right: 40px;
 }
 
 .btn-text {
     font-size: 40px;
 }
-
-h2.groupText {
-    color: white;
+h2.groupText{
+    color: black;
     float: left;
     font-size: 30px;
 }
-
-.groupDescription li a {
-    color: white;
+.groupDescription li a{
+    color: blue;
 }
-
-.col-centered {
-    float: none;
-    margin: 0 auto;
-}
-
-.inputGame {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.joinLeave{
+    width: 400px;
 }

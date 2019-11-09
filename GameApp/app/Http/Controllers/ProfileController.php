@@ -19,14 +19,14 @@ class ProfileController extends Controller
 
     public function viewProfile()
     {
-        $yourGroups[] = null;
+        $yourGroups = null;
         $groups = UserGroup::where('user_id', auth()->user()->id)->get();
         
         foreach($groups as $g){
             $grp = Groups::findorfail($g->group_id);
             $yourGroups[] = $grp;
         }
-        
+        //dd($yourGroups);
         return view('auth.profile', compact('yourGroups'));
     }
 
@@ -50,9 +50,9 @@ class ProfileController extends Controller
         // Set user name
         $user->name = $request->input('name');
         // Set email
-        $user->email  = $request->input('email');
+        $user->email = $request->input('email');
         // Set bio
-        $user->bio  = $request->input('bio');
+        $user->bio = $request->input('bio');
         // Set favorite game
         $user->favorite_game  = $request->input('favorite_game');
 

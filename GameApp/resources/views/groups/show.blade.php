@@ -33,13 +33,13 @@ $joined = true
     <br>
     <a href="{{route('groups.edit',$group->id)}}" class="btn btn-primary float-right">Update</a>
     <br><br>-->
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>
-                {{$group->name}}
-            </h2>
-
+    <div class="container-fluid py-4">
+	<div class="row">
+		<div class="col-md-12">
+        <h2>
+                    {{$group->name}}
+			</h2>
+            
             <!--
      checking for update message
     -->
@@ -59,104 +59,86 @@ $joined = true
                         Group Game:<br></p>
                     <h2 class="groupText">{{$group->game_id}}</h2><br><br><br>
                     <p>Group type:<br></p>
-                    <h2 class="groupText">{{$group->type}}</h2><br><br>
-                    <hr>
-                    <h2 class="groupText">Description:</h2><br><br>
+                    <h2 class="groupText">{{$group->type}}</h2><br><br><hr>
+                    <h3 class="groupText">Description:</h3><br><br>
                     <p>{{$group->description}}
                     </p>
                     <hr>
                     <div>
-                        <h2 class="groupText">Members:</h2><br><br><br>
-                        @if($memberArray == 0)
-                        <!-- shows nothing -->
-                        @else
-                        <!-- Shows all member things -->
-                        <!-- Shows each member in Group -->
-                        <ul>
-                            @foreach($memberArray as $member)
-
-                            <li><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></li>
-
-                            @endforeach
-                        </ul>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img src="{{asset($group->grp_image)}}" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
+                <h3 class="groupText">Members:</h3><br><br><br>
+                    @if($memberArray == 0)
+                    <!-- shows nothing -->
+                    @else <!-- Shows all member things -->
+                    <!-- Shows each member in Group -->
+                    <ul>
+                    @foreach($memberArray as $member)
+                    
+                    <li><b><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></b></li>
+                    
+                    @endforeach
+                    </ul>
+                    @endif
+				</div>
+				</div>
+				<div class="col-md-4">
+					<div class="row">
+						<div class="col-md-12">
+                        <img src="{{asset($group->grp_image)}}" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
+						</div>
+					</div>
+					<div class="row">
+                    <div class="col-md-12 ">
+                
+                    <a href="{{route('groups.edit',$group->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
+                        <br><br>
                             @guest
-                            <!-- doesnt show join button if no one is logged in -->
-                            @else
-                            <a href="{{route('groups.edit',$group->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
-                            <br><br>
+                                <!-- doesnt show join button if no one is logged in -->
+                                @else 
+                                    @if($joined==true)<!-- Checks to see if user in group, changes join button to leave -->
+                                        <div class="joinGroup">
+                                        <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.leaveGroup')}}">
+                                        @csrf
+                                        <input type='submit' name='submit' value='Leave Group' class="btn btn-danger btn-success btn-text joinLeave">
+                                        <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
+                                        <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
+                                        </form>
+                                        </div>
+                                    @else<!-- shows join button when logged in -->
+                                        <div class="joinGroup">
+                                        <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">
+                                        @csrf
+                                        <input type='submit' name='submit' value='Join Group' class="btn btn-success btn-text joinLeave">
+                                        <input type = 'hidden' name='user_id' value='{{Auth::user()->id}}'> <!--Sends to next page-->
+                                        <input type = 'hidden' name='group_id' value='{{$group->id}}'> <!--Sends to next page-->
+                                        </form>
+                                        </div>
+                                    @endif
+                            @endif
+                        <br><br>
 
-                            @if($joined==true)
-                            <!-- Checks to see if user in group, changes join button to leave -->
-                            <div class="joinGroup">
-                                <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.leaveGroup')}}">
-                                    @csrf
-                                    <input type='submit' name='submit' value='Leave Group' class="btn btn-success btn-block btn-text">
-                                    <input type='hidden' name='user_id' value='{{Auth::user()->id}}'>
-                                    <!--Sends to next page-->
-                                    <input type='hidden' name='group_id' value='{{$group->id}}'>
-                                    <!--Sends to next page-->
-                                </form>
-                            </div>
-                            @else
-                            <!-- shows join button when logged in -->
-                            <div class="joinGroup">
-                                <form method="POST" id="delete-form" class="deleteF" action="{{route('AddUsersToGroup.joinGroup')}}">
-                                    @csrf
-                                    <input type='submit' name='submit' value='Join Group' class="btn btn-success btn-block btn-text">
-                                    <input type='hidden' name='user_id' value='{{Auth::user()->id}}'>
-                                    <!--Sends to next page-->
-                                    <input type='hidden' name='group_id' value='{{$group->id}}'>
-                                    <!--Sends to next page-->
-                                </form>
-                            </div>
-                            @endif
-                            @endif
-                            <br><br>
-                            @guest
-                            <!-- doesnt show join button if no one is logged in -->
-                            @else
-                            @if($memberArray != 0)
-                            <!-- shows nothing -->
-                            @else
-                            <!-- Shows game delete button -->
-                            <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
-                            @endif
-                            <!--Delete button method-->
-                            <div class="modal fade" id="delete-modal">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Delete Group</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-description">
-                                            <p>Are you sure!</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" onclick="document.querySelector('#delete-form').submit()">Proceed</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                                        </div>
-                                    </div>
+                        <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                        <!--Delete button method-->
+                        <div class="modal fade" id="delete-modal">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Delete Group</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-description">
+                                    <p>Are you sure!</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="document.querySelector('#delete-form').submit()">Proceed</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                             <form method="POST" id="delete-form" class="deleteF" action="{{route('groups.destroy',$group->id)}}" class="hide">
                                 @csrf
                                 @method('DELETE')
                             </form>
-                            @endif
                             <!--Delete button method END-->
                         </div>
                     </div>
