@@ -121,14 +121,14 @@ class GamesController extends Controller
         $game = Games::findOrFail($id);
 
         //find scores in game
-        $scores = Score::where('game_id',$game->id)->get();
+        $scores = Score::where('game_id',$game->id)->orderBy('score', 'desc')->get();
 
         //add each score to array
             foreach($scores as $score)
             {            
                 $user = User::findOrFail($score->user_id); 
                 
-                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 'score_id' => $score->id,'user_id' => $user->id];
+                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 'score_id' => $score->id,'user_id' => $user->id, 'score_verification_image' => $score->score_verification_image];
             
             }
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <!--<h2 class="text-center">{{$group->name}}</h2>
+<!--<h2 class="text-center">{{$group->name}}</h2>
 
         <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
     <div class="grpimgFeature">
@@ -8,22 +8,24 @@
     </div>
   
     <!-- checking if anyone in group -->
-    @if($memberArray == 0)
-    <!-- shows nothing -->
-    @else <!-- Shows all member things -->
-    <!-- Shows each member in Group -->
-    
-    <!-- Checks to see if logged in user is currently in group -->
-    @foreach($memberArray as $member)
-        @guest
-        <!-- Does nothing if no one logged in -->
-        @elseif(Auth::user()->id == $member->id) <!-- if is in group set joined to true -->
-        @php 
-        $joined = true    
-        @endphp  
-        @endif      
-    @endforeach  
-    @endif
+@if($memberArray == 0)
+<!-- shows nothing -->
+@else
+<!-- Shows all member things -->
+<!-- Shows each member in Group -->
+
+<!-- Checks to see if logged in user is currently in group -->
+@foreach($memberArray as $member)
+@guest
+<!-- Does nothing if no one logged in -->
+@elseif(Auth::user()->id == $member->id)
+<!-- if is in group set joined to true -->
+@php
+$joined = true
+@endphp
+@endif
+@endforeach
+@endif
 <!-- End of member checks -->
 <!--
     <p>{{$group->description}}</p>
@@ -41,26 +43,27 @@
             <!--
      checking for update message
     -->
-<div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
+            <div class="flash-message">
+                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                @if(Session::has('alert-' . $msg))
 
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
-    @endforeach
-  </div> <!-- end .flash-message -->
+                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                @endif
+                @endforeach
+            </div> <!-- end .flash-message -->
 
-			<div class="row">
+            <div class="row">
 
-				<div class="col-md-8 groupDescription">					
-					<p>
-                    Group Game:<br></p>
+                <div class="col-md-8 groupDescription">
+                    <p>
+                        Group Game:<br></p>
                     <h2 class="groupText">{{$group->game_id}}</h2><br><br><br>
                     <p>Group type:<br></p>
                     <h2 class="groupText">{{$group->type}}</h2><br><br><hr>
                     <h3 class="groupText">Description:</h3><br><br>
                     <p>{{$group->description}}
-					</p><hr>
+                    </p>
+                    <hr>
                     <div>
                 <h3 class="groupText">Members:</h3><br><br><br>
                     @if($memberArray == 0)
@@ -132,20 +135,18 @@
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
-                            </div>
+                            <form method="POST" id="delete-form" class="deleteF" action="{{route('groups.destroy',$group->id)}}" class="hide">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                            <!--Delete button method END-->
                         </div>
-                        <form method="POST" id="delete-form" class="deleteF" action="{{route('groups.destroy',$group->id)}}" class="hide">
-                            @csrf
-                            @method('DELETE')
-                        </form>
-                        <!--Delete button method END-->
-				</div>
-			</div>
-		
-				</div>
-			</div>
-		</div>
-	</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
