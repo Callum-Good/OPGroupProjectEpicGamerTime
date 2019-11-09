@@ -47,8 +47,11 @@
         <div class="row">
             <div class="col-md-12">
                 <br>
+                @guest
+                @else
                 <a href="{{route('games.edit',$game->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
                 <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                @endif
                 <div class="clearfix"></div><br>
 
                 <div class="modal fade" id="delete-modal">

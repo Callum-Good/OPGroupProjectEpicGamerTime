@@ -90,12 +90,12 @@ $joined = true
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            
-                            <a href="{{route('groups.edit',$group->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
-                            <br><br>
                             @guest
                             <!-- doesnt show join button if no one is logged in -->
                             @else
+                            <a href="{{route('groups.edit',$group->id)}}" class="btn-success btn-block groupbtns btn-text">Update</a>
+                            <br><br>
+
                             @if($joined==true)
                             <!-- Checks to see if user in group, changes join button to leave -->
                             <div class="joinGroup">
@@ -123,7 +123,9 @@ $joined = true
                             @endif
                             @endif
                             <br><br>
-
+                            @guest
+                            <!-- doesnt show join button if no one is logged in -->
+                            @else
                             <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
                             <!--Delete button method-->
                             <div class="modal fade" id="delete-modal">
@@ -149,6 +151,7 @@ $joined = true
                                 @csrf
                                 @method('DELETE')
                             </form>
+                            @endif
                             <!--Delete button method END-->
                         </div>
                     </div>
