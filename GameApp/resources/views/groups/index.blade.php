@@ -52,6 +52,6 @@
         </div>
 
     <div class="d-flex justify-content-center">
-        {{$groups->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
+        {{$groups->appends(Request::all())->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
     </div>
 @endsection
