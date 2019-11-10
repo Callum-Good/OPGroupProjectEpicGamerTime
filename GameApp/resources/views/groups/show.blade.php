@@ -116,29 +116,38 @@ $joined = true
                             @endif
                         <br><br>
 
-                        <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
-                        <!--Delete button method-->
-                        <div class="modal fade" id="delete-modal">
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Delete Group</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-description">
-                                    <p>Are you sure!</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" onclick="document.querySelector('#delete-form').submit()">Proceed</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                                </div>
+                @if($memberArray != 0)
+                <!-- shows nothing -->
+                @else
+                 <!-- Shows group delete button -->
+                <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                @endif
+                <div class="clearfix"></div><br>
+
+                <div class="modal fade" id="delete-modal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Delete Group</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <form method="POST" id="delete-form" class="deleteF" action="{{route('groups.destroy',$group->id)}}" class="hide">
-                                @csrf
-                                @method('DELETE')
-                            </form>
+                            <div class="modal-description">
+                                <br>
+                                <h3 align="middle">Are you sure?</h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick="document.querySelector('#delete-form').submit()">Proceed</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form method="POST" id="delete-form" class="deleteF" action="{{route('groups.destroy',$group->id)}}" class="hide">
+                    @csrf
+                    @method('DELETE')
+                </form>
                             <!--Delete button method END-->
                         </div>
                     </div>
