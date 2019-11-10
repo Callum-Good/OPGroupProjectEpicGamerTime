@@ -214,6 +214,7 @@ class GroupsController extends Controller
     {
         //
         $groups = Groups::findOrFail($id);
+        
         $groups->delete();
 
         //Redirect to a specified route with flash message.
