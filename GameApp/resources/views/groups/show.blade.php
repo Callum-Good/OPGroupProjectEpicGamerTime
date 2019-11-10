@@ -123,12 +123,15 @@ $joined = true
                             @endif
                             @endif
                             <br><br>
-
+                            @guest
+                            <!-- doesnt show join button if no one is logged in -->
+                            @else
                             @if($memberArray != 0)
                             <!-- shows nothing -->
                             @else
                             <!-- Shows group delete button -->
                             <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
+                            @endif
                             @endif
                             <div class="clearfix"></div><br>
 

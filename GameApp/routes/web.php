@@ -52,5 +52,3 @@ Route::resource('/users', 'UserController');
 
 Route::resource('/scores', 'ScoreController');
 
-
-
