@@ -83,7 +83,7 @@ $joined = true
 		<div class="col-md-4">
 			<div class="row">
 				<div class="col-md-12">
-                        <img src="{{asset($group->grp_image)}}" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
+                        <img src="{{asset($group->grp_image)}}" alt="group picture" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
 				</div>
 			</div>
 			<div class="row">

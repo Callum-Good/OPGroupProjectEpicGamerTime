@@ -38,7 +38,7 @@
         
         {{$featuredGame->title}}
         </h3>
-         <img class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:450px">
+         <img alt="featured game image" class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:450px">
     </div> </a>
 
     @if($top5!=0)
@@ -49,7 +49,7 @@
             
             <a href="{{route('games.show',$t['game_id'])}}">
                 <div class="ftdGrp">
-                    <img src="{{asset($t['gameImage'])}}"style= "height:70px">
+                    <img alt="image of game that has high score" src="{{asset($t['gameImage'])}}"style= "height:70px">
                     
                     <h4>{{$t['game']}}</h4>
                     <p>Top Score: {{$t['score']}}</p>

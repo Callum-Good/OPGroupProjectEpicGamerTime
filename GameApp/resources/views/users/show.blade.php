@@ -10,9 +10,9 @@
             <div class="profileWrapper">
                 <div class="profile">
                     @if ($user->image)
-                        <img src="{{ asset($user->image) }}">
+                        <img alt="profile picture" src="{{ asset($user->image) }}">
                     @else
-                        <img id="dp" src="{{ asset('images/default.jpg') }}">
+                        <img id="dp" alt="default profile picture" src="{{ asset('images/default.jpg') }}">
                     @endif
                     <h1>{{ $user->name }}</h2>
                     <h2>Favorite Game:</h2>
@@ -59,7 +59,7 @@
                 <a href="{{route('groups.show',$g->id)}}">
                     <div class="ftdGrp ftdGrpProfile"  style= "height:100px">
                     <h4>{{$g->name}}</h4>
-                    <img src="{{asset($g->grp_image)}}"  style= "height:60px">
+                    <img alt="image of group user belongs to" src="{{asset($g->grp_image)}}"  style= "height:60px">
                     
                     <br>
                 </div></a>

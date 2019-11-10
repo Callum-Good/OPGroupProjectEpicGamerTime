@@ -41,7 +41,7 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{asset($game->game_art)}}" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
+                <img src="{{asset($game->game_art)}}" alt="picture of game" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
             </div>
         </div>
         <div class="row">
