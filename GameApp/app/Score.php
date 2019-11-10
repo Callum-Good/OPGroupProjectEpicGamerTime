@@ -28,7 +28,7 @@ class Score extends Model
      * @var array
      */
     protected $fillable = [
-        'score'
+        'score', 'score_verification_image'
     ];
     public function users()
     {
