@@ -53,7 +53,7 @@
                 @if($scoreArray != 0)
                 <!-- shows nothing -->
                 @else
-                 <!-- Shows game delete button -->
+                <!-- Shows game delete button -->
                 <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
                 @endif
                 @endif
@@ -132,7 +132,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ $score['score_verification_image'] }}">
-                                    <img src="{{asset($score['score_verification_image'])}}" style="margin: 0 auto; width: 30%;"></a>
+                                        <img src="{{asset($score['score_verification_image'])}}" style="margin: 0 auto; width: 30%;"></a>
                                 </td>
                             </tr>
                         </tbody>
