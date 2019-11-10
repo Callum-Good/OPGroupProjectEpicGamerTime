@@ -280,7 +280,7 @@ a:hover {
 
 /*profile page*/
 
-.profile {
+.profile{
     vertical-align: middle;
     width: 225px;
     border-radius: 10px;
@@ -297,7 +297,7 @@ a:hover {
 
 }
 
-.profile img {
+.profile img{
     width: 150px;
     border-radius: 10px;
     display: block;
@@ -305,12 +305,12 @@ a:hover {
     border: solid black;
 }
 
-.profile h1 {
+.profile h1{
     font-size: 30px;
     color: black;
 }
 
-.profile h2 {
+.profile h2{
     font-size: 20px;
     color: black;
 }
@@ -319,8 +319,8 @@ a:hover {
     color: rgb(7, 193, 255);
 }
 
-.bio {
-    width: 400px;
+.bio{
+    width: 50%;
     float: left;
 
     /*background-image: linear-gradient(to bottom right, rgb(128, 121, 121), rgb(9, 105, 6));*/
@@ -336,13 +336,13 @@ a:hover {
     vertical-align: center;
 }
 
-.bio p {
+.bio p{
     clear: left;
     overflow-wrap: break-word;
     color: rgb(0, 0, 0);
 }
 
-.bio h2 {
+.bio h2{
     font-size: 20px;
     color: rgb(0, 0, 0);
     float: left;
@@ -365,10 +365,10 @@ a:hover {
     border-radius: 10px;
 }
 
-.yourGroupsProfile h3 {
+.yourGroupsProfile h3{
     color: #ffffff;
     background-color: #000;
-    margin: 0;
+    margin:0;
     font-size: 30px;
     font-weight: bold;
     font-variant: small-caps;
@@ -380,7 +380,7 @@ a:hover {
     
 }
 
-.lastProfile {
+.lastProfile{
     border: none;
 }
 
@@ -388,24 +388,26 @@ a:hover {
    margin-left: 30%
 }
 
-.yourGroupsProfile h4 {
+.yourGroupsProfile h4{
     color: #000000;
     font-weight: bold;
     margin: 0;
     font-size: 100%;
     padding-top: 10px;
+
+
 }
 
-.ftdGrpProfile p {
+.ftdGrpProfile p{
     color: #000000;
-    margin: 0;
+    margin:0;
 }
 
-.profileWrapper a {
+.profileWrapper a{
     margin-top: 5px;
 }
 
-.update {
+.update{
     clear: left;
     margin-left: 11%;
 }
