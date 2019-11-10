@@ -43,7 +43,7 @@ class HomeController extends Controller
         
         $scoreArray = null;
         $top5[] = null;
-        if($num != 0){
+        if($num != 0){ //checking if no scores in database
             //add each score to array
             foreach($top as $score)
             {            
@@ -56,16 +56,22 @@ class HomeController extends Controller
             }
 
             //grabing just the top 5 scores to send to homepage
-            
-            for($i=0;$i<5;$i++){
-                if($scoreArray[$i] != 0){
-                    $top5[$i] = $scoreArray[$i];
+            if($num < 5){
+                $top5 = $scoreArray;
+            }
+            else{
+                for($i=0;$i<5;$i++){
+                    if($scoreArray[$i] != 0){
+                        $top5[$i] = $scoreArray[$i];
+                    }
                 }
             }
+            
        }
        else{
            $top5 = 0;
        }
+
         return view('home', compact('featuredGame', 'top5'));
     }
 }
