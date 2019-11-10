@@ -158,10 +158,10 @@
         <form class="form-group deleteF" action="{{route('AddScoreToGamesController.addScore')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <div>
-                <input type="text" name="score" id="title" class="form-control inputGame" value="{{old('score')}}" placeholder="Enter Highscore"><br>
+                <input type="text" name="score" id="title" class="form-control inputGame" value="{{old('score')}}" placeholder="Enter Highscore" required><br>
 
                 <p>Please upload an image in order to verify your score: </p>
-                <input id="score_verification_image" type="file" class="form-control file" enctype="multipart/form-data" name="score_verification_image"><br>
+                <input id="score_verification_image" type="file" class="form-control file" enctype="multipart/form-data" name="score_verification_image" required><br>
                 <input type='hidden' name='user_id' value='{{Auth::user()->id}}'>
                 <!--Sends to next page-->
                 <input type='hidden' name='game_id' value='{{$game->id}}'>
