@@ -32,15 +32,20 @@
         </ul>
     </div>
         @endif
+
+    @if(is_null($featuredGame))
     
+   
+    <h3>there are no games!</h3>
+    
+    @else
     <a href="{{route('games.show',$featuredGame->id)}}"><div class="featuredGame">
         <h3>
-        
         {{$featuredGame->title}}
         </h3>
          <img class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:450px">
     </div> </a>
-
+    @endif
     @if($top5!=0)
         <div class="yourGroups">
             <h3>High Scores</h3>
