@@ -54,6 +54,7 @@ class ScoreController extends Controller
         $score->score = $request->input('score');
         $score->game_id  = $request->game_id;
         $score->user_id  = $request->user_id;
+        $id = $score->game_id;
 
         // Get image file
         $image = $request->file('score_verification_image');
