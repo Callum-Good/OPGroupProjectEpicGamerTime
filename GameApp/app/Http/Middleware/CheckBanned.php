@@ -11,9 +11,9 @@ class CheckBanned
         if (auth()->check() && auth()->user()->votes_to_ban >= 2) {
             auth()->logout();
                 
-            $bannedMessage = 'Your account has been suspended.';
+            session()->flash('alert-success', "Two people have voted to ban you, and subsequently your account has been blocked.");
 
-            return redirect()->route('home')->with($bannedMessage);
+            return redirect()->route('home')->with('status', 'Two people have voted to ban you, and subsequently your account has been blocked.');
         }
 
         return $next($request);

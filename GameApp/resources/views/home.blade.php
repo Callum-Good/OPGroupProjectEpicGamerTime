@@ -3,8 +3,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        @if (session('bannedMessage'))
-            <div class="alert alert-danger">{{ session('bannedMessage') }}</div>
+        @if (session('status'))
+            <div class="alert alert-primary" role="alert">
+                <p>{{ session('status') }}</p>
+            </div>
         @endif
 
         @guest
