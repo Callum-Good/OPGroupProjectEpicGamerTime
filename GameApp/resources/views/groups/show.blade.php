@@ -74,9 +74,11 @@ $joined = true
                         <!-- Shows each member in Group -->
                         <ul>
                             @foreach($memberArray as $member)
-
-                            <li><b><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></b></li>
-
+                                @if ((Auth::check()) && ($member->id == Auth::user()->id))
+                                    <li><b><a href="{{route('profile')}}">{{$member->name}}</a></b></li>
+                                @elseif ($member->votes_to_ban < 2)
+                                    <li><b><a href="{{route('users.show',$member->id)}}">{{$member->name}}</a></b></li>
+                                @endif
                             @endforeach
                         </ul>
                         @endif
