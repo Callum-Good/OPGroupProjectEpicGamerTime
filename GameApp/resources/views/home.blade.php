@@ -15,32 +15,26 @@
             
         </div>
     </div>
-        @guest
-    <div class="homeMenu">
-        <ul class="homeList">
-            <li><a href="{{ route('login') }}">Login</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
-            <li><a href="{{ route('games.index') }}">Browse Games</a></li>
-            <li><a href="{{ route('groups.index') }}">Browse Groups</a></li>
-        </ul>
-    </div>
-        @else
     <div class="homeMenulog">
         <ul class="homeList">
             <li><a href="{{ route('games.index') }}">Browse Games</a></li>
             <li><a href="{{ route('groups.index') }}">Browse Groups</a></li>
         </ul>
     </div>
-        @endif
+
+    @if(is_null($featuredGame))
     
+   
+    <h3>there are no games!</h3>
+    
+    @else
     <a href="{{route('games.show',$featuredGame->id)}}"><div class="featuredGame">
         <h3>
-        
         {{$featuredGame->title}}
         </h3>
          <img alt="featured game image" class="featuredGame" src="{{asset($featuredGame->game_art)}}"style= "height:450px">
     </div> </a>
-
+    @endif
     @if($top5!=0)
         <div class="yourGroups">
             <h3>High Scores</h3>

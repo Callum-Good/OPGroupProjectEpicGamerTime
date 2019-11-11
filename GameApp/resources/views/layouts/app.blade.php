@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,6 +27,7 @@
     <!-- favicon -->
     <link rel="icon" href="{{asset('images/favicon.ico')}}" type="image/gif" sizes="16x16">
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -41,68 +43,70 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                          <!--ADDING and VIEWING GAMES-->
-                          <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Games <span class="caret"></span>
-                                </a>
+                        <!--ADDING and VIEWING GAMES-->
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Games <span class="caret"></span>
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('games.index') }}"
-                                      >View Games
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('games.create') }}"
-                                      >Add New Games
-                                    </a>
-</div>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('games.index') }}">View Games
+                                </a>
+                                @guest
+                                <!-- doesnt show join button if no one is logged in -->
+                                @else
+                                <a class="dropdown-item" href="{{ route('games.create') }}">Add New Games
+                                </a>
+                                @endif
+                            </div>
                             <!--ADDING and VIEWING GROUPS-->
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Groups <span class="caret"></span>
-                                </a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Groups <span class="caret"></span>
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('groups.index') }}"
-                                      >View Groups
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('groups.create') }}"
-                                      >Add New Groups
-                                    </a>
-                                    
-</div>
-</li>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('groups.index') }}">View Groups
+                                </a>
+                                @guest
+                                <!-- doesnt show join button if no one is logged in -->
+                                @else
+                                <a class="dropdown-item" href="{{ route('groups.create') }}">Add New Groups
+                                </a>
+                                @endif
+                            </div>
+                        </li>
 
                         <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Users <span class="caret"></span>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Users <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('users.index') }}">View Users
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('users.index') }}"
-                                      >View Users
-                                    </a>
-                                    
-</div>
-</li>
+                            </div>
+                        </li>
                     </ul>
 
-                   
+
 
                     <!-- Right Side Of Navbar -->
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
+                    <!-- Authentication Links -->
+                    @guest
+                    <li class="nav-item">
 
-                                <a class="nav-link"  data-toggle="modal" data-target="#masuk" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <!-- POPUP LOGIN -->
-                            <div class="modal fade" id="masuk" role="dialog">
-                                <div class="modal-dialog">
-                                <div class="modal-content">
+                        <a class="nav-link" data-toggle="modal" data-target="#masuk" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    </li>
+                    <!-- POPUP LOGIN -->
+                    <div class="modal fade" id="masuk" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
                                 <div class="modal-header">
-                                <h4 style="{float: left;}" class="modal-title">LOG IN</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button> 
-                                
+                                    <h4 style="{float: left;}" class="modal-title">LOG IN</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
 
                                 </div>
 
@@ -116,9 +120,9 @@
                                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                                 @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -130,9 +134,9 @@
                                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                                 @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
                                                 @enderror
                                             </div>
                                         </div>
@@ -156,52 +160,51 @@
                                                 </button>
 
                                                 @if (Route::has('password.request'))
-                                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                        {{ __('Forgot Your Password?') }}
-                                                    </a>
+                                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                    {{ __('Forgot Your Password?') }}
+                                                </a>
                                                 @endif
                                             </div>
                                         </div>
                                     </form>
-                                    </div>
-                                    <div class="modal-footer">
+                                </div>
+                                <div class="modal-footer">
                                     <button type="button" class="btn btn-prmary m-t-10" data-dismiss="modal">Close</button>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                              <!-- END POPUP LOGIN -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END POPUP LOGIN -->
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            @if (auth()->user()->image)
+                            <img src="{{ asset(auth()->user()->image) }}" style="width: 40px; height: 40px; border-radius: 50%;">
                             @endif
-                        @else
-                            <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @if (auth()->user()->image)
-                                    <img src="{{ asset(auth()->user()->image) }}" style="width: 40px; height: 40px; border-radius: 50%;">
-                                @endif
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('profile') }}">
+                                Profile
+                            </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('profile') }}">
-                                        Profile
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                     </ul>
                 </div>
             </div>
@@ -212,4 +215,5 @@
         </main>
     </div>
 </body>
+
 </html>

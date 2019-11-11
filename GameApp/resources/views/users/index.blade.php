@@ -39,6 +39,6 @@
 </table>
 
     <div class="d-flex justify-content-center">
-        {{$users->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
+        {{$users->appends(Request::all())->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
     </div>
 @endsection

@@ -49,6 +49,6 @@
 
 
     <div class="d-flex justify-content-center">
-        {{$games->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
+        {{$games->appends(Request::all())->links('vendor.pagination.bootstrap-4')}} {{-- <- custom pagination view --}}
     </div>
 @endsection

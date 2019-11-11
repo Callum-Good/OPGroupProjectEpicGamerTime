@@ -58,7 +58,7 @@ class ScoreController extends Controller
         // Get image file
         $image = $request->file('score_verification_image');
         // Make a image name based on score name and current timestamp
-        $name = str_slug($request->input('id')).'_'.time();
+        $name = str_slug($request->input('score').'_'.time());
         // Define folder path
         $folder = '/uploads/scoreImages/';
         // Make a file path where image will be stored [ folder path + file name + file extension]

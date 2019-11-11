@@ -32,9 +32,16 @@ class HomeController extends Controller
         //Find random game to be featured each time page is loaded
         $game_ids = $games->pluck('id')->all();
         $max = count($game_ids);
-        $randIndex = array_rand($game_ids);
-        $randomId = $game_ids[$randIndex];
-        $featuredGame = Games::findOrFail($randomId);
+        
+        if(empty($max)){
+            $featuredGame = null; 
+        }
+        else{
+            $randIndex = array_rand($game_ids);
+            $randomId = $game_ids[$randIndex];
+            $featuredGame = Games::findOrFail($randomId);
+        }
+        
         
         
         //Scores from highest to lowest
