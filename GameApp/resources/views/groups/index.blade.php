@@ -17,7 +17,7 @@
 
   
 
-    <p class="gInfo">@sortablelink('name') | @sortablelink('game_id') | 
+    <p class="gInfo">@sortablelink('name') | 
     @sortablelink('type') | @sortablelink('description')</p>
 
     <div class="tableRow">
@@ -35,7 +35,7 @@
     </div>
     <div class="card-body">
       <h3 >{{$group->name}}</h3>
-      <p class="gInfo">{{$group->type}} | {{$group->game_id}} </p>
+      <p class="gInfo">{{$group->type}} </p>
       <ul>
     <li class="tableListItem">{{str_limit($group->description,40)}}</li>
     </ul>     
