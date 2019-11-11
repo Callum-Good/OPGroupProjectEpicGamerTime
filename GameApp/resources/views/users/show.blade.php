@@ -17,7 +17,7 @@
                     <h1>{{ $user->name }}</h2>
                     <h2>Favorite Game:</h2>
                     @if ($user->favorite_game)
-                        <p><a href="">{{ $user->favorite_game }}</a></p>
+                        <p>{{ $user->favorite_game }}</p>
                     @else
                         <p><i>No favorite game</i></p>
                     @endif

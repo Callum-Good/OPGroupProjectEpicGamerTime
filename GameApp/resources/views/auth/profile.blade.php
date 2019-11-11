@@ -27,7 +27,7 @@
                     <h1>{{ Auth::user()->name }}</h2>
                     <h2>Favorite Game:</h2>
                     @if (auth()->user()->favorite_game)
-                        <p><a href="">{{ Auth::user()->favorite_game }}</a></p>
+                        <p>{{ Auth::user()->favorite_game }}</p>
                     @else
                         <p><i>No favorite game</i></p>
                     @endif
