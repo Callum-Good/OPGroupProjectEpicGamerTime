@@ -128,7 +128,7 @@ class GamesController extends Controller
             {            
                 $user = User::findOrFail($score->user_id); 
                 
-                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 'score_id' => $score->id,'user_id' => $user->id, 'score_verification_image' => $score->score_verification_image];
+                $scoreArray[] = ['name'=> $user->name, 'score' => $score->score, 'score_id' => $score->id,'user_id' => $user->id, 'score_verification_image' => $score->score_verification_image, 'votes_to_ban' => $user->votes_to_ban];
             
             }
 

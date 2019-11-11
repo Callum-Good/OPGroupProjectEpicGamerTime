@@ -20,7 +20,7 @@ class AddScoreToGamesController extends Controller
         $formData = request()->all();
         
         $request->validate([
-            'score'=>'required|numeric|max:99999999',
+            'score'=>'required|numeric',
             'score_verification_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048|required',
         ]);
 

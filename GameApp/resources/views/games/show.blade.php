@@ -14,19 +14,6 @@
     @endforeach
 </div> <!-- end .flash-message -->
 
-<!--
-    Checking for any errors
-    -->
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 <div class="row">
 
     <div class="col-md-8 groupDescription">
@@ -54,7 +41,7 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{asset($game->game_art)}}" alt="picture of game" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
+                <img src="{{asset($game->game_art)}}" style="display:block; margin-left: auto; margin-right: auto; width:100%; height:100%">
             </div>
         </div>
         <div class="row">
@@ -66,7 +53,7 @@
                 @if($scoreArray != 0)
                 <!-- shows nothing -->
                 @else
-                <!-- Shows game delete button -->
+                 <!-- Shows game delete button -->
                 <a href="#" class="btn-danger btn-success btn-block groupbtns btn-text" data-toggle="modal" data-target="#delete-modal">Delete</a>
                 @endif
                 @endif
@@ -135,6 +122,20 @@
                         @endif
                         @foreach($scoreArray as $score)
                         <tbody>
+                            @if ((Auth::check()) && ($score['user_id'] == Auth::user()->id))
+                            <tr>
+                                <td>
+                                    <a href="{{route('profile')}}">
+                                        {{$score['name']}}</a>
+                                </td>
+                                <td>
+                                    {{$score['score']}}
+                                </td>
+                                <td>
+                                    <img src="{{asset($score['score_verification_image'])}}" style="margin: 0 auto; width: 30%;">
+                                </td>
+                            </tr>
+                            @elseif ($score['votes_to_ban'] < 2)
                             <tr>
                                 <td>
                                     <a href="{{route('users.show',$score['user_id'])}}">
@@ -144,10 +145,10 @@
                                     {{$score['score']}}
                                 </td>
                                 <td>
-                                    <a href="{{ $score['score_verification_image'] }}">
-                                        <img src="{{asset($score['score_verification_image'])}}" style="margin: 0 auto; width: 30%;"></a>
+                                    <img src="{{asset($score['score_verification_image'])}}" style="margin: 0 auto; width: 30%;">
                                 </td>
                             </tr>
+                            @endif
                         </tbody>
                         @endforeach
                         @endif
@@ -171,10 +172,10 @@
         <form class="form-group deleteF" action="{{route('AddScoreToGamesController.addScore')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <div>
-                <input type="text" name="score" id="title" class="form-control inputGame" value="{{old('score')}}" placeholder="Enter Highscore" required><br>
+                <input type="text" name="score" id="title" class="form-control inputGame" value="{{old('score')}}" placeholder="Enter Highscore"><br>
 
                 <p>Please upload an image in order to verify your score: </p>
-                <input id="score_verification_image" type="file" class="form-control file" enctype="multipart/form-data" name="score_verification_image" required><br>
+                <input id="score_verification_image" type="file" class="form-control file" enctype="multipart/form-data" name="score_verification_image"><br>
                 <input type='hidden' name='user_id' value='{{Auth::user()->id}}'>
                 <!--Sends to next page-->
                 <input type='hidden' name='game_id' value='{{$game->id}}'>
