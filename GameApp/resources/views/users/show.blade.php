@@ -31,11 +31,13 @@
                     @else
                         <p><i>{{ $user->name }} has not created a bio. How boring!</i></p>
                     @endif
-
-                    @if ((Auth::check()) && ((Auth::user()->id != $user->voter_1) && (Auth::user()->id != $user->voter_2)))
-                        <a href="{{route('VoteToBan',$user->id)}}" type="submit" class="btn btn-primary updateProfileBtn">Vote to ban</a>
-                    @endif
                 </div>
+
+                @if ((Auth::check()) && ((Auth::user()->id != $user->voter_1) && (Auth::user()->id != $user->voter_2)))
+                    <div class="update">
+                        <a href="{{route('VoteToBan',$user->id)}}" type="submit" class="btn btn-primary updateProfileBtn">Vote to ban</a>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="col-md-4">
