@@ -166,7 +166,7 @@ class GroupsController extends Controller
         //validation rules
         $request->validate([
             'name' => 'required|string|min:2|max:191',
-            'game_id'  => 'required|string|min:5|max:1000',
+            'game_id'  => 'required|string|min:2|max:1000',
             'type' => 'required|string',
             'description' => 'required|string',
             'grp_image' => 'image|mimes:jpeg,png,jpg,gif'
