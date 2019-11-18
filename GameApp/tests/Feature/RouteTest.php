@@ -23,5 +23,5 @@ class ImageCheck extends TestCase
     {
         $response=$this->get("/games");
         $response->assertStatus(200);
-    } 
+    }
 }
