@@ -20,9 +20,7 @@ class GroupTest extends TestCase
         $response->assertStatus(200);
     }
     public function testDatabaseGame()
-    {
-        $this->
-        
+    {        
         $this->assertDatabaseHas('groups', [
             'name' => 'Gamer Guys'
         ]);
