@@ -3,15 +3,18 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Kyslik\ColumnSortable\Sortable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail 
 {
     use Sortable;
+
+    use Notifiable;
     
     public function groups(){
         return $this->belongsToMany(Groups::class, 'group_id');

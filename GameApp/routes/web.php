@@ -14,7 +14,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::get('user/{id}', 'VoteToBan')->name('VoteToBan');
 
@@ -37,7 +37,7 @@ Route::post('/groups/leave', 'AddUsersToGroup@leaveGroup')->name('AddUsersToGrou
 //Route::get('/groups/{group}', 'GroupsController@show');
 
 
-Auth::routes();
+Auth::routes(['verify' =>true]);
 
 
 Route::resource('/games','GamesController');
